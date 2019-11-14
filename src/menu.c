@@ -607,7 +607,7 @@ char *gen_flag_string(const buffer * const b) {
 		if (ch > -1) {
 			string[i++] = "0123456789abcdef"[(ch >> 4) & 0x0f];
 			string[i++] = "0123456789abcdef"[ch & 0x0f];
-			
+
 			string[i++] = ' ';
 			string[i++] = ca & CONTEXT_MASK == CONTEXT_COMMENT ? '#' : ca & CONTEXT_MASK == CONTEXT_STRING ? '"' : '_';
 			string[i++] = ca & ITALIC    ? 'I' : '_';
@@ -921,7 +921,7 @@ void handle_menus(void) {
 						draw_menu(current_menu);
 					}
 					break;
-					
+
 				case MOVEEOL_A:
 					if (current_menu != menu_num) {
 						undraw_menu(current_menu);
@@ -929,7 +929,7 @@ void handle_menus(void) {
 						draw_menu(current_menu);
 					}
 					break;
-					
+
 				case ESCAPE_A:
 					undraw_last_menu();
 					return;

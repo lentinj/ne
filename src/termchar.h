@@ -33,6 +33,7 @@
 #define BOLD         1024
 #define BLINK        2048
 #define DIM          4096
+/* Intentionally eliding 'ITALIC' from AT_MASK until it's supported by .jsf engine. */
 #define AT_MASK      (INVERSE+UNDERLINE+BOLD+BLINK+DIM)
 
 #define BG_SHIFT        13
