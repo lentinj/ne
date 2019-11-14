@@ -208,7 +208,6 @@ void move_inc_up(buffer *b);
 buffer *new_buffer(void);
 bool delete_buffer(void);
 void about(void);
-void automatch_bracket(buffer *b, bool show);
 
 /* prefs.c */
 const char *extension(const char *filename);

@@ -38,7 +38,7 @@
 
 /* The maximum length of the flag string. */
 
-#define MAX_FLAG_STRING_SIZE 32
+#define MAX_FLAG_STRING_SIZE 44
 
 /* The maximum length of a message. */
 
@@ -559,7 +559,13 @@ char *gen_flag_string(const buffer * const b) {
 
 	static char string[MAX_FLAG_STRING_SIZE];
 	const int ch = b->cur_pos >= 0 && b->cur_pos < b->cur_line_desc->line_len ? (b->encoding == ENC_UTF8 ? utf8char(&b->cur_line_desc->line[b->cur_pos]) : (unsigned char)b->cur_line_desc->line[b->cur_pos]) : -1;
+	int ca = 0;
 	int i = 0;
+
+	if (b->syn && ch > -1) {
+		parse(b->syn, b->cur_line_desc, b->cur_line_desc->highlight_state, b->encoding == ENC_UTF8);
+		ca = attr_buf[b->cur_pos];
+	}
 
 	string[i++] = ' ';
 
@@ -601,8 +607,27 @@ char *gen_flag_string(const buffer * const b) {
 		if (ch > -1) {
 			string[i++] = "0123456789abcdef"[(ch >> 4) & 0x0f];
 			string[i++] = "0123456789abcdef"[ch & 0x0f];
+			
+			string[i++] = ' ';
+			string[i++] = ca & CONTEXT_MASK == CONTEXT_COMMENT ? '#' : ca & CONTEXT_MASK == CONTEXT_STRING ? '"' : '_';
+			string[i++] = ca & ITALIC    ? 'I' : '_';
+			string[i++] = ca & INVERSE   ? 'n' : '_';
+			string[i++] = ca & BOLD      ? 'B' : '_';
+			string[i++] = ca & UNDERLINE ? 'U' : '_';
+			string[i++] = ca & BLINK     ? 'l' : '_';
+			string[i++] = ca & DIM       ? 'D' : '_';
+			if ( ca & FG_NOT_DEFAULT ) {
+				string[i++] = "0123456789abcdef"[(((ca & FG_MASK)>>FG_SHIFT) >> 4) & 0x0f];
+				string[i++] = "0123456789abcdef"[ ((ca & FG_MASK)>>FG_SHIFT)       & 0x0f];
+			}
+			else for(int j = 0; j < 2; j++) string[i++] = '.';
+			if ( ca & BG_NOT_DEFAULT ) {
+				string[i++] = "0123456789abcdef"[(((ca & BG_MASK)>>BG_SHIFT) >> 4) & 0x0f];
+				string[i++] = "0123456789abcdef"[ ((ca & BG_MASK)>>BG_SHIFT)       & 0x0f];
+			}
+			else for(int j = 0; j < 2; j++) string[i++] = '.';
 		}
-		else for(int j = 0; j < 2; j++) string[i++] = ' ';
+		else for(int j = 0; j < 14; j++) string[i++] = ' ';
 	}
 
 	string[i] = 0;
