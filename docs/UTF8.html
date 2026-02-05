@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>UTF8 (ne&rsquo;s manual)</title>
+
+<meta name="description" content="UTF8 (ne&rsquo;s manual)">
+<meta name="keywords" content="UTF8 (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="UTF8Auto.html" rel="next" title="UTF8Auto">
+<link href="Syntax.html" rel="prev" title="Syntax">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="UTF8">
+<div class="nav-panel">
+<p>
+Next: <a href="UTF8Auto.html" accesskey="n" rel="next">UTF8Auto</a>, Previous: <a href="Syntax.html" accesskey="p" rel="prev">Syntax</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="UTF8-1"><span>4.9.32 UTF8<a class="copiable-link" href="#UTF8-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-UTF8"></a>
+
+<p>Syntax: <code class="code">UTF8 [0|1]</code><br>
+Abbreviation: <code class="code">U8</code>
+</p>
+<p>sets the UTF-8 flag.  When this flag is
+true, <code class="code">ne</code> considers the current document as UTF-8 coded.  Note that
+this flag is set automatically upon file loading (if possible) if you
+required automatic detection. See <a class="ref" href="UTF8Auto.html">UTF8Auto</a>.
+</p>
+<p>If you invoke <code class="code">UTF8</code> with no arguments, it will toggle the flag.
+If you specify 0 or 1, the flag will be set to false or true,
+respectively. When you try to set this flag, the document will be checked
+for UTF-8 compliance, and you will get an error message in case of
+failure. When you try to reset it, the document is set to ASCII or
+8-bit, depending on its content.  A &lsquo;<samp class="samp">U</samp>&rsquo; will appear on the
+status bar if the flag is true. Alternatively, an &lsquo;<samp class="samp">A</samp>&rsquo; or an
+&lsquo;<samp class="samp">8</samp>&rsquo; will be displayed to denote whether the document is composed
+exclusively by US-ASCII characters, or also by other 8-bit characters
+(whose encoding is likely to be part of the ISO-8859 family). Note that
+each time this command modifies the document encoding, it also resets the
+undo buffer.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

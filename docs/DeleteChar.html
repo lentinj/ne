@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>DeleteChar (ne&rsquo;s manual)</title>
+
+<meta name="description" content="DeleteChar (ne&rsquo;s manual)">
+<meta name="keywords" content="DeleteChar (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Editing-Commands.html" rel="up" title="Editing Commands">
+<link href="DeletePrevWord.html" rel="next" title="DeletePrevWord">
+<link href="InsertTab.html" rel="prev" title="InsertTab">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="DeleteChar">
+<div class="nav-panel">
+<p>
+Next: <a href="DeletePrevWord.html" accesskey="n" rel="next">DeletePrevWord</a>, Previous: <a href="InsertTab.html" accesskey="p" rel="prev">InsertTab</a>, Up: <a href="Editing-Commands.html" accesskey="u" rel="up">Editing Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="DeleteChar-1"><span>4.11.4 DeleteChar<a class="copiable-link" href="#DeleteChar-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-DeleteChar"></a>
+
+<p>Syntax: <code class="code">DeleteChar [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">DC</code>
+</p>
+<p>deletes <var class="var">n</var> characters from the text. If the optional <var class="var">n</var>
+argument is not specified, it is assumed to be one. Deleting a character
+when the cursor is just after the last char on a line will join a line with
+the following one; in other words, the carriage return between the two lines
+will be deleted. Note that if the cursor is past the end of the current line,
+no action will be performed.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

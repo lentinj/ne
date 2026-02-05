@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Changing Menus (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Changing Menus (ne&rsquo;s manual)">
+<meta name="keywords" content="Changing Menus (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Configuration.html" rel="up" title="Configuration">
+<link href="Virtual-Extensions.html" rel="next" title="Virtual Extensions">
+<link href="Key-Bindings.html" rel="prev" title="Key Bindings">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Changing-Menus">
+<div class="nav-panel">
+<p>
+Next: <a href="Virtual-Extensions.html" accesskey="n" rel="next">Virtual Extensions</a>, Previous: <a href="Key-Bindings.html" accesskey="p" rel="prev">Key Bindings</a>, Up: <a href="Configuration.html" accesskey="u" rel="up">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Changing-Menus-1"><span>5.2 Changing Menus<a class="copiable-link" href="#Changing-Menus-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Configuring-the-menus"></a>
+
+<p><code class="code">ne</code> allows you to change the contents of its menus. To
+accomplish this task, you have to create a file named <samp class="file">.menus</samp> in your
+home directory, or in <samp class="file">~/.ne</samp>. You can change the default name
+(possibly specifying a complete path) using the <code class="code">--menus</code> argument
+(see <a class="pxref" href="Arguments.html">Arguments</a>).
+</p>
+<p>Each line of a menu configuration file not starting with the &lsquo;<samp class="samp">MENU</samp>&rsquo; or
+&lsquo;<samp class="samp">ITEM</samp>&rsquo; keywords is considered a comment. You should describe the menus
+as in the following example:
+</p>
+<div class="example">
+<pre class="example-preformatted">MENU &quot;File&quot;
+ITEM &quot;Open...     ^O&quot; Open
+ITEM &quot;Close         &quot; Close
+ITEM &quot;DoIt          &quot; Macro DoIt
+</pre></div>
+
+<p>In other words: a line of this form
+</p><div class="example">
+<pre class="example-preformatted">MENU &quot;<var class="var">title</var>&quot;
+</pre></div>
+<p>will start the definition of a new menu, having the given title. Each line
+of the form
+</p><div class="example">
+<pre class="example-preformatted">ITEM &quot;<var class="var">text</var>&quot; <var class="var">command</var>
+</pre></div>
+<p>will then define a menu item, and associate the given command to it.
+</p>
+<p>Any number of menus can be accommodated, but you should consider that many
+terminals are 80 columns wide. There is also a minor restriction on the
+items&mdash;their width has to be constant throughout each menu (but different
+menus can have different widths). Note that the text of an item, as the name of
+a menu, is between quotes. Whatever follows the last quote is considered the
+command associated to the menu.
+</p>
+<p><strong class="strong">Warning:</strong> the description of key bindings in menus
+(&lsquo;<samp class="samp">^O</samp>&rsquo; in the previous example) is very important for the beginner;
+there is no relation inside <code class="code">ne</code> about what you say in the menu and how
+you configure the key bindings (see <a class="pxref" href="Key-Bindings.html">Key Bindings</a>). Please do not say
+things in the menus that are not true in the key binding file.
+</p>
+<p>The menu configuration file is parsed at startup. If something does not
+work, <code class="code">ne</code> exits displaying an error message. If you want <code class="code">ne</code> to
+skip the menu configuration phase (for instance, to correct the
+broken file), just give <code class="code">ne</code> the <code class="code">--no-config</code> argument.
+See <a class="xref" href="Arguments.html">Arguments</a>.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Virtual-Extensions.html">Virtual Extensions</a>, Previous: <a href="Key-Bindings.html">Key Bindings</a>, Up: <a href="Configuration.html">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

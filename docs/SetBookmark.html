@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SetBookmark (ne&rsquo;s manual)</title>
+
+<meta name="description" content="SetBookmark (ne&rsquo;s manual)">
+<meta name="keywords" content="SetBookmark (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Navigation-Commands.html" rel="up" title="Navigation Commands">
+<link href="GotoBookmark.html" rel="next" title="GotoBookmark">
+<link href="ToggleSEOL.html" rel="prev" title="ToggleSEOL">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="SetBookmark">
+<div class="nav-panel">
+<p>
+Next: <a href="GotoBookmark.html" accesskey="n" rel="next">GotoBookmark</a>, Previous: <a href="ToggleSEOL.html" accesskey="p" rel="prev">ToggleSEOL</a>, Up: <a href="Navigation-Commands.html" accesskey="u" rel="up">Navigation Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="SetBookmark-1"><span>4.10.26 SetBookmark<a class="copiable-link" href="#SetBookmark-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-SetBookmark"></a>
+
+<p>Syntax: <code class="code">SetBookmark [<var class="var">n</var>|<var class="var">+1</var>|<var class="var">-1</var>|<var class="var">&lt;</var>|<var class="var">&gt;</var>|<var class="var">-</var>|<var class="var">?</var>]</code><br>
+Abbreviation: <code class="code">SBM</code>
+</p>
+<p>sets a document bookmark to the current cursor position.
+Each document has 10 available bookmarks designated &lsquo;<samp class="samp">0</samp>&rsquo; to &lsquo;<samp class="samp">9</samp>&rsquo;,
+the most recently pasted block&rsquo;s start and end designated &lsquo;<samp class="samp">&lt;</samp>&rsquo; and &lsquo;<samp class="samp">&gt;</samp>&rsquo;,
+plus the automatic bookmark designated by &lsquo;<samp class="samp">-</samp>&rsquo;. If no option is given,
+&lsquo;<samp class="samp">0</samp>&rsquo; is assumed. Values of <var class="var">n</var> from &lsquo;<samp class="samp">0</samp>&rsquo; to &lsquo;<samp class="samp">9</samp>&rsquo; set the
+<var class="var">n</var>th bookmark, while &lsquo;<samp class="samp">+1</samp>&rsquo; and &lsquo;<samp class="samp">-1</samp>&rsquo; indicate respectively
+the next and previous available unset bookmarks. You can also set the
+pasted block&rsquo;s start and end which will be reset on the next <code class="code">Paste</code>
+or <code class="code">PasteVert</code> command, or the &lsquo;<samp class="samp">-</samp>&rsquo; automatic bookmark, but it will
+be reset automatically to the current position whenever a <code class="code">GotoBookmark</code>
+command is issued.
+</p>
+<p>The &lsquo;<samp class="samp">?</samp>&rsquo; option will cause <code class="code">SetBookmark</code> to prompt you
+for a bookmark designation. The promp will include an indication of which
+bookmarks are currently set. You may find this useful in macros, or to bind
+a key to &lsquo;<samp class="samp">SetBookmark ?</samp>&rsquo;.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

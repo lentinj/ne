@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AutoComplete (ne&rsquo;s manual)</title>
+
+<meta name="description" content="AutoComplete (ne&rsquo;s manual)">
+<meta name="keywords" content="AutoComplete (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Search-Commands.html" rel="up" title="Search Commands">
+<link href="CaseSearch.html" rel="prev" title="CaseSearch">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="AutoComplete">
+<div class="nav-panel">
+<p>
+Previous: <a href="CaseSearch.html" accesskey="p" rel="prev">CaseSearch</a>, Up: <a href="Search-Commands.html" accesskey="u" rel="up">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="AutoComplete-1"><span>4.5.11 AutoComplete<a class="copiable-link" href="#AutoComplete-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-AutoComplete"></a>
+
+<p>Syntax: <code class="code">AutoComplete [<var class="var">prefix</var>]</code><br>
+Abbreviation: <code class="code">AC</code>
+</p>
+<p>attempts to extend the <var class="var">prefix</var> using matching words from your
+open documents, and inserts the extended text into your document. If the
+<var class="var">prefix</var> can be extended unambiguously, the matching text is immediately
+inserted into your document. Otherwise, <code class="code">ne</code> displays a
+selection of all words in open documents that match <var class="var">prefix</var>, and inserts
+the word you select into the current document.
+Matching words from the current document display normally; those which only
+exist in other open documents are bold and with a trailing asterisk. If no
+<var class="var">prefix</var> is given on the command line, or if <code class="code">AutoComplete</code> is
+selected from the <code class="code">Extras</code> menu or using a keyboard shortcut, the word
+characters to the immediate left of the cursor in the current document are used
+as the <var class="var">prefix</var>. Note that if no word characters are to the left of the
+cursor, or the <var class="var">prefix</var> given on the command line is an empty string
+(<code class="code">&quot;&quot;</code>), then all words in all your open documents are displayed. Prefix
+matches may be case sensitive or not depending on the current document&rsquo;s
+<code class="code">CaseSearch</code> flag state. See <a class="ref" href="CaseSearch.html">CaseSearch</a>.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

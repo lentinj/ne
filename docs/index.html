@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Top (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Top (ne&rsquo;s manual)">
+<meta name="keywords" content="Top (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="#Top" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Introduction.html" rel="next" title="Introduction">
+<style type="text/css">
+<!--
+ul.toc-numbered-mark {list-style: none}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+
+
+
+
+
+
+
+
+
+<div class="top-level-extent" id="Top">
+<div class="nav-panel">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<a class="top" id="SEC_Top"></a>
+<p>This file describes <code class="code">ne</code> version 3.3.4, a free text editor that runs
+(we hope) on almost any <small class="sc">UN*X</small> machine. <code class="code">ne</code> is easy to use for
+the beginner, but powerful and fully configurable for the wizard, and
+most sparing in its resource use.
+</p>
+<p>Copyright (C) 1993-1998 Sebastiano Vigna<br>
+Copyright (C) 1999-2026 Todd M. Lewis and Sebastiano Vigna
+</p>
+
+
+
+<div class="element-contents" id="SEC_Contents">
+<h2 class="contents-heading">Table of Contents</h2>
+
+<div class="contents">
+
+<ul class="toc-numbered-mark">
+  <li><a id="toc-Introduction-1" href="Introduction.html">1 Introduction</a></li>
+  <li><a id="toc-Basics-1" href="Basics.html">2 Basics</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Terminology-1" href="Terminology.html">2.1 Terminology</a></li>
+    <li><a id="toc-Starting-1" href="Starting.html">2.2 Starting</a></li>
+    <li><a id="toc-Loading-and-Saving-1" href="Loading-and-Saving.html">2.3 Loading and Saving</a></li>
+    <li><a id="toc-Editing-1" href="Editing.html">2.4 Editing</a></li>
+    <li><a id="toc-Basic-Preferences-1" href="Basic-Preferences.html">2.5 Basic Preferences</a></li>
+    <li><a id="toc-Basic-Macros-1" href="Basic-Macros.html">2.6 Basic Macros</a></li>
+    <li><a id="toc-More-Advanced-Features-1" href="More-Advanced-Features.html">2.7 More Advanced Features</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-UTF_002d8-support" href="More-Advanced-Features.html#UTF_002d8-support">2.7.1 UTF-8 support</a></li>
+      <li><a id="toc-Bookmarks" href="More-Advanced-Features.html#Bookmarks">2.7.2 Bookmarks</a></li>
+      <li><a id="toc-Automatic-Completion" href="More-Advanced-Features.html#Automatic-Completion">2.7.3 Automatic Completion</a></li>
+      <li><a id="toc-Automatic-Bracket-Matching" href="More-Advanced-Features.html#Automatic-Bracket-Matching">2.7.4 Automatic Bracket Matching</a></li>
+      <li><a id="toc-MS_002dDOS-files" href="More-Advanced-Features.html#MS_002dDOS-files">2.7.5 MS-DOS files</a></li>
+      <li><a id="toc-Binary-files" href="More-Advanced-Features.html#Binary-files">2.7.6 Binary files</a></li>
+      <li><a id="toc-File-requester" href="More-Advanced-Features.html#File-requester">2.7.7 File requester</a></li>
+      <li><a id="toc-Executing-un_002ax-commands" href="More-Advanced-Features.html#Executing-un_002ax-commands">2.7.8 Executing <small class="sc">UN*X</small> commands</a></li>
+      <li><a id="toc-Advanced-key-bindings" href="More-Advanced-Features.html#Advanced-key-bindings">2.7.9 Advanced key bindings</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Reference-1" href="Reference.html">3 Reference</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Arguments-1" href="Arguments.html">3.1 Arguments</a></li>
+    <li><a id="toc-The-Status-Bar-1" href="The-Status-Bar.html">3.2 The Status Bar</a></li>
+    <li><a id="toc-The-Input-Line-1" href="The-Input-Line.html">3.3 The Input Line</a></li>
+    <li><a id="toc-The-Command-Line-1" href="The-Command-Line.html">3.4 The Command Line</a></li>
+    <li><a id="toc-The-Requester-1" href="The-Requester.html">3.5 The Requester</a></li>
+    <li><a id="toc-Syntax-Highlighting-1" href="Syntax-Highlighting.html">3.6 Syntax Highlighting</a></li>
+    <li><a id="toc-Menus-1" href="Menus.html">3.7 Menus</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-File-1" href="File.html">3.7.1 File</a></li>
+      <li><a id="toc-Documents-1" href="Documents.html">3.7.2 Documents</a></li>
+      <li><a id="toc-Edit-1" href="Edit.html">3.7.3 Edit</a></li>
+      <li><a id="toc-Search-1" href="Search.html">3.7.4 Search</a></li>
+      <li><a id="toc-Macros-1" href="Macros.html">3.7.5 Macros</a></li>
+      <li><a id="toc-Extras-1" href="Extras.html">3.7.6 Extras</a></li>
+      <li><a id="toc-Navigation-1" href="Navigation.html">3.7.7 Navigation</a></li>
+      <li><a id="toc-Prefs-1" href="Prefs.html">3.7.8 Prefs</a></li>
+    </ul></li>
+    <li><a id="toc-Regular-Expressions-1" href="Regular-Expressions.html">3.8 Regular Expressions</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Syntax-1" href="Regular-Expressions.html#Syntax-1">3.8.1 Syntax</a></li>
+      <li><a id="toc-Replacing-regular-expressions" href="Regular-Expressions.html#Replacing-regular-expressions">3.8.2 Replacing regular expressions</a></li>
+    </ul></li>
+    <li><a id="toc-Automatic-Preferences-1" href="Automatic-Preferences.html">3.9 Automatic Preferences</a></li>
+    <li><a id="toc-Emergency-Save-1" href="Emergency-Save.html">3.10 Emergency Save</a></li>
+    <li><a id="toc-UTF_002d8-Support-1" href="UTF_002d8-Support.html">3.11 UTF-8 Support</a></li>
+  </ul></li>
+  <li><a id="toc-Commands-1" href="Commands.html">4 Commands</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-General-Guidelines-1" href="General-Guidelines.html">4.1 General Guidelines</a></li>
+    <li><a id="toc-File-Commands-1" href="File-Commands.html">4.2 File Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Open-1" href="Open.html">4.2.1 Open</a></li>
+      <li><a id="toc-OpenNew-1" href="OpenNew.html">4.2.2 OpenNew</a></li>
+      <li><a id="toc-Save-1" href="Save.html">4.2.3 Save</a></li>
+      <li><a id="toc-SaveAs-1" href="SaveAs.html">4.2.4 SaveAs</a></li>
+      <li><a id="toc-SaveAll-1" href="SaveAll.html">4.2.5 SaveAll</a></li>
+    </ul></li>
+    <li><a id="toc-Document-Commands-1" href="Document-Commands.html">4.3 Document Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Quit-1" href="Quit.html">4.3.1 Quit</a></li>
+      <li><a id="toc-Exit-1" href="Exit.html">4.3.2 Exit</a></li>
+      <li><a id="toc-NewDoc-1" href="NewDoc.html">4.3.3 NewDoc</a></li>
+      <li><a id="toc-Clear-1" href="Clear.html">4.3.4 Clear</a></li>
+      <li><a id="toc-CloseDoc-1" href="CloseDoc.html">4.3.5 CloseDoc</a></li>
+      <li><a id="toc-NextDoc-1" href="NextDoc.html">4.3.6 NextDoc</a></li>
+      <li><a id="toc-PrevDoc-1" href="PrevDoc.html">4.3.7 PrevDoc</a></li>
+      <li><a id="toc-SelectDoc-1" href="SelectDoc.html">4.3.8 SelectDoc</a></li>
+    </ul></li>
+    <li><a id="toc-Clip-Commands-1" href="Clip-Commands.html">4.4 Clip Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Mark-1" href="Mark.html">4.4.1 Mark</a></li>
+      <li><a id="toc-MarkVert-1" href="MarkVert.html">4.4.2 MarkVert</a></li>
+      <li><a id="toc-Copy-1" href="Copy.html">4.4.3 Copy</a></li>
+      <li><a id="toc-Cut-1" href="Cut.html">4.4.4 Cut</a></li>
+      <li><a id="toc-Paste-1" href="Paste.html">4.4.5 Paste</a></li>
+      <li><a id="toc-PasteVert-1" href="PasteVert.html">4.4.6 PasteVert</a></li>
+      <li><a id="toc-Erase-1" href="Erase.html">4.4.7 Erase</a></li>
+      <li><a id="toc-Shift-1" href="Shift.html">4.4.8 Shift</a></li>
+      <li><a id="toc-OpenClip-1" href="OpenClip.html">4.4.9 OpenClip</a></li>
+      <li><a id="toc-SaveClip-1" href="SaveClip.html">4.4.10 SaveClip</a></li>
+      <li><a id="toc-ClipNumber-1" href="ClipNumber.html">4.4.11 ClipNumber</a></li>
+      <li><a id="toc-Through-1" href="Through.html">4.4.12 Through</a></li>
+    </ul></li>
+    <li><a id="toc-Search-Commands-1" href="Search-Commands.html">4.5 Search Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Find-1" href="Find.html">4.5.1 Find</a></li>
+      <li><a id="toc-FindRegExp-1" href="FindRegExp.html">4.5.2 FindRegExp</a></li>
+      <li><a id="toc-Replace-1" href="Replace.html">4.5.3 Replace</a></li>
+      <li><a id="toc-ReplaceOnce-1" href="ReplaceOnce.html">4.5.4 ReplaceOnce</a></li>
+      <li><a id="toc-ReplaceAll-1" href="ReplaceAll.html">4.5.5 ReplaceAll</a></li>
+      <li><a id="toc-RepeatLast-1" href="RepeatLast.html">4.5.6 RepeatLast</a></li>
+      <li><a id="toc-MatchBracket-1" href="MatchBracket.html">4.5.7 MatchBracket</a></li>
+      <li><a id="toc-AutoMatchBracket-1" href="AutoMatchBracket.html">4.5.8 AutoMatchBracket</a></li>
+      <li><a id="toc-SearchBack-1" href="SearchBack.html">4.5.9 SearchBack</a></li>
+      <li><a id="toc-CaseSearch-1" href="CaseSearch.html">4.5.10 CaseSearch</a></li>
+      <li><a id="toc-AutoComplete-1" href="AutoComplete.html">4.5.11 AutoComplete</a></li>
+    </ul></li>
+    <li><a id="toc-Macros-Commands-1" href="Macros-Commands.html">4.6 Macros Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Record-1" href="Record.html">4.6.1 Record</a></li>
+      <li><a id="toc-Play-1" href="Play.html">4.6.2 Play</a></li>
+      <li><a id="toc-Macro-1" href="Macro.html">4.6.3 Macro</a></li>
+      <li><a id="toc-OpenMacro-1" href="OpenMacro.html">4.6.4 OpenMacro</a></li>
+      <li><a id="toc-SaveMacro-1" href="SaveMacro.html">4.6.5 SaveMacro</a></li>
+      <li><a id="toc-UnloadMacros-1" href="UnloadMacros.html">4.6.6 UnloadMacros</a></li>
+    </ul></li>
+    <li><a id="toc-Undo-Commands-1" href="Undo-Commands.html">4.7 Undo Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Undo-1" href="Undo.html">4.7.1 Undo</a></li>
+      <li><a id="toc-Redo-1" href="Redo.html">4.7.2 Redo</a></li>
+      <li><a id="toc-UndelLine-1" href="UndelLine.html">4.7.3 UndelLine</a></li>
+      <li><a id="toc-DoUndo-1" href="DoUndo.html">4.7.4 DoUndo</a></li>
+      <li><a id="toc-AtomicUndo-1" href="AtomicUndo.html">4.7.5 AtomicUndo</a></li>
+    </ul></li>
+    <li><a id="toc-Formatting-Commands-1" href="Formatting-Commands.html">4.8 Formatting Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Center-1" href="Center.html">4.8.1 Center</a></li>
+      <li><a id="toc-Paragraph-1" href="Paragraph.html">4.8.2 Paragraph</a></li>
+      <li><a id="toc-ToUpper-1" href="ToUpper.html">4.8.3 ToUpper</a></li>
+      <li><a id="toc-ToLower-1" href="ToLower.html">4.8.4 ToLower</a></li>
+      <li><a id="toc-Capitalize-1" href="Capitalize.html">4.8.5 Capitalize</a></li>
+      <li><a id="toc-RightMargin-1" href="RightMargin.html">4.8.6 RightMargin</a></li>
+      <li><a id="toc-WordWrap-1" href="WordWrap.html">4.8.7 WordWrap</a></li>
+      <li><a id="toc-AutoIndent-1" href="AutoIndent.html">4.8.8 AutoIndent</a></li>
+    </ul></li>
+    <li><a id="toc-Preferences-Commands-1" href="Preferences-Commands.html">4.9 Preferences Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-Flags-1" href="Flags.html">4.9.1 Flags</a></li>
+      <li><a id="toc-AutoPrefs-1" href="AutoPrefs.html">4.9.2 AutoPrefs</a></li>
+      <li><a id="toc-Binary-1" href="Binary.html">4.9.3 Binary</a></li>
+      <li><a id="toc-Insert-1" href="Insert.html">4.9.4 Insert</a></li>
+      <li><a id="toc-FastGUI-1" href="FastGUI.html">4.9.5 FastGUI</a></li>
+      <li><a id="toc-FreeForm-1" href="FreeForm.html">4.9.6 FreeForm</a></li>
+      <li><a id="toc-NoFileReq-1" href="NoFileReq.html">4.9.7 NoFileReq</a></li>
+      <li><a id="toc-RequestOrder-1" href="RequestOrder.html">4.9.8 RequestOrder</a></li>
+      <li><a id="toc-StatusBar-1" href="StatusBar.html">4.9.9 StatusBar</a></li>
+      <li><a id="toc-HexCode-1" href="HexCode.html">4.9.10 HexCode</a></li>
+      <li><a id="toc-ReadOnly-1" href="ReadOnly.html">4.9.11 ReadOnly</a></li>
+      <li><a id="toc-EscapeTime-1" href="EscapeTime.html">4.9.12 EscapeTime</a></li>
+      <li><a id="toc-TabSize-1" href="TabSize.html">4.9.13 TabSize</a></li>
+      <li><a id="toc-Tabs-1" href="Tabs.html">4.9.14 Tabs</a></li>
+      <li><a id="toc-DelTabs-1" href="DelTabs.html">4.9.15 DelTabs</a></li>
+      <li><a id="toc-ShiftTabs-1" href="ShiftTabs.html">4.9.16 ShiftTabs</a></li>
+      <li><a id="toc-Turbo-1" href="Turbo.html">4.9.17 Turbo</a></li>
+      <li><a id="toc-VerboseMacros-1" href="VerboseMacros.html">4.9.18 VerboseMacros</a></li>
+      <li><a id="toc-PreserveCR-1" href="PreserveCR.html">4.9.19 PreserveCR</a></li>
+      <li><a id="toc-CRLF-1" href="CRLF.html">4.9.20 CRLF</a></li>
+      <li><a id="toc-BracketedPaste-1" href="BracketedPaste.html">4.9.21 BracketedPaste</a></li>
+      <li><a id="toc-VisualBell-1" href="VisualBell.html">4.9.22 VisualBell</a></li>
+      <li><a id="toc-PushPrefs-1" href="PushPrefs.html">4.9.23 PushPrefs</a></li>
+      <li><a id="toc-PopPrefs-1" href="PopPrefs.html">4.9.24 PopPrefs</a></li>
+      <li><a id="toc-LoadPrefs-1" href="LoadPrefs.html">4.9.25 LoadPrefs</a></li>
+      <li><a id="toc-SavePrefs-1" href="SavePrefs.html">4.9.26 SavePrefs</a></li>
+      <li><a id="toc-LoadAutoPrefs-1" href="LoadAutoPrefs.html">4.9.27 LoadAutoPrefs</a></li>
+      <li><a id="toc-SaveAutoPrefs-1" href="SaveAutoPrefs.html">4.9.28 SaveAutoPrefs</a></li>
+      <li><a id="toc-SaveDefPrefs-1" href="SaveDefPrefs.html">4.9.29 SaveDefPrefs</a></li>
+      <li><a id="toc-Modified-1" href="Modified.html">4.9.30 Modified</a></li>
+      <li><a id="toc-Syntax-2" href="Syntax.html">4.9.31 Syntax</a></li>
+      <li><a id="toc-UTF8-1" href="UTF8.html">4.9.32 UTF8</a></li>
+      <li><a id="toc-UTF8Auto-1" href="UTF8Auto.html">4.9.33 UTF8Auto</a></li>
+      <li><a id="toc-UTF8IO-1" href="UTF8IO.html">4.9.34 UTF8IO</a></li>
+    </ul></li>
+    <li><a id="toc-Navigation-Commands-1" href="Navigation-Commands.html">4.10 Navigation Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-MoveLeft-1" href="MoveLeft.html">4.10.1 MoveLeft</a></li>
+      <li><a id="toc-MoveRight-1" href="MoveRight.html">4.10.2 MoveRight</a></li>
+      <li><a id="toc-LineUp-1" href="LineUp.html">4.10.3 LineUp</a></li>
+      <li><a id="toc-LineDown-1" href="LineDown.html">4.10.4 LineDown</a></li>
+      <li><a id="toc-GotoLine-1" href="GotoLine.html">4.10.5 GotoLine</a></li>
+      <li><a id="toc-GotoColumn-1" href="GotoColumn.html">4.10.6 GotoColumn</a></li>
+      <li><a id="toc-GotoMark-1" href="GotoMark.html">4.10.7 GotoMark</a></li>
+      <li><a id="toc-PrevPage-1" href="PrevPage.html">4.10.8 PrevPage</a></li>
+      <li><a id="toc-NextPage-1" href="NextPage.html">4.10.9 NextPage</a></li>
+      <li><a id="toc-PageUp-1" href="PageUp.html">4.10.10 PageUp</a></li>
+      <li><a id="toc-PageDown-1" href="PageDown.html">4.10.11 PageDown</a></li>
+      <li><a id="toc-PrevWord-1" href="PrevWord.html">4.10.12 PrevWord</a></li>
+      <li><a id="toc-NextWord-1" href="NextWord.html">4.10.13 NextWord</a></li>
+      <li><a id="toc-MoveEOL-1" href="MoveEOL.html">4.10.14 MoveEOL</a></li>
+      <li><a id="toc-MoveSOL-1" href="MoveSOL.html">4.10.15 MoveSOL</a></li>
+      <li><a id="toc-MoveTOS-1" href="MoveTOS.html">4.10.16 MoveTOS</a></li>
+      <li><a id="toc-MoveBOS-1" href="MoveBOS.html">4.10.17 MoveBOS</a></li>
+      <li><a id="toc-MoveEOF-1" href="MoveEOF.html">4.10.18 MoveEOF</a></li>
+      <li><a id="toc-MoveSOF-1" href="MoveSOF.html">4.10.19 MoveSOF</a></li>
+      <li><a id="toc-MoveEOW-1" href="MoveEOW.html">4.10.20 MoveEOW</a></li>
+      <li><a id="toc-MoveIncUp-1" href="MoveIncUp.html">4.10.21 MoveIncUp</a></li>
+      <li><a id="toc-MoveIncDown-1" href="MoveIncDown.html">4.10.22 MoveIncDown</a></li>
+      <li><a id="toc-AdjustView-1" href="AdjustView.html">4.10.23 AdjustView</a></li>
+      <li><a id="toc-ToggleSEOF-1" href="ToggleSEOF.html">4.10.24 ToggleSEOF</a></li>
+      <li><a id="toc-ToggleSEOL-1" href="ToggleSEOL.html">4.10.25 ToggleSEOL</a></li>
+      <li><a id="toc-SetBookmark-1" href="SetBookmark.html">4.10.26 SetBookmark</a></li>
+      <li><a id="toc-GotoBookmark-1" href="GotoBookmark.html">4.10.27 GotoBookmark</a></li>
+      <li><a id="toc-UnsetBookmark-1" href="UnsetBookmark.html">4.10.28 UnsetBookmark</a></li>
+    </ul></li>
+    <li><a id="toc-Editing-Commands-1" href="Editing-Commands.html">4.11 Editing Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-InsertChar-1" href="InsertChar.html">4.11.1 InsertChar</a></li>
+      <li><a id="toc-InsertString-1" href="InsertString.html">4.11.2 InsertString</a></li>
+      <li><a id="toc-InsertTab-1" href="InsertTab.html">4.11.3 InsertTab</a></li>
+      <li><a id="toc-DeleteChar-1" href="DeleteChar.html">4.11.4 DeleteChar</a></li>
+      <li><a id="toc-DeletePrevWord-1" href="DeletePrevWord.html">4.11.5 DeletePrevWord</a></li>
+      <li><a id="toc-DeleteNextWord-1" href="DeleteNextWord.html">4.11.6 DeleteNextWord</a></li>
+      <li><a id="toc-Backspace-1" href="Backspace.html">4.11.7 Backspace</a></li>
+      <li><a id="toc-InsertLine-1" href="InsertLine.html">4.11.8 InsertLine</a></li>
+      <li><a id="toc-DeleteLine-1" href="DeleteLine.html">4.11.9 DeleteLine</a></li>
+      <li><a id="toc-DeleteEOL-1" href="DeleteEOL.html">4.11.10 DeleteEOL</a></li>
+    </ul></li>
+    <li><a id="toc-Support-Commands-1" href="Support-Commands.html">4.12 Support Commands</a>
+    <ul class="toc-numbered-mark">
+      <li><a id="toc-About-1" href="About.html">4.12.1 About</a></li>
+      <li><a id="toc-Alert-1" href="Alert.html">4.12.2 Alert</a></li>
+      <li><a id="toc-Beep-1" href="Beep.html">4.12.3 Beep</a></li>
+      <li><a id="toc-Exec-1" href="Exec.html">4.12.4 Exec</a></li>
+      <li><a id="toc-Flash-1" href="Flash.html">4.12.5 Flash</a></li>
+      <li><a id="toc-Help-1" href="Help.html">4.12.6 Help</a></li>
+      <li><a id="toc-NOP-1" href="NOP.html">4.12.7 NOP</a></li>
+      <li><a id="toc-Refresh-1" href="Refresh.html">4.12.8 Refresh</a></li>
+      <li><a id="toc-Suspend-1" href="Suspend.html">4.12.9 Suspend</a></li>
+      <li><a id="toc-System-1" href="System.html">4.12.10 System</a></li>
+      <li><a id="toc-Escape-1" href="Escape.html">4.12.11 Escape</a></li>
+      <li><a id="toc-KeyCode-1" href="KeyCode.html">4.12.12 KeyCode</a></li>
+      <li><a id="toc-NameConvert-1" href="NameConvert.html">4.12.13 NameConvert</a></li>
+    </ul></li>
+  </ul></li>
+  <li><a id="toc-Configuration-1" href="Configuration.html">5 Configuration</a>
+  <ul class="toc-numbered-mark">
+    <li><a id="toc-Key-Bindings-1" href="Key-Bindings.html">5.1 Key Bindings</a></li>
+    <li><a id="toc-Changing-Menus-1" href="Changing-Menus.html">5.2 Changing Menus</a></li>
+    <li><a id="toc-Virtual-Extensions-1" href="Virtual-Extensions.html">5.3 Virtual Extensions</a></li>
+  </ul></li>
+  <li><a id="toc-Hints-and-Tricks-1" href="Hints-and-Tricks.html">6 Hints and Tricks</a></li>
+  <li><a id="toc-Motivations-and-Design-1" href="Motivations-and-Design.html">7 Motivations and Design</a></li>
+  <li><a id="toc-The-Encoding-Mess-1" href="The-Encoding-Mess.html">8 The Encoding Mess</a></li>
+  <li><a id="toc-History-1" href="History.html">9 History</a></li>
+  <li><a id="toc-Portability-Problems-1" href="Portability-Problems.html">10 Portability Problems</a></li>
+  <li><a id="toc-Acknowledgments-1" href="Acknowledgments.html">11 Acknowledgments</a></li>
+  <li><a id="toc-Concept-Index-1" href="Concept-Index.html" rel="index">Concept Index</a></li>
+  <li><a id="toc-Command-Index-1" href="Command-Index.html" rel="index">Command Index</a></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Introduction.html" accesskey="n" rel="next">Introduction</a> &nbsp; [<a href="#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

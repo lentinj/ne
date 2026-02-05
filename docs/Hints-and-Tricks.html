@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Hints and Tricks (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Hints and Tricks (ne&rsquo;s manual)">
+<meta name="keywords" content="Hints and Tricks (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Motivations-and-Design.html" rel="next" title="Motivations and Design">
+<link href="Configuration.html" rel="prev" title="Configuration">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Hints-and-Tricks">
+<div class="nav-panel">
+<p>
+Next: <a href="Motivations-and-Design.html" accesskey="n" rel="next">Motivations and Design</a>, Previous: <a href="Configuration.html" accesskey="p" rel="prev">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Hints-and-Tricks-1"><span>6 Hints and Tricks<a class="copiable-link" href="#Hints-and-Tricks-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-Escape-usage"></a>
+<a class="index-entry-id" id="index-Turbo-adjustment"></a>
+<a class="index-entry-id" id="index-Shortcuts-not-working"></a>
+<a class="index-entry-id" id="index-Meta-key-2"></a>
+<a class="index-entry-id" id="index-Changing-colors"></a>
+<a class="index-entry-id" id="index-Large-files"></a>
+
+<dl class="table">
+<dt><em class="emph">Use <kbd class="key">f1</kbd> or <kbd class="key">Escape</kbd>-<kbd class="key">Escape</kbd>, not <kbd class="key">Escape</kbd>.</em></dt>
+<dd><p>Due to the limitations of the techniques used when communicating with a
+terminal, it is not possible to &ldquo;decide&rdquo; that the user pressed the
+<kbd class="key">Escape</kbd> key for about a second after the actual key press
+(see <a class="pxref" href="EscapeTime.html">EscapeTime</a>). This means that you will experience annoying delays when
+using menus. If you have no <kbd class="key">f1</kbd> key, use <kbd class="key">Escape</kbd>-<kbd class="key">Escape</kbd>, or
+redefine a keystroke assigning the command <code class="code">Escape</code>, and you will be
+able to use that keystroke instead of <kbd class="key">Escape</kbd>. Unfortunately,
+some GUI-based terminals (most notably, <code class="code">gnome-terminal</code>) use <kbd class="key">f1</kbd>
+for their own purposes; in that case, you can assign the <code class="code">Escape</code>
+command to another key (see <a class="pxref" href="Configuration.html">Configuration</a>).
+</p>
+</dd>
+<dt><em class="emph">Check for the presence of a <kbd class="key">Meta</kbd> key.</em></dt>
+<dd><p>If your system has a standard <kbd class="key">Meta</kbd> or <kbd class="key">Alt</kbd> key, there is a
+good chance that you have several other shortcuts. If the built-in
+<kbd class="key">Meta</kbd> bindings do not work, you must discover which is the effect
+of the <kbd class="key">Meta</kbd> in your terminal emulator. Indeed, it is possible in
+theory to configure about 150 shortcuts. See <a class="xref" href="Configuration.html">Configuration</a>. In any
+case, prefixing a key with <kbd class="key">Escape</kbd> has the same effect as holding
+down <kbd class="key">Meta</kbd>, so with the standard key bindings
+you can, for instance, advance by word with <kbd class="kbd"><kbd class="key">Escape</kbd></kbd> followed by <kbd class="kbd">F</kbd>.
+</p>
+</dd>
+<dt><em class="emph">When editing very large files, please use the <code class="code">--no-syntax</code> option.</em></dt>
+<dd><p>Even if <code class="code">ne</code> will switch transparently to memory-mapped disk files, syntax
+highlighting requires a great deal of additional memory.
+</p>
+</dd>
+<dt><em class="emph">Mac users should turn on &ldquo;Delete sends CTRL-H&rdquo; in the <code class="command">Terminal</code> settings.</em></dt>
+<dd><p>If you are a Mac user, you need to check the &ldquo;Delete sends CTRL-H&rdquo; option
+in the &lsquo;<samp class="samp">Advanced</samp>&rsquo; tab of the <code class="command">Terminal</code> application settings.
+</p>
+</dd>
+<dt><em class="emph"><code class="code">ne</code> does tilde expansion.</em></dt>
+<dd><p>When you have to specify a file name, you can always start with <samp class="file">~/</samp> in
+order to specify your home directory, or <samp class="file">~<var class="var">user</var>/</samp> to
+specify the home directory of another user.
+</p>
+</dd>
+<dt><em class="emph">It is easy to correct bad colors.</em></dt>
+<dd><p>Sometimes, due to different opinions about the best default foreground and
+background colors, some of the color choices in a syntax file might be
+unreadable (for instance, &lsquo;<samp class="samp">dim white</samp>&rsquo; on a terminal with a white
+background). Just copy the guilty syntax specification file to the
+<samp class="file">~/.ne/syntax</samp> directory, and change the color names at the start of
+the file.
+</p>
+</dd>
+<dt><em class="emph">Use the &lsquo;<samp class="samp">tabs</samp>&rsquo; syntax to distinguish <small class="sc">TAB</small>s from <small class="sc">SPACE</small>s.</em></dt>
+<dd><p>When you&rsquo;re struggling to clean up a mix of <small class="sc">TAB</small>s and <small class="sc">SPACE</small>s,
+temporarily switching to the &lsquo;<samp class="samp">tabs</samp>&rsquo; syntax may help. The command
+<code class="command">Syntax tabs</code> makes <small class="sc">TAB</small> characters show up in a different
+background color from <small class="sc">SPACE</small>s. Once you&rsquo;ve gotten your white space
+issues straightened out, you can switch back to the syntax appropriate
+for your current file type.
+</p>
+</dd>
+<dt><em class="emph"><code class="code">ne</code> does interactive filename completion.</em></dt>
+<dd><p>When you have to specify a file name as last element of a long input,
+you can invoke the completer using <kbd class="key">Tab</kbd>. If you hit it twice in a
+row, you will enter the file requester, where you can navigate and
+escape back to the command line, either with <kbd class="key">f1</kbd>, which will let
+you edit again your previous input, or with <kbd class="key">Tab</kbd>, which will copy
+your current selection over your previous file name. In other words, you
+can freely alternate completion, editing and browsing.
+</p>
+</dd>
+<dt><em class="emph">Disable the status bar for slow connections.</em></dt>
+<dd><p><code class="code">ne</code> tries to emit as few characters as possible when updating the
+screen. However, for each key you type it is likely that the status
+bar has to be updated. If your connection is very slow, you can
+disable the status bar to get a quicker response (see <a class="pxref" href="StatusBar.html">StatusBar</a>).
+</p>
+</dd>
+<dt><em class="emph">The <kbd class="key">Escape</kbd> delay when activating menus can be avoided.</em></dt>
+<dd><p>If you press after <kbd class="key">Escape</kbd> any key that does not produce the second
+character of an escape sequence, <code class="code">ne</code> will immediately recognize the
+<kbd class="key">Escape</kbd> key code as such. Since non-alphabetical keys have no effect while
+browsing through the menus, if you&rsquo;re forced to use <kbd class="key">Escape</kbd> as menu
+activator you can press, for instance, &lsquo;<samp class="samp">,</samp>&rsquo; just after it to speed
+up the menu activation (note that &lsquo;<samp class="samp">:</samp>&rsquo; would not work, because it would
+activate the command line). Alternatively, you can just type <kbd class="key">Escape</kbd>
+twice in a row.
+</p>
+</dd>
+<dt><em class="emph">Use turbo mode for lengthy operations.</em></dt>
+<dd><p>Turbo mode (see <a class="pxref" href="Turbo.html">Turbo</a>) allows performing very complex operations
+without updating the screen until the operations are complete. This can
+be a major plus if you are editing very long files, or if your terminal
+is slow. If the default value (0, which means twice the number of
+visible rows) does not give you the best results, experiment other
+values.
+</p>
+</dd>
+<dt><em class="emph">Regular expressions are powerful, and slow.</em></dt>
+<dd><p>Regular expressions must be studied very carefully. If you spend a lot
+of time doing editing, it is definitely reasonable to study even their
+most esoteric features. Very complex editing actions can be performed by
+a single find/replace using the <code class="code">\<var class="var">n</var></code> convention. But remember
+always that regular expressions are much slower than a normal search: in
+particular, if you use them on a UTF-8 text, <code class="code">ne</code> has to transform
+them into an equivalent (but more complex) expression that cannot match
+partially a UTF-8 sequence, and this expansion makes the search even
+slower.
+</p>
+</dd>
+<dt><em class="emph">Use the correct movement commands in a macro.</em></dt>
+<dd><p>Many boring, repetitive editing actions can be performed in a breeze
+by recording them the first time. Remember, however, that while recording
+a complex macro you should always use a cursor movement that will apply
+in a different context. For instance, if you are copying a word, you cannot
+move with cursor keys, because that word at another application of the
+macro could be of a different length. Rather, use the next/previous word
+keys and the <code class="code">MoveEOW</code> command, which guarantee a correct behaviour in
+all situations.
+</p>
+</dd>
+<dt><em class="emph">Some preferences can be preserved even with automatic preferences.</em></dt>
+<dd><p>When you save an autoprefs file, the file simply contains a macro that,
+when executed, produces the current configuration. However, you could want,
+for instance, to never change the insert/overwrite state. In this case, just
+edit the autoprefs files with <code class="code">ne</code> and delete the line containing the
+command setting the insert flag. When the autoprefs are loaded later, the
+insert flag will be left untouched. This trick is particularly useful with
+the <code class="code">StatusBar</code> and <code class="code">FastGUI</code> commands.
+</p>
+</dd>
+<dt><em class="emph">If some keystrokes do not work, check for system-specific features.</em></dt>
+<dd><p>Sometimes it can happen that a keystroke does not work&mdash;for instance,
+<kbd class="kbd"><kbd class="key">Control</kbd>-O</kbd> does not open a file. This usually is due to the kernel
+tracking that key for its purposes. For instance, along a <code class="code">telnet</code>
+connection with xon/xoff flow control, <kbd class="kbd"><kbd class="key">Control</kbd>-S</kbd> and
+<kbd class="kbd"><kbd class="key">Control</kbd>-Q</kbd> would block and release the output
+instead of saving and quitting.
+</p>
+<p>In these cases, if you do not need the system
+feature you should check how to disable it: for instance, some <small class="sc">BSD</small>-like
+systems feature a delayed suspend signal that is not in the <small class="sc">POSIX</small>
+standard, and thus cannot be disabled by <code class="code">ne</code>. On <small class="sc">HP-UX</small>, the command
+<code class="code">stty dsusp ^-</code> would disable the signal, and would let the control
+sequence previously assigned to it to run up to <code class="code">ne</code>.
+</p>
+</dd>
+</dl>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Motivations-and-Design.html">Motivations and Design</a>, Previous: <a href="Configuration.html">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

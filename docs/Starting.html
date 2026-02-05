@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Starting (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Starting (ne&rsquo;s manual)">
+<meta name="keywords" content="Starting (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Loading-and-Saving.html" rel="next" title="Loading and Saving">
+<link href="Terminology.html" rel="prev" title="Terminology">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Starting">
+<div class="nav-panel">
+<p>
+Next: <a href="Loading-and-Saving.html" accesskey="n" rel="next">Loading and Saving</a>, Previous: <a href="Terminology.html" accesskey="p" rel="prev">Terminology</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Starting-1"><span>2.2 Starting<a class="copiable-link" href="#Starting-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Keyboard-usage"></a>
+<a class="index-entry-id" id="index-Menu-usage"></a>
+<a class="index-entry-id" id="index-Shortcuts"></a>
+<a class="index-entry-id" id="index-Status-bar"></a>
+<a class="index-entry-id" id="index-Menu-bar"></a>
+<a class="index-entry-id" id="index-Control-key"></a>
+<a class="index-entry-id" id="index-Meta-key"></a>
+<a class="index-entry-id" id="index-Command-line"></a>
+
+<p>To start <code class="code">ne</code>, just type &lsquo;<samp class="samp">ne</samp>&rsquo; and press <kbd class="key">Return</kbd>. If you
+want to edit some specific file(s), you can put their name(s) on the command
+line just after the command name, as for any <small class="sc">UN*X</small> command. The
+screen of your terminal will be cleared (or filled with text loaded
+from the first file you specified). You can also pipe the result of a
+command directly into <code class="code">ne</code>: it will be loaded and opened as the first
+document. See <a class="ref" href="Arguments.html">Arguments</a> for other command line options.
+</p>
+<p>Writing text is pretty straightforward: if your terminal is properly
+configured, every key will (should) do what you expect. Alphabetic
+characters insert text, cursor keys move the cursor, and so on. You can
+use the <kbd class="key">Delete</kbd> and <kbd class="key">Backspace</kbd> key to perform corrections. If
+your keyboard has an <kbd class="key">Insert</kbd> key, you can use it to <em class="dfn">toggle</em>
+(switch from on to off, or vice versa) insert mode. In general,
+<code class="code">ne</code> tries to squeeze everything it can from your
+keyboard. Function keys and special movement keys should work
+flawlessly if your terminal is properly configured. If not, complain to
+your system administrator. If that doesn&rsquo;t help, see <a class="ref" href="Key-Bindings.html">Key Bindings</a>.
+</p>
+<p>At the bottom of the screen, you will see a line containing some numbers and
+letters. This is called the <em class="dfn">status bar</em> because it reports to you part of
+the internal state of the editor. At startup, the status bar has the following form:
+</p>
+<div class="example">
+<pre class="example-preformatted"> L:       1 C:       1  12% ia----pvu-t------@A* &lt;unnamed&gt;
+</pre></div>
+
+<p>(the numbers could be different, and a file name could be shown as
+last item instead of &lsquo;<samp class="samp">&lt;unnamed&gt;</samp>&rsquo;). You probably already guessed
+that the numbers after &lsquo;<samp class="samp">L:</samp>&rsquo; and &lsquo;<samp class="samp">C:</samp>&rsquo; are your cursor&rsquo;s line and column
+numbers, respectively, whereas the percentage indicates approximately
+your position in the file. The small letters represent user flags that
+you can turn on and off. In particular, &lsquo;<samp class="samp">i</samp>&rsquo; tells you that insert
+mode is on, while &lsquo;<samp class="samp">p</samp>&rsquo; tells that the automatic preferences system
+is activated. The &lsquo;<samp class="samp">*</samp>&rsquo; means this document has not been saved. For a
+thorough explanation of the meaning of the flags on the status bar, see
+<a class="ref" href="The-Status-Bar.html">The Status Bar</a>.
+</p>
+<p>Once you are accustomed to cursor movement and line editing, it is time to
+press <kbd class="key">f1</kbd> (the first function key), or in case your keyboard does not
+have such a key, <kbd class="key">Escape</kbd>. Immediately, the <em class="dfn">menu bar</em> will appear,
+and the first menu will be drawn. (If you find yourself waiting for the menu
+to appear, you can press <kbd class="key">Escape</kbd> twice in a row.) You can now move
+around menus and menu items by pressing the cursor keys. Moreover, a lower
+case alphabetic key will move to the next item in the current menu whose name starts with that
+letter, and an upper case alphabetic key will move to the next menu whose
+name starts with that letter.
+</p>
+<p>Moving around the menus should give you an idea of the capabilities of
+<code class="code">ne</code>. If you want to save your work, you should use the &lsquo;<samp class="samp">Save As...</samp>&rsquo;
+item from the &lsquo;<samp class="samp">File</samp>&rsquo; menu. Menus are fully discussed in <a class="ref" href="Menus.html">Menus</a>.
+When you want to exit from the menu system, press <kbd class="key">f1</kbd> (or <kbd class="key">Escape</kbd>)
+again. If instead you prefer to choose a command and execute it, move
+to the respective menu item and press <kbd class="key">Return</kbd>.
+</p>
+<p>At the end of several menu items you will find strange symbols like
+<kbd class="kbd">^A</kbd> or <kbd class="key">f1</kbd>. They represent <em class="dfn">shortcuts</em> for the respective
+menu items. In other words, instead of activating, selecting and
+executing a menu item, which can take seconds, you can simply press a
+couple of keys. The symbol &lsquo;<samp class="samp">^</samp>&rsquo; in front of a character denotes the
+shortcut produced by the <kbd class="key">Control</kbd> key plus that character (we
+assume here that you are perfectly aware of the usage of the
+<kbd class="key">Control</kbd> key: it is just as if you had to type a capital letter
+with <kbd class="key">Shift</kbd>). The descriptions of the form <kbd class="key">f</kbd><var class="var">n</var> represent
+instead function keys. Finally, the symbol &lsquo;<samp class="samp">[</samp>&rsquo; in front of a
+character denotes the shortcut produced by <kbd class="key">Control</kbd> plus <kbd class="key">Meta</kbd>
+(a.k.a. <kbd class="key">Alt</kbd>) plus that character, <em class="emph">or</em> <kbd class="key">Meta</kbd> plus that
+character, depending on your terminal emulator&mdash;you must check for
+yourself. Moreover, these last bindings may not work with some
+terminals, in which case you can replace them with a sequence: just
+press the <kbd class="key">Escape</kbd> key followed by the letter. A few menu items are
+bound to two control sequences (just in case one does not work, or it is
+impractical).
+</p>
+<p>Note that under certain conditions (for instance, while using
+<code class="code">ne</code> through a <code class="code">telnet</code> connection) some of the shortcuts
+might not work because they are trapped by the operating system for
+other purposes (see <a class="pxref" href="Hints-and-Tricks.html">Hints and Tricks</a>).
+</p>
+<p>Finally, we have the third and last interface to <code class="code">ne</code>&rsquo;s features: the
+<em class="dfn">command line</em>. If you press <kbd class="kbd"><kbd class="key">Control</kbd>-K</kbd>, or <kbd class="key">Escape</kbd> followed by
+&lsquo;<samp class="samp">:</samp>&rsquo; (a la <code class="code">vi</code>), you will be requested to enter a command
+to execute. Just press <kbd class="key">Return</kbd> for the time being (or, if you are
+really interested in this topic, see <a class="pxref" href="The-Command-Line.html">The Command Line</a>).
+</p>
+<p>In the sections that follow, when explaining how to use a command we
+shall usually describe the corresponding menu item. The related shortcut
+and command can be found on the menu item itself, and in <a class="ref" href="Menus.html">Menus</a>.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Loading-and-Saving.html">Loading and Saving</a>, Previous: <a href="Terminology.html">Terminology</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

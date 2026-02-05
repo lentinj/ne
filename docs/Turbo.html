@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Turbo (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Turbo (ne&rsquo;s manual)">
+<meta name="keywords" content="Turbo (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="VerboseMacros.html" rel="next" title="VerboseMacros">
+<link href="ShiftTabs.html" rel="prev" title="ShiftTabs">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Turbo">
+<div class="nav-panel">
+<p>
+Next: <a href="VerboseMacros.html" accesskey="n" rel="next">VerboseMacros</a>, Previous: <a href="ShiftTabs.html" accesskey="p" rel="prev">ShiftTabs</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Turbo-1"><span>4.9.17 Turbo<a class="copiable-link" href="#Turbo-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Turbo"></a>
+
+<p>Syntax: <code class="code">Turbo [<var class="var">steps</var>]</code><br>
+Abbreviation: <code class="code">TUR</code>
+</p>
+<p>sets the turbo parameter. Iterated actions and
+global replaces will update at most <var class="var">steps</var> lines of the screen (or
+at most twice the number of visible rows if <var class="var">steps</var> is zero); then,
+update will be delayed to the end of the action.
+</p>
+<p>This feature is most useful when massive operations (such as replacing
+thousands of occurrences of a pattern) have to be performed. After having
+updated <var class="var">steps</var> lines, <code class="code">ne</code> can proceed at maximum speed, because
+no visual update has to be performed.
+</p>
+<p>The value of the turbo parameter has to be adapted to the kind of
+terminal you are using. Very high values can be good on high-speed
+terminals, since the time required for the visual updates is very small,
+and it is always safer to look at what the editor is really doing. On
+slow terminals, however, small values ensure that operations such as
+paragraph formatting will not take too long.
+</p>
+<p>You have to be careful about setting the turbo parameter too low. <code class="code">ne</code>
+keeps track internally of the part of the screen that needs refresh in a
+very rough way. This means that a value of less than, say, 8 will force it
+to do a lot of unnecessary refresh.
+</p>
+<p>The default value of this parameter is zero, which means twice the number
+of lines of the screen; for several reasons this does seem to be a good
+value.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>ReplaceAll (ne&rsquo;s manual)</title>
+
+<meta name="description" content="ReplaceAll (ne&rsquo;s manual)">
+<meta name="keywords" content="ReplaceAll (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Search-Commands.html" rel="up" title="Search Commands">
+<link href="RepeatLast.html" rel="next" title="RepeatLast">
+<link href="ReplaceOnce.html" rel="prev" title="ReplaceOnce">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="ReplaceAll">
+<div class="nav-panel">
+<p>
+Next: <a href="RepeatLast.html" accesskey="n" rel="next">RepeatLast</a>, Previous: <a href="ReplaceOnce.html" accesskey="p" rel="prev">ReplaceOnce</a>, Up: <a href="Search-Commands.html" accesskey="u" rel="up">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="ReplaceAll-1"><span>4.5.5 ReplaceAll<a class="copiable-link" href="#ReplaceAll-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-ReplaceAll"></a>
+
+<p>Syntax: <code class="code">ReplaceAll [<var class="var">string</var>]</code><br>
+Abbreviation: <code class="code">RA</code>
+</p>
+<p>is similar to <code class="code">ReplaceOnce</code>, but replaces <em class="emph">all</em>
+occurrences of the last search pattern between the cursor position and the
+end of the document (in the direction indicated by the <code class="code">SearchBack</code> flag)
+with the given replacement string.
+</p>
+<p>If the optional argument <var class="var">string</var> is not specified, you can enter it on
+the input line, the default being the last string used.
+</p>
+<p>Note that a single <code class="code">Undo</code> will restore <em class="emph">all</em> the occurrences of the search
+pattern replaced by <code class="code">ReplaceAll</code>. See <a class="ref" href="Undo.html">Undo</a>.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

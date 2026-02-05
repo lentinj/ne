@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PreserveCR (ne&rsquo;s manual)</title>
+
+<meta name="description" content="PreserveCR (ne&rsquo;s manual)">
+<meta name="keywords" content="PreserveCR (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="CRLF.html" rel="next" title="CRLF">
+<link href="VerboseMacros.html" rel="prev" title="VerboseMacros">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="PreserveCR">
+<div class="nav-panel">
+<p>
+Next: <a href="CRLF.html" accesskey="n" rel="next">CRLF</a>, Previous: <a href="VerboseMacros.html" accesskey="p" rel="prev">VerboseMacros</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="PreserveCR-1"><span>4.9.19 PreserveCR<a class="copiable-link" href="#PreserveCR-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-PreserveCR"></a>
+
+<p>Syntax: <code class="code">PreserveCR [0|1]</code><br>
+Abbreviation: <code class="code">PCR</code>
+</p>
+<p>sets the preserve carriage returns flag.  When a file is
+loaded into a document for which this flag is false, both CR (carriage
+return) and NL (new line) characters are treated as line terminators.
+If the flag is true, CR characters do not act as line terminators but
+are instead preserved in the document. This flag has no effect except
+when loading a file into a document.
+</p>
+<p>If you invoke <code class="code">PreserveCR</code> with no arguments, it will toggle the flag.
+If you specify 0 or 1, the flag will be set to false or true,
+respectively. An upper case &lsquo;<samp class="samp">P</samp>&rsquo; will appear on the status bar if the
+flag is true.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

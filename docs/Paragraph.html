@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Paragraph (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Paragraph (ne&rsquo;s manual)">
+<meta name="keywords" content="Paragraph (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Formatting-Commands.html" rel="up" title="Formatting Commands">
+<link href="ToUpper.html" rel="next" title="ToUpper">
+<link href="Center.html" rel="prev" title="Center">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Paragraph">
+<div class="nav-panel">
+<p>
+Next: <a href="ToUpper.html" accesskey="n" rel="next">ToUpper</a>, Previous: <a href="Center.html" accesskey="p" rel="prev">Center</a>, Up: <a href="Formatting-Commands.html" accesskey="u" rel="up">Formatting Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Paragraph-1"><span>4.8.2 Paragraph<a class="copiable-link" href="#Paragraph-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Paragraph"></a>
+
+<p>Syntax: <code class="code">Paragraph [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">PA</code>
+</p>
+<p>reformats <var class="var">n</var> paragraphs from the cursor position onwards. If
+<var class="var">n</var> is not specified, it is assumed to be one. The paragraphs are
+formatted relatively to the value of the right margin as set by the
+<code class="code">RightMargin</code> command. See <a class="ref" href="RightMargin.html">RightMargin</a>.
+</p>
+<p><code class="code">ne</code>&rsquo;s notion of a paragraph includes the current non-blank line
+(regardless of its leading white space) and all subsequent non-blank lines
+that have identical (to each other&rsquo;s&mdash;not to the first line&rsquo;s) leading
+white space. Therefore your paragraphs can have various first line
+indentations and left margins.
+</p>
+
+<p>After the <code class="code">Paragraph</code> command completes, your cursor will be
+positioned on the first non-blank character after the last reformatted
+paragraph (or, if there is no such character, at the end of the document).
+</p>
+<p><code class="code">Paragraph</code> does not insert &ldquo;smart&rdquo; spaces after full stops and colons,
+nor does it do other &ldquo;smart&rdquo; things such as justification. If you need such
+facilities, you should consider using a text formatter. TeX for example is
+usually an excellent choice.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

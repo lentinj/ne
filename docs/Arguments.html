@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Arguments (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Arguments (ne&rsquo;s manual)">
+<meta name="keywords" content="Arguments (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="The-Status-Bar.html" rel="next" title="The Status Bar">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Arguments">
+<div class="nav-panel">
+<p>
+Next: <a href="The-Status-Bar.html" accesskey="n" rel="next">The Status Bar</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Arguments-1"><span>3.1 Arguments<a class="copiable-link" href="#Arguments-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Arguments"></a>
+<a class="index-entry-id" id="index-Global-Directory"></a>
+<a class="index-entry-id" id="index-Startup-macro"></a>
+<a class="index-entry-id" id="index-Skipping-configuration-files"></a>
+<a class="index-entry-id" id="index-Setting-configuration-file-names"></a>
+
+<p>The main arguments you can give to <code class="code">ne</code> are the names of files you
+want to edit. They will be loaded into separate documents. If you
+specify <code class="code">--help</code> or <code class="code">-h</code> anywhere on the command line, a simple help text
+describing <code class="code">ne</code>&rsquo;s arguments will be printed.
+</p>
+<p>The <code class="code">+<var class="var">N</var></code> option causes <code class="code">ne</code> to advance to the <var class="var">N</var>th
+line of the next document loaded. This option is fairly common among
+editors and text display programs like <code class="code">vi</code> and <code class="code">less</code>. The
+<var class="var">N</var> itself is optional. Without it, a bare <code class="code">+</code> on the command
+line causes <code class="code">ne</code> to advance to the last line of the first
+document. You can specify a line and column as <code class="code">+N,M</code>. Any
+non-digit can be used to separate the <var class="var">N</var> from the <var class="var">M</var>. As it
+only affects the next document loaded, it can appear multiple times on
+the command line.
+</p>
+<p>The <code class="code">--binary</code> option causes <code class="code">ne</code> to load the next document
+in binary mode. Binary mode treats the normal line termination
+characters as any other character and only breaks lines on NULL
+characters. Like <code class="code">+N,M</code>, <code class="code">--binary</code> only affects the next
+document loaded, and it can appear multiple times on the command line.
+See <a class="ref" href="Binary.html">Binary</a>.
+</p>
+<p>The <code class="code">--read-only</code>/<code class="code">--readonly</code>/<code class="code">--ro</code> option causes <code class="code">ne</code> to load the next named file
+into a read-only document. You can&rsquo;t modify a read-only
+document without first taking special action such as turning off the read-only
+flag. You can still <code class="code">Save</code> (<a class="ref" href="Save.html">Save</a>) a read-only document to a
+file if the file&rsquo;s permissions allow it, but <code class="code">ne</code> will prompt you
+before attempting to save a document marked read-only.
+The <code class="code">--read-only</code> option only affects the next document loaded,
+so it can appear multiple times on the command line. A document&rsquo;s
+read-only flag is automatically set when a file is loaded if the
+corresponding file is not writable (as determined by the <code class="code">access()</code>
+system call) regardless of whether the <code class="code">--read-only</code> option is used. See
+<a class="ref" href="ReadOnly.html">ReadOnly</a>.
+</p>
+<p>The <code class="code">--no-config</code>/<code class="code">--noconfig</code> option skips the reading of the key
+bindings and menu configuration files (see <a class="pxref" href="Configuration.html">Configuration</a>). This is
+essential if you are experimenting with a new configuration and you make
+mistakes in it.
+</p>
+<p>The <code class="code">--prefs <var class="var">extension</var></code> option makes <code class="code">ne</code> load a specified
+set of automatic preferences, that is, those associated with the provided
+extension, instead of the default ones, before loading the first file.
+It can be useful, for instance, when piping a file into <code class="code">ne</code> or when
+reading from named pipes, as in those cases there is no file extension
+from which <code class="code">ne</code> can guess the correct preferences. Note that preferences
+are cloned from the current document when a new document is created, so if
+you open a number of files without extension this option will propagate
+to all of them.
+</p>
+<p>The <code class="code">--macro <var class="var">filename</var></code> option specifies the name of a
+macro that will be started just after all documents have been loaded. A
+typical macro would move the cursor to a certain line.
+</p>
+<p>The <code class="code">--keys <var class="var">filename</var></code> option and the <code class="code">--menus
+<var class="var">filename</var></code> option specify a name different from the default one
+(<samp class="file">.keys</samp> and <samp class="file">.menus</samp>, respectively) for the key bindings and
+the menu configuration files.
+</p>
+<p>For key bindings, <code class="code">ne</code> loads system wide files first, then those in your
+<samp class="file">~/.ne</samp> directory, and finally those in the current directory. Key
+bindings loaded later may override those loaded previously. In each location,
+<samp class="file">~/.ne</samp> will first look for a file named <samp class="file">.keys</samp> (or whatever base
+name you specify with the <code class="code">--keys</code> option), then a file with the same name
+followed by a dash and the value of your <code class="code">TERM</code> environment variable.
+This is how you can create key bindings specifically for different terminals
+on a single system.
+</p>
+<p>Menu configuration, unlike key bindings, is not cumulative; <code class="code">ne</code> looks
+first in your <samp class="file">~/.ne</samp> directory possibly followed by the system wide
+global directory for a menu configuration file and loads only the first one it
+finds, if any.
+</p>
+<p>The <code class="code">--ansi</code> and the <code class="code">--no-ansi</code>/<code class="code">--noansi</code> options manage
+<code class="code">ne</code>&rsquo;s built-in ANSI sequences. Usually <code class="code">ne</code> tries to retrieve
+from your system some information that is necessary to handle your
+terminal. If for some reason this is impossible, you can ask <code class="code">ne</code>
+to use a built-in set of sequences that will work on many terminals
+using the <code class="code">--ansi</code> option (to be true, <code class="code">ne</code> can be even
+compiled so that it uses directly the built-in set, but you need not
+know this). If you want to be sure (usually for debugging purposes) that
+<code class="code">ne</code> is not using the built-in set, you can specify
+<code class="code">--no-ansi</code>.
+</p>
+<p>The <code class="code">--no-syntax</code> option disables <code class="code">ne</code>&rsquo;s normal syntax
+highlighting capability. For most editing situations, this would be
+unnecessary, but for extremely large files it may be helpful. Syntax
+highlighting incurs small memory usage and processor overhead penalties
+for each line of text. The <code class="code">--no-syntax</code> option eliminates that
+overhead. Note that files longer than ten million bytes will have
+syntax highlighting disabled by default, but it is possible to re-enable it.
+See <a class="xref" href="Syntax-Highlighting.html">Syntax Highlighting</a>.
+</p>
+<p>The <code class="code">--utf8</code> and <code class="code">--no-utf8</code> options can be used to
+force or inhibit UTF-8 I/O, overriding the choice imposed by the system
+locale. Note, however, that in general it is more advisable to set the
+<code class="code">LANG</code> environment variable to a locale supporting UTF-8 (you can
+usually see the locale list with <code class="code">locale -a</code>). See <a class="xref" href="UTF_002d8-Support.html">UTF-8 Support</a>.
+</p>
+<p>If you need to open a file whose name starts with &lsquo;<samp class="samp">--</samp>&rsquo;, you can put
+&lsquo;<samp class="samp">--</samp>&rsquo; before the filename, which will skip command recognition for
+the next word.
+</p>
+<p>You can use I/O redirection to pipe the output of other commands into your
+first document. For example,
+</p>
+<div class="example">
+<pre class="example-preformatted">  ls -l | ne file1.txt --read-only file2.txt
+</pre></div>
+
+<p>will open three documents: an unnamed document containing the output of
+the <code class="code">ls -l</code> command, the contents of <samp class="file">file1.txt</samp>, and the contents
+of <samp class="file">file2.txt</samp> with the read-only flag set.
+</p>
+<p>It&rsquo;s possible to apply the <code class="code">--binary</code>, <code class="code">--read-only</code>, and
+<code class="code">+N,M</code> options to the piped unnamed document by referencing it as a
+single <code class="code">-</code>. Only the first such file name will reference the piped
+document (even if it isn&rsquo;t the first file name on the command line).
+Subsequent dashes will be considered normal file names. If you want the first
+dash to be treated like a normal file instead of a reference to the piped
+document, prefix the dash with &lsquo;<samp class="samp">--</samp>&rsquo;. Consider these two command lines:
+</p>
+<div class="example">
+<pre class="example-preformatted">  ls -l | ne --read-only +3,8 - file1.txt -
+  ls -l | ne file1.txt -- - --read-only +3,8 -
+  ls -l | ne --binary file1.txt --read-only -- -
+</pre></div>
+
+<p>All three of these commands open <code class="code">ne</code> with three documents: the output
+of the <code class="code">ls -l</code> command will be in the first unnamed document, the
+contents of <samp class="file">file1.txt</samp> will be in the second document, while the third
+document will contain the contents of the file <samp class="file">-</samp> (or an empty document
+with that name if there is no such file). The first and second commands do
+exactly the same thing: the unnamed first document is marked read-only and
+the cursor is positioned on line 3 column 8, while the other two document are
+opened normally. In the case of the third command, <samp class="file">file1.txt</samp> is opened
+in binary mode, the document named <samp class="file">-</samp> is marked read-only, while the
+first, unnamed, document&mdash;which is not referenced on the command line&mdash;with
+the output from <code class="code">ls -l</code> is opened normally.
+</p>
+<p>Finally, <code class="code">ne</code> has a <em class="dfn">global directory</em> where the system
+administrator can store macros, default preferences, and syntax
+definitions for all users of the system. The location of this directory
+is defined when <code class="code">ne</code> is built, but you can override it by creating
+and exporting the <code class="code">NE_GLOBAL_DIR</code> environment variable prior to
+invoking <code class="code">ne</code>. If you load no files when you start <code class="code">ne</code>, or
+if you invoke the <code class="code">About</code> command, it will display a splash
+screen. The last line on that screen shows the global directory
+<code class="code">ne</code> is using, if it exists, or an error message otherwise.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="The-Status-Bar.html">The Status Bar</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

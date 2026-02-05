@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Requester (ne&rsquo;s manual)</title>
+
+<meta name="description" content="The Requester (ne&rsquo;s manual)">
+<meta name="keywords" content="The Requester (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="Syntax-Highlighting.html" rel="next" title="Syntax Highlighting">
+<link href="The-Command-Line.html" rel="prev" title="The Command Line">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="The-Requester">
+<div class="nav-panel">
+<p>
+Next: <a href="Syntax-Highlighting.html" accesskey="n" rel="next">Syntax Highlighting</a>, Previous: <a href="The-Command-Line.html" accesskey="p" rel="prev">The Command Line</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="The-Requester-1"><span>3.5 The Requester<a class="copiable-link" href="#The-Requester-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Requester"></a>
+<a class="index-entry-id" id="index-File-requester-2"></a>
+<a class="index-entry-id" id="index-Interrupting-directory-scanning"></a>
+<a class="index-entry-id" id="index-Help-requester"></a>
+
+<p>In various situations, <code class="code">ne</code> needs to ask you to choose one string
+from several (where &ldquo;several&rdquo; can mean a lot).
+For this kind of event, the <em class="dfn">requester</em> is issued. The requester
+displays the strings in as many columns as possible and lets you move
+with the cursor from one string to another. The strings can fill many
+screens, which are handled as consecutive pages. Most navigation keys
+work exactly as in normal editing. This is true even of custom key
+bindings. Thus, for instance, you can page up and down through the
+list with <kbd class="kbd"><kbd class="key">Control</kbd>-P</kbd> and <kbd class="kbd"><kbd class="key">Control</kbd>-N</kbd> (in the standard keyboard
+configuration).
+</p>
+<p>A special feature is bound to printing characters: the requester
+progressively advances to entries that match the characters you
+type without regard to case. You can use <kbd class="key">Backspace</kbd> to
+incrementally undo your matched characters. This progressive matching
+works in two modes which you can switch between on the fly with either
+the <kbd class="key">Insert</kbd> or <kbd class="key">Delete</kbd> key. In the default mode, the cursor
+indicating your current selection simply advances to the next matching
+entry (if there is one). In the other mode, all entries which don&rsquo;t
+match the characters you&rsquo;ve entered are removed from the list so you
+only see the matching entries. The <kbd class="key">Backspace</kbd> key incrementally
+returns them to your list as your match becomes less specific. You can
+switch between the two modes as often as you wish while searching for
+your desired entry. This lets you quickly navigate large lists to get
+to the entries you really want.
+</p>
+<p>One example of a requester is the list of commands appearing when you use
+the <code class="code">Help</code> command. Another is the list of document words matching
+a prefix given to the <code class="code">AutoComplete</code> command. A third example is
+the file requester that <code class="code">ne</code> issues whenever a file operation is
+going to take place. In this case, pressing <kbd class="key">Return</kbd> while on a
+directory name will enter that directory and refresh the requester with
+that directory&rsquo;s entries. Note also that, should the requester take too long to
+appear, you can interrupt the directory scanning with
+<kbd class="kbd"><kbd class="key">Control</kbd>-\</kbd>. However, the listing will likely be incomplete.
+</p>
+<p>Yet another example of a requester is the list of documents you
+currently have open. This requester is displayed when you use the
+<code class="code">Select...</code> entry from the <code class="code">Documents</code> menu, or invoke the
+<code class="code">SelectDoc</code> command with the <kbd class="key">f4</kbd> key. Documents with unsaved
+changes will be bold (if your terminal supports bold) and marked with
+an asterisk.
+</p>
+<p>These documents are generally listed in the order they
+were opened. However, in this requester you can reorder these documents
+by using the keys bound to the <code class="code">NextDoc</code> and <code class="code">PrevDoc</code>
+commands, usually <kbd class="key">f2</kbd> and <kbd class="key">f3</kbd>. Any document reordering and
+selection will only take effect if you exit the requester with the
+<kbd class="key">Return</kbd> key.
+</p>
+<p>You can also save named documents and close unmodified documents without
+leaving the <code class="code">SelectDoc</code> requester by using the key bound to the
+<code class="code">Save</code> and <code class="code">CloseDoc</code> commands respectively, usually
+<kbd class="kbd"><kbd class="key">Control</kbd>-S</kbd> and <kbd class="kbd"><kbd class="key">Control</kbd>-Q</kbd>. You can&rsquo;t close the last
+document this way because it would cause <code class="code">ne</code> to exit.
+</p>
+<p>Regardless of the type of requester, you can confirm your selection
+with <kbd class="key">Return</kbd> just as with the input line (see <a class="pxref" href="The-Input-Line.html">The Input Line</a>), or
+you can escape the requester without making a selection with <kbd class="key">f1</kbd>
+or the <kbd class="key">Escape</kbd> key (or whatever has been bound to the
+<code class="code">Escape</code> command).
+</p>
+<p>Moreover, if you are selecting a file name through the requester there
+is a third possibility: by escaping with the <kbd class="key">Tab</kbd> key, the file or
+directory name that the cursor is currently on will be copied to the
+input line. This allows you to choose an existing name with <kbd class="key">Tab</kbd>
+and modify the name on the input line before hitting <kbd class="key">Return</kbd>.
+</p>
+<p>Note that there are two items that always appear at the top of a file
+requester: <samp class="file">./</samp> and <samp class="file">../</samp>. The first one represents the
+current directory and can be used to force a reread of the directory.
+The second one represents the parent directory and can be used to move
+up by one directory level.
+</p>
+<p>The path to file names and directories selected through the requester
+will be relative to the current directory, i.e. the directory you were
+in when you invoked <code class="code">ne</code>. The exception is when you&rsquo;ve entered a
+path on the command line that starts with a <kbd class="key">/</kbd>, then hit <kbd class="key">Tab</kbd>
+to invoke the requester. In that case the path eventually returned by the
+requester will be an absolute path. (Note that you can change the
+current document&rsquo;s name from relative to absolute or absolute to
+relative with the <code class="code">NameConvert</code> command either on the command line
+or from the <code class="code">Extras</code> menu.)
+</p>
+<p>All requesters present their selections by default in &ldquo;row major order,&rdquo;
+which means the second string is on the same row as the first but to
+its right, at the top of the second column, and so on across each row
+before filling in the next row down. If you prefer your lists displayed in
+&ldquo;column major order&rdquo;&mdash;the first, second, and third strings are in
+the same column and each column is filled before starting on the next
+column to the right&mdash;then use the <code class="code">RequestOrder</code> command to
+switch that preference. The setting can be stored in your default
+preferences the next time you save them. See <a class="ref" href="Preferences-Commands.html">Preferences Commands</a>.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Syntax-Highlighting.html">Syntax Highlighting</a>, Previous: <a href="The-Command-Line.html">The Command Line</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

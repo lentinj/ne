@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>UndelLine (ne&rsquo;s manual)</title>
+
+<meta name="description" content="UndelLine (ne&rsquo;s manual)">
+<meta name="keywords" content="UndelLine (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Undo-Commands.html" rel="up" title="Undo Commands">
+<link href="DoUndo.html" rel="next" title="DoUndo">
+<link href="Redo.html" rel="prev" title="Redo">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="UndelLine">
+<div class="nav-panel">
+<p>
+Next: <a href="DoUndo.html" accesskey="n" rel="next">DoUndo</a>, Previous: <a href="Redo.html" accesskey="p" rel="prev">Redo</a>, Up: <a href="Undo-Commands.html" accesskey="u" rel="up">Undo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="UndelLine-1"><span>4.7.3 UndelLine<a class="copiable-link" href="#UndelLine-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-UndelLine"></a>
+
+<p>Syntax: <code class="code">UndelLine [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">UL</code>
+</p>
+<p>inserts at the cursor position for <var class="var">n</var> times the last non-empty line
+that was deleted with the <code class="code">DeleteLine</code> command. If <var class="var">n</var> is not
+specified, it is assumed to be one.
+</p>
+<p><code class="code">UndelLine</code> is most useful in that it allows a very fast way of moving
+one line around. Just delete it, and undelete it somewhere else. It is
+also an easy way to replicate a line without getting involved with clips.
+</p>
+<p>Note that <code class="code">UndelLine</code> works independently of the status of the
+undo flag. See <a class="ref" href="DoUndo.html">DoUndo</a>.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

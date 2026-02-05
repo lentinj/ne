@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Flags (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Flags (ne&rsquo;s manual)">
+<meta name="keywords" content="Flags (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="AutoPrefs.html" rel="next" title="AutoPrefs">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Flags">
+<div class="nav-panel">
+<p>
+Next: <a href="AutoPrefs.html" accesskey="n" rel="next">AutoPrefs</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Flags-1"><span>4.9.1 Flags<a class="copiable-link" href="#Flags-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Flags"></a>
+
+<p>Syntax: <code class="code">Flags</code><br>
+Abbreviation: <code class="code">FLAG</code>
+</p>
+<p>displays a list of all the status flags for ne and their
+associated commands. It is not recorded when recording a macro.
+</p>
+<div class="example">
+<pre class="example-preformatted">FLAG COMMAND      ABBR  DESCRIPTION
+  i   Insert        I    inserts new characters (vs. replacing)
+  a   AutoIndent    AI   aligns cursor under previous line after &lt;Return&gt;
+  b   SearchBack    SB   searches search backward rather than forward
+  c   CaseSearch    CS   searches are case sensitive
+  w   WordWrap      WW   breaks long lines as you type
+  f   FreeForm      FF   allows cursor to move beyond the end of lines
+  p   AutoPrefs     AP   use automatic preferences based on file extension
+  v   VerboseMacros VM   record macros using use long command names
+  u   DoUndo        DU   record edits for later undoing
+  r   ReadOnly      RO   changes are not allowed/saves are prompted
+  t/T Tabs          TAB  TAB key inserts TABs instead of spaces
+  T   ShiftTabs     SHT  Shift may insert TABs (only if 't' is also set)
+  d   DelTabs       DT   BS and DEL may remove tabs worth of space
+  B/! Binary        B    affects file loading/saving
+  M   Mark          M    mark set for line-oriented block operations
+  V   MarkVert      MV   like mark, but block is rectangle
+  R   Record        REC  actions are being recorded in a macro
+  P   PreserveCR    PCR  affects how &lt;CR&gt; chars are loaded from files
+  C   CRLF          CRLF use CR/LF as line terminator
+  @   UTF8IO        U8IO I/O (keyboard and terminal) are UTF-8 encoded
+A/8/U UTF8          U8   the document encoding (ASCII, 8-bit or UTF-8)
+  */_ Modified      MOD  document has been modified since last saved
+  _   (none)             file's modtime changed since doc was loaded/saved
+</pre></div>
+
+<p>The <code class="code">RequestOrder</code> and <code class="code">AutoMatchBracket</code> flags&rsquo; states are not indicated on the status bar.
+See <a class="ref" href="RequestOrder.html">RequestOrder</a> and <a class="ref" href="AutoMatchBracket.html">AutoMatchBracket</a> respectively.
+A &lsquo;<samp class="samp">!</samp>&rsquo; indicates the last line is not terminated.
+</p>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="AutoPrefs.html">AutoPrefs</a>, Up: <a href="Preferences-Commands.html">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

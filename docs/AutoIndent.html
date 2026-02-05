@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AutoIndent (ne&rsquo;s manual)</title>
+
+<meta name="description" content="AutoIndent (ne&rsquo;s manual)">
+<meta name="keywords" content="AutoIndent (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Formatting-Commands.html" rel="up" title="Formatting Commands">
+<link href="WordWrap.html" rel="prev" title="WordWrap">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="AutoIndent">
+<div class="nav-panel">
+<p>
+Previous: <a href="WordWrap.html" accesskey="p" rel="prev">WordWrap</a>, Up: <a href="Formatting-Commands.html" accesskey="u" rel="up">Formatting Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="AutoIndent-1"><span>4.8.8 AutoIndent<a class="copiable-link" href="#AutoIndent-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-AutoIndent"></a>
+
+<p>Syntax: <code class="code">AutoIndent [0|1]</code><br>
+Abbreviation: <code class="code">AI</code>
+</p>
+<p>sets the auto indent flag. When this flag is true, <code class="code">ne</code> will
+automatically insert <small class="sc">TAB</small>s and spaces on a new line (created by an
+<code class="code">InsertLine</code> command, or by automatic word wrapping) in such a way to
+replicate the initial spaces of the previous line. Most useful for indenting
+programs.
+</p>
+<p>If you invoke <code class="code">AutoIndent</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively. A lower
+case &lsquo;<samp class="samp">a</samp>&rsquo; will appear on the status bar if the flag is true.
+</p>
+<p><code class="code">AutoIndent</code> features a nice interaction with <code class="code">Undo</code>. Whenever a
+new line is created, the insertion of spaces is recorded as a separate
+action in the undo buffer (with respect to the line creation). If you are
+not satisfied with the indentation, just give the <code class="code">Undo</code> command and
+the indentation will disappear (but the new line will remain in place, since
+its creation has been recorded as a separate action). See <a class="ref" href="Undo.html">Undo</a>.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

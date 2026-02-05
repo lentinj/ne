@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Command Line (ne&rsquo;s manual)</title>
+
+<meta name="description" content="The Command Line (ne&rsquo;s manual)">
+<meta name="keywords" content="The Command Line (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="The-Requester.html" rel="next" title="The Requester">
+<link href="The-Input-Line.html" rel="prev" title="The Input Line">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="The-Command-Line">
+<div class="nav-panel">
+<p>
+Next: <a href="The-Requester.html" accesskey="n" rel="next">The Requester</a>, Previous: <a href="The-Input-Line.html" accesskey="p" rel="prev">The Input Line</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="The-Command-Line-1"><span>3.4 The Command Line<a class="copiable-link" href="#The-Command-Line-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Command-line-1"></a>
+
+<p>The command line is a typical (topical) way of controlling an editor on
+character driven systems. It has some advantages over menus in terms of
+access speed, but it is not desirable from a user interface point of
+view. <code class="code">ne</code> has a command line that should be used whenever strange
+features have to be accessed, or whenever you want to use a command that
+you are familiar with and that is not bound to any key.
+</p>
+<p>You have two ways to access the command line: by activating the menu and
+typing a colon (&lsquo;<samp class="samp">:</samp>&rsquo;) or by typing <kbd class="kbd"><kbd class="key">Control</kbd>-K</kbd> (or any key
+that is bound to the <code class="code">Exec</code> command; see <a class="pxref" href="Exec.html">Exec</a>). The first
+method will work regardless of any key binding configuration if you
+activate the menus with the <kbd class="key">Escape</kbd> key since that key cannot be
+reconfigured. Of course, there is also a menu entry that does the same
+job.
+</p>
+<p>Once you activate the command line, the status bar will turn into an input
+line (see <a class="pxref" href="The-Input-Line.html">The Input Line</a>) with a &lsquo;<samp class="samp">Command:</samp>&rsquo; prompt waiting for you
+to do a long input. In other words, you can now type any command (possibly
+with arguments), and when you press <kbd class="key">Return</kbd>, the command will be
+executed.
+</p>
+<p>If the command you specify does not appear in <code class="code">ne</code>&rsquo;s internal tables,
+it is considered to be the name of a macro. See <a class="xref" href="Basic-Macros.html">Basic Macros</a>, for details.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

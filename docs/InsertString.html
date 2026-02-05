@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>InsertString (ne&rsquo;s manual)</title>
+
+<meta name="description" content="InsertString (ne&rsquo;s manual)">
+<meta name="keywords" content="InsertString (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Editing-Commands.html" rel="up" title="Editing Commands">
+<link href="InsertTab.html" rel="next" title="InsertTab">
+<link href="InsertChar.html" rel="prev" title="InsertChar">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="InsertString">
+<div class="nav-panel">
+<p>
+Next: <a href="InsertTab.html" accesskey="n" rel="next">InsertTab</a>, Previous: <a href="InsertChar.html" accesskey="p" rel="prev">InsertChar</a>, Up: <a href="Editing-Commands.html" accesskey="u" rel="up">Editing Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="InsertString-1"><span>4.11.2 InsertString<a class="copiable-link" href="#InsertString-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-InsertString"></a>
+
+<p>Syntax: <code class="code">InsertString [<var class="var">text</var>]</code><br>
+Abbreviation: <code class="code">IS</code>
+</p>
+<p>inserts <var class="var">text</var> at the current cursor position. If
+the optional argument <var class="var">text</var> is omitted, you will be prompted for it
+on the command line.  All the currently active preferences options
+(insert, word wrapping, auto indent, <i class="i">et cetera</i>) are applied.
+</p>
+<p>Note that <code class="code">SaveMacro</code> converts <code class="code">InsertChar</code> commands into a
+possibly smaller number of <code class="code">InsertString</code> commands.
+This makes macros easier to read and edit. See <a class="ref" href="SaveMacro.html">SaveMacro</a>.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PopPrefs (ne&rsquo;s manual)</title>
+
+<meta name="description" content="PopPrefs (ne&rsquo;s manual)">
+<meta name="keywords" content="PopPrefs (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="LoadPrefs.html" rel="next" title="LoadPrefs">
+<link href="PushPrefs.html" rel="prev" title="PushPrefs">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="PopPrefs">
+<div class="nav-panel">
+<p>
+Next: <a href="LoadPrefs.html" accesskey="n" rel="next">LoadPrefs</a>, Previous: <a href="PushPrefs.html" accesskey="p" rel="prev">PushPrefs</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="PopPrefs-1"><span>4.9.24 PopPrefs<a class="copiable-link" href="#PopPrefs-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-PopPrefs"></a>
+
+<p>Syntax: <code class="code">PopPrefs [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">POPP</code>
+</p>
+<p>pops <var class="var">n</var> sets of preferences from the preferences stack (where they were
+placed previously by <code class="code">PushPrefs</code>) and applies those preferences to the
+current document. See <a class="ref" href="PushPrefs.html">PushPrefs</a>. If not specified, <var class="var">n</var> defaults to one. Note that the
+preferences stack is global, not document specific. Therefore you could
+<code class="code">PushPrefs</code> one document&rsquo;s preferences, switch documents, then <code class="code">PopPrefs</code>
+those settings altering the preferences for the second document. The
+maximum preferences stack depth is 32.
+</p>
+<p><code class="code">PushPrefs</code> and <code class="code">PopPrefs</code> are useful in macros that require
+certain preferences to work properly.  A macro can <code class="code">PushPrefs</code>,
+change any preferences necessary, do its work, then <code class="code">PopPrefs</code> to
+restore the users previous preferences settings.
+</p>
+<p>PopPrefs restores the following values from the preferences stack:
+</p>
+<div class="example">
+<pre class="example-preformatted">  AutoIndent  DelTabs   NoFileReq    StatusBar  VisualBell
+  AutoPrefs   DoUndo    PreserveCR   ShiftTabs  WordWrap
+  Binary      FreeForm  ReadOnly     Tabs
+  CaseSearch  HexCode   RightMargin  TabSize
+  ClipNumber  Insert    SearchBack   UTF8Auto
+</pre></div>
+
+
+
+</div>
+
+
+
+</body>
+</html>

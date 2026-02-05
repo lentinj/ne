@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Virtual Extensions (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Virtual Extensions (ne&rsquo;s manual)">
+<meta name="keywords" content="Virtual Extensions (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Configuration.html" rel="up" title="Configuration">
+<link href="Changing-Menus.html" rel="prev" title="Changing Menus">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Virtual-Extensions">
+<div class="nav-panel">
+<p>
+Previous: <a href="Changing-Menus.html" accesskey="p" rel="prev">Changing Menus</a>, Up: <a href="Configuration.html" accesskey="u" rel="up">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Virtual-Extensions-1"><span>5.3 Virtual Extensions<a class="copiable-link" href="#Virtual-Extensions-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Virtual-Extensions-1"></a>
+<a class="index-entry-id" id="index-Extension-by-Content"></a>
+
+<p>When a document is loaded or saved under a different name, <code class="code">ne</code> may
+examine the contents of the document to determine whether to ignore the
+corresponding file&rsquo;s actual or missing extension and use instead a <em class="dfn">virtual
+extension</em>. This affects which AutoPrefs and Syntax settings <code class="code">ne</code>
+applies to the document.
+</p>
+<p>The document&rsquo;s contents are matched against the regular expressions (see
+see <a class="pxref" href="Regular-Expressions.html">Regular Expressions</a>) you include in your <samp class="file">~/.ne/.extensions</samp>
+file. (There may also be an <samp class="file">extensions</samp> file (no leading &lsquo;<samp class="samp">.</samp>&rsquo;)
+in the global directory.) If <code class="code">ne</code> finds a match it will act as if the
+document&rsquo;s name had the corresponding extension.
+</p>
+<p>Note that by default <code class="code">ne</code> does not override a file&rsquo;s
+given extension. However, you can specify any number of extensions that
+you would like to allow to be overridden by including lines in your
+ <samp class="file">~/.ne/extensions</samp> containing only a dot followed by a single extension or
+shell &ldquo;glob pattern&rdquo;. In particular, &ldquo;<code class="code">.*</code>&rdquo; would
+allow overriding all extensions.
+</p>
+<p>Here&rsquo;s an example <samp class="file">~/.ne/.extensions</samp> file:
+</p>
+<div class="example">
+<pre class="example-preformatted"># The following patterns match some common command interpreters.
+# They must match on the first line.
+ sh   1  ^#!\s*/.*\b(bash|sh|ksh|zsh)\s*
+ csh  1  ^#!\s*/.*\b(csh|tcsh)\s*
+ pl   1  ^#!\s*/.*\bperl\b
+ py   1  ^#!\s*/.*\bpython[0-9]*\s*
+ rb   1  ^#!\s*/.*\bruby\s*
+ xml  1  ^&lt;\?xml
+# These must match in the first 30 and 1000 lines, respectively.
+ yaml   30  ^---$
+ ini  1000i ^\[\s*(\w|[.-])+\s*\]\s*$
+# You must list the existing extensions you wish to override, one
+# per line. Shell glob patterns are allowed. Note that &quot;.*&quot; would
+# allow overriding any extension. (Think before you do that!)
+.conf
+.tx[0-9]
+</pre></div>
+
+<p>The only lines which matter consist of a space-delimited set of
+</p><pre class="verbatim">  extension   number   regular_expression
+</pre><p>or a single &lsquo;<samp class="samp">.</samp>&rsquo; followed by a glob pattern. Anything else is treated as a
+comment. The number must be a positive integer indicating the maximum line number of the
+document in which the corresponding regular expression must match. The exception is zero,
+which allows a match on any line in the document. (Actually, ne restricts the examined
+portion of the document to the first 1,000,000 bytes.) If the number has a lower-case
+&lsquo;<samp class="samp">i</samp>&rsquo; suffix (see the <samp class="file">ini</samp> example above), the corresponding regular expression
+is not case sensitive. Trailing spaces are not included as part of the regular_expression.
+</p>
+<p>Only the last instance of any extension specification is considered. This allows you to
+override any specifications from the global <samp class="file">extensions</samp> file. If you really need
+two different patterns, join them into one by concatenating them with a &lsquo;<samp class="samp">|</samp>&rsquo; like so:
+</p><pre class="verbatim">  foo  1000i  (pattern_A)|(pattern_B)
+</pre>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Changing-Menus.html">Changing Menus</a>, Up: <a href="Configuration.html">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

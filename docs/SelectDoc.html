@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SelectDoc (ne&rsquo;s manual)</title>
+
+<meta name="description" content="SelectDoc (ne&rsquo;s manual)">
+<meta name="keywords" content="SelectDoc (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Document-Commands.html" rel="up" title="Document Commands">
+<link href="PrevDoc.html" rel="prev" title="PrevDoc">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="SelectDoc">
+<div class="nav-panel">
+<p>
+Previous: <a href="PrevDoc.html" accesskey="p" rel="prev">PrevDoc</a>, Up: <a href="Document-Commands.html" accesskey="u" rel="up">Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="SelectDoc-1"><span>4.3.8 SelectDoc<a class="copiable-link" href="#SelectDoc-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-SelectDoc"></a>
+
+<p>Syntax: <code class="code">SelectDoc</code><br>
+Abbreviation: <code class="code">SD</code>
+</p>
+<p>displays a requester containing the names of all the
+documents in memory. Your cursor will be on your current document&rsquo;s
+name, and documents with unsaved changes will be indicated with
+asterisks (and bold if your terminal supports that). You select
+whichever document you want to become the current document by moving
+your cursor to its name and hitting <kbd class="key">Return</kbd>.
+</p>
+<p>While the list of documents is displayed, you can close unmodified
+documents with your <code class="code">CloseDoc</code> key (<kbd class="kbd"><kbd class="key">Control</kbd>-Q</kbd>), save
+named documents with your <code class="code">Save</code> key (<kbd class="kbd"><kbd class="key">Control</kbd>-S</kbd>), and
+you can alter their relative order using your <code class="code">NextDoc</code> and
+<code class="code">PrevDoc</code> keys (<kbd class="key">f2</kbd> and <kbd class="key">f3</kbd>), which have the effect of
+moving the currently selected document forward or backward in the list,
+respectively.
+</p>
+<p>Using plain characters and the <kbd class="key">BackSpace</kbd> navigates your displayed
+document names based on their common prefixes. The text between the
+beginning and the cursor within the currently selected document&rsquo;s name
+is the current common prefix. The <kbd class="key">Ins</kbd> key toggles between hiding
+or displaying names not matching the current common prefix. This can be
+especially useful if you have a large number of open documents.
+</p>
+<p>If you escape from the requester, the requester goes away, you are
+returned to your original current document (unless you closed it!),
+and no reordering of documents takes place.
+</p>
+<p><code class="code">SelectDoc</code> is especially useful if you have a large number of
+documents open or if you want to quickly see which documents contain
+unsaved changes. See <a class="ref" href="NextDoc.html">NextDoc</a>, and <a class="ref" href="PrevDoc.html">PrevDoc</a>.
+</p>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="PrevDoc.html">PrevDoc</a>, Up: <a href="Document-Commands.html">Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

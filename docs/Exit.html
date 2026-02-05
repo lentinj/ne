@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Exit (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Exit (ne&rsquo;s manual)">
+<meta name="keywords" content="Exit (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Document-Commands.html" rel="up" title="Document Commands">
+<link href="NewDoc.html" rel="next" title="NewDoc">
+<link href="Quit.html" rel="prev" title="Quit">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Exit">
+<div class="nav-panel">
+<p>
+Next: <a href="NewDoc.html" accesskey="n" rel="next">NewDoc</a>, Previous: <a href="Quit.html" accesskey="p" rel="prev">Quit</a>, Up: <a href="Document-Commands.html" accesskey="u" rel="up">Document Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Exit-1"><span>4.3.2 Exit<a class="copiable-link" href="#Exit-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Exit"></a>
+
+<p>Syntax: <code class="code">Exit</code><br>
+Abbreviation: <code class="code">X</code>
+</p>
+<p>saves all modified documents, closes them and exits. If
+any documents cannot be saved, the action is suspended and an error message
+is issued and no documents are closed. Note that only named documents can be
+saved, so <code class="code">Exit</code> will report an error if you have any modified unnamed
+documents. Like <code class="code">SaveAll</code>, <code class="code">Exit</code> will not save a document if its
+corresponding file has been modified since the document was loaded or last
+saved, or if its read only flag is set, in which cases an error is reported
+and no documents are closed.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

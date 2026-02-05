@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AutoPrefs (ne&rsquo;s manual)</title>
+
+<meta name="description" content="AutoPrefs (ne&rsquo;s manual)">
+<meta name="keywords" content="AutoPrefs (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="Binary.html" rel="next" title="Binary">
+<link href="Flags.html" rel="prev" title="Flags">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="AutoPrefs">
+<div class="nav-panel">
+<p>
+Next: <a href="Binary.html" accesskey="n" rel="next">Binary</a>, Previous: <a href="Flags.html" accesskey="p" rel="prev">Flags</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="AutoPrefs-1"><span>4.9.2 AutoPrefs<a class="copiable-link" href="#AutoPrefs-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-AutoPrefs"></a>
+
+<p>Syntax: <code class="code">AutoPrefs [0|1]</code><br>
+Abbreviation: <code class="code">AP</code>
+</p>
+<p>sets the automatic preferences flag. If this flag is true, each
+time an <code class="code">Open</code> command is executed and a file is loaded, <code class="code">ne</code> will
+look for an automatic preferences file in your <samp class="file">~/.ne</samp> directory.
+The preferences file name is given by the extension of the file loaded,
+postfixed with &lsquo;<samp class="samp">#ap</samp>&rsquo;. Thus, for instance, C sources have an associated
+<samp class="file">c#ap</samp> file.
+See <a class="xref" href="Automatic-Preferences.html">Automatic Preferences</a>.
+</p>
+<p>If you invoke <code class="code">AutoPrefs</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively. A lower
+case &lsquo;<samp class="samp">p</samp>&rsquo; will appear on the status bar if the flag is true.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

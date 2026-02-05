@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>KeyCode (ne&rsquo;s manual)</title>
+
+<meta name="description" content="KeyCode (ne&rsquo;s manual)">
+<meta name="keywords" content="KeyCode (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Support-Commands.html" rel="up" title="Support Commands">
+<link href="NameConvert.html" rel="next" title="NameConvert">
+<link href="Escape.html" rel="prev" title="Escape">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="KeyCode">
+<div class="nav-panel">
+<p>
+Next: <a href="NameConvert.html" accesskey="n" rel="next">NameConvert</a>, Previous: <a href="Escape.html" accesskey="p" rel="prev">Escape</a>, Up: <a href="Support-Commands.html" accesskey="u" rel="up">Support Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="KeyCode-1"><span>4.12.12 KeyCode<a class="copiable-link" href="#KeyCode-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-KeyCode"></a>
+
+<p>Syntax: <code class="code">KeyCode [<var class="var">k</var>]</code><br>
+Abbreviation: <code class="code">KC</code>
+</p>
+<p>prompts you to press a key, and reports on the status bar
+the key code <code class="code">ne</code> associates with that key, the
+command currently associated with that key code, as well as the
+input class for that key code. Input class codes are: ALPHA, COMMAND,
+RETURN, TAB, IGNORE, and INVALID. This can be useful while
+configuring your <samp class="file">~/.ne/.keys</samp> file.
+</p>
+<p>If the optional integer <var class="var">k</var> (between 0 and 511) is given, <code class="code">KeyCode</code>
+uses <var class="var">k</var> as the key code and displays the information described above.
+<var class="var">k</var> can be either decimal, hexadecimal if preceded by &rsquo;0x&rsquo;, or octal if
+preceded by &rsquo;0&rsquo;.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>BracketedPaste (ne&rsquo;s manual)</title>
+
+<meta name="description" content="BracketedPaste (ne&rsquo;s manual)">
+<meta name="keywords" content="BracketedPaste (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="VisualBell.html" rel="next" title="VisualBell">
+<link href="CRLF.html" rel="prev" title="CRLF">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="BracketedPaste">
+<div class="nav-panel">
+<p>
+Next: <a href="VisualBell.html" accesskey="n" rel="next">VisualBell</a>, Previous: <a href="CRLF.html" accesskey="p" rel="prev">CRLF</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="BracketedPaste-1"><span>4.9.21 BracketedPaste<a class="copiable-link" href="#BracketedPaste-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-BracketedPaste"></a>
+
+<p>Syntax: <code class="code">BracketedPaste [0|1|<var class="var">macro_name_before</var> <var class="var">macro_name_after</var>]</code><br>
+Abbreviation: <code class="code">BP</code>
+</p>
+<p>&ldquo;Bracketed paste&rdquo; is an informal though widely adopted protocol between
+terminal mode programs (like <code class="code">ne</code>) and the terminal emulators through
+which they present their user interfaces. When <code class="code">BracketedPaste</code> is
+enabled, blocks of text pasted from a system clipboard are &ldquo;bracketed&rdquo; &ndash;
+that is, they are immediately preceded and followed &ndash; by special character
+sequences which distinguish such blocks from text you actually typed. Bracketed
+paste text is usually already indented, tabbed, and line wrapped. The
+<code class="code">BracketedPaste</code> command lets you manage factors that change input
+handling while inserting bracketed paste text into your document.
+</p>
+<p><code class="code">BracketedPaste 0</code> disables bracketed paste support entirely;
+<code class="code">BracketedPaste 1</code> enables bracketed paste support, temporarily
+disables the <code class="code">AutoIndent</code> flag, and increases the <code class="code">AtomicUndo</code> level
+during bracketed pastes; when given a pair of macro names, bracketed paste
+support is enabled and the indicated macros will be run immediately before and
+after processing bracketed paste text. The macros need not already exist. (See
+the <code class="code">Macro</code> help page, especially the warning at the bottom.)
+<code class="code">BracketedPaste</code> with no argument will prompt you to enter a new value
+with the prompt&rsquo;s default being the current value.
+</p>
+<p>The default value is &lsquo;<samp class="samp">1</samp>&rsquo; &ndash; enabled with default behaviour. This is an
+automatic preference (see <a class="ref" href="AutoPrefs.html">AutoPrefs</a>) and so will be saved by both
+<code class="code">SaveAutoPrefs</code> and <code class="code">SaveDefPrefs</code>.
+</p>
+<p>The flags <code class="code">AutoIndent</code>, <code class="code">Tabs</code>, <code class="code">ShiftTabs</code>, and <code class="code">WordWrap</code>
+all affect handling of pasted text. The examples below show
+contents of before and after macros which would have effects similar to
+&lsquo;<samp class="samp">BracketedPaste 1</samp>&rsquo;.
+</p>
+<div class="example">
+<pre class="example-preformatted"># Invoked Before Bracketed Paste    # Invoked After Bracketed Paste
+SetBookMark &lt;                       SetBookMark &gt;
+PushPrefs                           PopPrefs
+AtomicUndo +                        AtomicUndo -
+AutoIndent 0                        GotoBookMark &lt;
+Refresh                             Refresh
+</pre></div>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="VisualBell.html">VisualBell</a>, Previous: <a href="CRLF.html">CRLF</a>, Up: <a href="Preferences-Commands.html">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

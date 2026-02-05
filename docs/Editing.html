@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Editing (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Editing (ne&rsquo;s manual)">
+<meta name="keywords" content="Editing (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Basic-Preferences.html" rel="next" title="Basic Preferences">
+<link href="Loading-and-Saving.html" rel="prev" title="Loading and Saving">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Editing">
+<div class="nav-panel">
+<p>
+Next: <a href="Basic-Preferences.html" accesskey="n" rel="next">Basic Preferences</a>, Previous: <a href="Loading-and-Saving.html" accesskey="p" rel="prev">Loading and Saving</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Editing-1"><span>2.4 Editing<a class="copiable-link" href="#Editing-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Deleting-characters"></a>
+<a class="index-entry-id" id="index-Deleting-lines"></a>
+<a class="index-entry-id" id="index-Undeleting-lines"></a>
+<a class="index-entry-id" id="index-Block-operations"></a>
+<a class="index-entry-id" id="index-Clip-usage"></a>
+<a class="index-entry-id" id="index-Multiple-documents"></a>
+
+<p>An editor is presumably used for editing text. If you decide not to edit text, you
+probably don&rsquo;t want to use <code class="code">ne</code>, because that&rsquo;s all it does&mdash;it edits text.
+It does not play <code class="code">Tetris</code>. It does not evaluate recursive
+functions. It does not solve your love problems. It just allows you to
+edit text.
+</p>
+<p>The design of <code class="code">ne</code> makes editing extremely natural and straightforward.
+There is nothing special you have to do to start editing once you&rsquo;ve
+started <code class="code">ne</code>. Just start typing, and the text you type shows up in
+your document.
+</p>
+<p><code class="code">ne</code> provides two ways of deleting characters: the <kbd class="key">Backspace</kbd> key
+(or <kbd class="kbd"><kbd class="key">Control</kbd>-H</kbd>, if you have no such key) and the <kbd class="key">Delete</kbd>
+key. In the former case you delete the character to the left of the
+cursor, while in the latter case you delete the character just under the
+cursor. This is in contrast with many <small class="sc">UN*X</small> editors, which for
+unknown reasons decide to limit your ways of destroying
+things&mdash;something notoriously much funnier than creating. (See
+<a class="ref" href="DeleteChar.html">DeleteChar</a> and <a class="ref" href="Backspace.html">Backspace</a>.)
+</p>
+<p>If you want to delete a line, you can use the <code class="code">DeleteLine</code> command, or
+<kbd class="kbd"><kbd class="key">Control</kbd>-Y</kbd>. A very nice feature of <code class="code">ne</code> is that each time a
+nonempty line is deleted, it is stored in a temporary buffer from which it can
+be undeleted via the <code class="code">UndelLine</code> command or <kbd class="kbd"><kbd class="key">Control</kbd>-U</kbd>. (See
+<a class="ref" href="DeleteLine.html">DeleteLine</a> and <a class="ref" href="UndelLine.html">UndelLine</a>.)
+</p>
+<p>If you want to copy, cut, paste, shift or erase a block of text, you have to
+set a mark. This is done via the <code class="code">Mark</code> command, activated by
+choosing the &lsquo;<samp class="samp">Mark Block</samp>&rsquo; item of the &lsquo;<samp class="samp">Edit</samp>&rsquo; menu, or by
+pressing <kbd class="kbd"><kbd class="key">Control</kbd>-B</kbd> (think &ldquo;block&rdquo;). This command
+sets the mark at the current cursor position. Whenever the mark is set, the text
+between the mark and the cursor can be cut, copied or erased. Note that
+by using <kbd class="kbd"><kbd class="key">Control</kbd>-@</kbd> you can set a <em class="emph">vertical</em> mark
+instead, which allows you to mark rectangles of text. Whenever a mark
+has been set, either an &lsquo;<samp class="samp">M</samp>&rsquo; appears on the command line or a
+&lsquo;<samp class="samp">V</samp>&rsquo; appears if the mark is vertical. If you forget where the mark
+is currently, you can use the &lsquo;<samp class="samp">Goto Mark</samp>&rsquo; menu item of the
+&lsquo;<samp class="samp">Search</samp>&rsquo; menu to move the cursor to it.
+</p>
+<p>The block of text you cut or copy is saved in a <em class="dfn">clip</em>, which you can
+&lsquo;<samp class="samp">Paste</samp>&rsquo; somewhere else in your document, or save it
+to a file with the &lsquo;<samp class="samp">Save Clip...</samp>&rsquo; menu
+item of the &lsquo;<samp class="samp">Edit</samp>&rsquo; menu. You can also load a file directly into a clip with
+&lsquo;<samp class="samp">Open Clip...</samp>&rsquo;, and &lsquo;<samp class="samp">Paste</samp>&rsquo; it anywhere. All such operations act on the
+<em class="dfn">current clip</em>, which is by default the clip 0. You can change the current
+clip number with the <code class="code">ClipNumber</code> command. See <a class="xref" href="ClipNumber.html">ClipNumber</a>.
+</p>
+<p>One of the most noteworthy features of <code class="code">ne</code> is its <em class="dfn">unlimited
+undo/redo</em> capability. Each editing action is recorded, and can be played
+back and forth as much as you like. Undo and redo are bound to the function
+keys <kbd class="key">f5</kbd> and <kbd class="key">f6</kbd>.
+</p>
+<p>Another interesting feature of <code class="code">ne</code> is its ability to load an
+unlimited number of documents. If you activate the <code class="code">NewDoc</code> command
+(using the &lsquo;<samp class="samp">Document</samp>&rsquo; menu or the command line), a new, empty
+document will be created. You can switch between your documents
+with <kbd class="key">f2</kbd> and <kbd class="key">f3</kbd>, which are bound to the
+<code class="code">PrevDoc</code> and <code class="code">NextDoc</code> commands. If you have a lot of
+documents, the &lsquo;<samp class="samp">Select...</samp>&rsquo; menu item (<kbd class="key">f4</kbd>) prompts you with
+the list of names of currently loaded documents and allows you to
+choose directly which to edit. In that list, names of documents with
+unsaved changes will be bold. You can also change their relative order
+in that list with the <kbd class="key">f2</kbd> and <kbd class="key">f3</kbd> keys.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Basic-Preferences.html">Basic Preferences</a>, Previous: <a href="Loading-and-Saving.html">Loading and Saving</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

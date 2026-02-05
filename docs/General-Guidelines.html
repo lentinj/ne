@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>General Guidelines (ne&rsquo;s manual)</title>
+
+<meta name="description" content="General Guidelines (ne&rsquo;s manual)">
+<meta name="keywords" content="General Guidelines (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Commands.html" rel="up" title="Commands">
+<link href="File-Commands.html" rel="next" title="File Commands">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="General-Guidelines">
+<div class="nav-panel">
+<p>
+Next: <a href="File-Commands.html" accesskey="n" rel="next">File Commands</a>, Up: <a href="Commands.html" accesskey="u" rel="up">Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="General-Guidelines-1"><span>4.1 General Guidelines<a class="copiable-link" href="#General-Guidelines-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Long-names"></a>
+<a class="index-entry-id" id="index-Short-names"></a>
+<a class="index-entry-id" id="index-Command-arguments"></a>
+<a class="index-entry-id" id="index-Flags-2"></a>
+<a class="index-entry-id" id="index-Repeating-actions"></a>
+<a class="index-entry-id" id="index-Escape-conventions"></a>
+<a class="index-entry-id" id="index-Quoting-conventions"></a>
+
+<p>Every command in <code class="code">ne</code> has a long and a short name. Except in a very
+few cases, the short name is given by two or three letters that are the
+initials of the words that form the long name. For instance,
+<code class="code">SearchBack</code> has short name <code class="code">SB</code>, <code class="code">SaveDefPrefs</code> has the
+short name <code class="code">SDP</code>, and <code class="code">AdjustView</code>&rsquo;s short name is <code class="code">AV</code>.
+There are some exceptions however. The most frequently used commands
+such as <code class="code">Exit</code> have one-letter short names (<code class="code">X</code>). Also some
+commands use a different short name to avoid clashes with a more common
+command&rsquo;s short name. For example, <code class="code">StatusBar</code>&rsquo;s short name is
+<code class="code">ST</code> rather than <code class="code">SB</code>  to avoid clashes with
+<code class="code">SearchBack</code>&rsquo;s short name.
+</p>
+<p>A command always has at most one argument. This is a chosen limitation
+that allows <code class="code">ne</code>&rsquo;s parsing of commands and macros to be very fast.
+Moreover, it nullifies nearly all problems related to delimiters, escape
+characters, and the like. The unique argument can be a number, a string,
+or a flag modifier. You can easily distinguish these three cases even
+without this manual by looking at what the <code class="code">Help</code> command says
+about the given command. Note that when a command&rsquo;s argument is enclosed
+in square brackets, it is optional.
+</p>
+<p>Strings are general purpose arguments. Numbers are used to modify internal
+parameters, such as the size of a <small class="sc">TAB</small>. A flag modifier is an optional
+number that is interpreted as follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>0 means clearing the flag;
+
+</li><li>1 (or any positive number) means setting the flag;
+
+</li><li>no number means toggling the flag.
+
+</li></ul>
+
+<p>Thus, <code class="code">StatusBar 1</code> will activate that status bar, while <code class="code">I</code> will
+toggle insert/overstrike. This design choice is due to the fact that most of
+the time during interactive editing you need to <em class="emph">change</em> a
+flag. For instance, you may be in insert mode and you want to overstrike, or
+vice versa. Absolute settings (those with a number) are useful essentially
+for macros. It is reasonable to use the fastest approach for the most
+frequent interactive event. When a number or a string is required and the
+argument is optional, most of the time you will be prompted to
+type the argument on the command line.
+</p>
+<p>As for the input line, for numeric arguments you can choose between
+decimal, octal and hexadecimal notation in the standard way:
+a number starting with &lsquo;<samp class="samp">0</samp>&rsquo; is considered in octal, a number
+starting with &lsquo;<samp class="samp">0x</samp>&rsquo; is considered in hexadecimal, and in all other
+cases decimal base is assumed.
+</p>
+<p>When a number represents how many times <code class="code">ne</code> should repeat an
+action, it is always understood that the command will terminate when the
+conditions for applying it are no longer true. For instance, the
+<code class="code">Paragraph</code> command accepts the number of paragraphs to format.
+But if not enough paragraphs exists in the text, only the available ones
+will be formatted.
+</p>
+<p>This easily allows performing operations on an entire document by specifying
+preposterously huge numbers as arguments. <code class="code">ToUpper 200000000</code> will
+make all the words in the document upper case. (At least, one would
+hope so!) Note that this is much faster than recording a macro with
+the command <code class="code">ToUpper</code> in it and playing it many times because in
+the former case the command has to be parsed just one time.
+</p>
+<p>In any case, if a macro or a repeated operation takes too long, you can stop
+it using the interrupt key (<kbd class="kbd"><kbd class="key">Control</kbd>-\</kbd>).
+</p>
+
+<p>To handle situations such as an argument string starting with a
+space, <code class="code">ne</code> implements a simple mechanism whereby you can enclose
+any string argument in double quotes. If the first non-blank character
+after the command and last character of the command line are double
+quotes, the quotes will be removed and whatever is left will be used as
+the string argument. For example, the <code class="code">Find</code> command to find a
+space could be entered on the command line or in a macro as
+<code class="code">Find &quot; &quot;</code>. The only case needing special treatment is
+when a string starts and ends with double quotes. The command
+<code class="code">Find &quot;&quot;quote&quot;&quot;</code> would locate the next occurrence of the string
+&lsquo;<samp class="samp">&quot;quote&quot;</samp>&rsquo; (including the double quotes). However,
+<code class="code">Find onequote&quot;</code> wouldn&rsquo;t require special treatment because the
+command argument doesn&rsquo;t both start and end with a double quote.
+</p>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="File-Commands.html">File Commands</a>, Up: <a href="Commands.html">Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

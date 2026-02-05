@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>StatusBar (ne&rsquo;s manual)</title>
+
+<meta name="description" content="StatusBar (ne&rsquo;s manual)">
+<meta name="keywords" content="StatusBar (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="HexCode.html" rel="next" title="HexCode">
+<link href="RequestOrder.html" rel="prev" title="RequestOrder">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="StatusBar">
+<div class="nav-panel">
+<p>
+Next: <a href="HexCode.html" accesskey="n" rel="next">HexCode</a>, Previous: <a href="RequestOrder.html" accesskey="p" rel="prev">RequestOrder</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="StatusBar-1"><span>4.9.9 StatusBar<a class="copiable-link" href="#StatusBar-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-StatusBar"></a>
+
+<p>Syntax: <code class="code">StatusBar [0|1]</code><br>
+Abbreviation: <code class="code">ST</code>
+</p>
+<p>sets the status bar flag. When this flag is true, the status bar is
+displayed at the bottom of the screen. There are only two reasons to
+turn off the status bar we are aware of:
+</p>
+<ul class="itemize mark-bullet">
+<li>if you are using <code class="code">ne</code> through a slow connection, updating the
+line/column indicator can really slow down editing;
+
+</li><li>scrolling caused by cursor movement on terminals that do not allow to set a
+scrolling region can produce annoying flashes at the bottom of the screen.
+
+</li></ul>
+
+<p>If you invoke <code class="code">StatusBar</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively.
+</p>
+<p>The <code class="code">StatusBar</code> setting is saved in your <samp class="file">~/.ne/.default#ap</samp> file
+when you use the <code class="code">SaveDefPrefs</code> command or the &lsquo;<samp class="samp">Save Def Prefs</samp>&rsquo; menu.
+It is not saved by the <code class="code">SaveAutoPrefs</code> command.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

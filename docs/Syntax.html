@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Syntax (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Syntax (ne&rsquo;s manual)">
+<meta name="keywords" content="Syntax (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="UTF8.html" rel="next" title="UTF8">
+<link href="Modified.html" rel="prev" title="Modified">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Syntax">
+<div class="nav-panel">
+<p>
+Next: <a href="UTF8.html" accesskey="n" rel="next">UTF8</a>, Previous: <a href="Modified.html" accesskey="p" rel="prev">Modified</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Syntax-2"><span>4.9.31 Syntax<a class="copiable-link" href="#Syntax-2"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Syntax"></a>
+
+<p>Syntax: <code class="code">Syntax [<var class="var">name</var>|*]</code><br>
+Abbreviation: <code class="code">SY</code>
+</p>
+<p>loads the syntax with the given name, and colors the
+current document accordingly.
+</p>
+<p>If the optional <var class="var">name</var> argument is not specified, you are
+prompted for one. The current one, if set, is suggested as the
+default. Use the <kbd class="key">Tab</kbd> key for a requester of the extant
+syntax recognizers. The special <var class="var">name</var> * turns off syntax highlighting for
+the current document. Otherwise, <var class="var">name</var> must match a syntax
+definition either in your <samp class="file">~/.ne/syntax</samp> directory or in a
+directory named &lsquo;<samp class="samp">syntax</samp>&rsquo; inside <code class="code">ne</code>&rsquo;s global directory.
+Additionally, <code class="code">ne</code> has a table mapping common suffixes to
+syntax names. If there is no syntax with a given name, <code class="code">ne</code>
+will try to remap the name using the following table  (the string
+before the colon is the name of the syntax file):
+</p>
+
+<div class="example">
+<pre class="example-preformatted">   ada: adb, ads
+   asm: s
+   c: c++, cc, cpp, cxx, h, h++, hpp, l, lex, y, yacc
+   cobol: cbl, cob
+   csh: tcsh
+   diff: patch
+   fortran: f, F, for, f90, F90
+   html: htm
+   java: js
+   lisp: el, lsp
+   mason: mas
+   ocaml: ml, mli
+   pascal: p, pas
+   perl: pl, pm
+   ps: eps
+   puppet: pp
+   python: py, sage
+   rexx: rex
+   ruby: rb
+   sh: bash, bash_login, bash_logout, bash_profile, bashrc, ksh,
+       profile, rc
+   skill: il
+   tex: latex, dtx, sty
+   texinfo: texi, txi
+   troff: 1
+   verilog: v, vh, vhd
+   xml: xsd
+   yaml: yml
+</pre></div>
+
+
+
+</div>
+
+
+
+</body>
+</html>

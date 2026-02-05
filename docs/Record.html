@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Record (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Record (ne&rsquo;s manual)">
+<meta name="keywords" content="Record (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Macros-Commands.html" rel="up" title="Macros Commands">
+<link href="Play.html" rel="next" title="Play">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Record">
+<div class="nav-panel">
+<p>
+Next: <a href="Play.html" accesskey="n" rel="next">Play</a>, Up: <a href="Macros-Commands.html" accesskey="u" rel="up">Macros Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Record-1"><span>4.6.1 Record<a class="copiable-link" href="#Record-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Record"></a>
+
+<p>Syntax: <code class="code">Record [0|1]</code><br>
+Abbreviation: <code class="code">REC</code>
+</p>
+<p>starts, stops, cancels, or resumes macro recording. With no
+arguments, <code class="code">Record</code> starts recording your commands as a new macro
+unless recording is already underway. In that case, macro recording is
+stopped, and the newly recorded macro replaces the current document&rsquo;s
+unnamed macro. The new macro can be played or saved via <a class="ref" href="Play.html">Play</a>,
+or <a class="ref" href="SaveMacro.html">SaveMacro</a>. The default key binding for <kbd class="kbd"><kbd class="key">Control</kbd>-T</kbd>
+is <code class="code">Record</code> with no arguments, and is by far the most common way
+to use the <code class="code">Record</code> command.
+</p>
+<p>If you&rsquo;ve started recording a macro and wish to cancel rather than wipe
+out your existing macro, you can cancel the recording by using <code class="code">Record 0</code>.
+An error will be displayed if you aren&rsquo;t recording already, but it&rsquo;s harmless.
+</p>
+<p>Sometimes you&rsquo;ve got a macro either recorded or loaded from a file
+(see <a class="ref" href="OpenMacro.html">OpenMacro</a>), but you&rsquo;d like to record additional commands onto
+the end of it. <code class="code">Record 1</code> will do that. It will start recording onto
+the end of a copy of your current document&rsquo;s macro. An error will be displayed
+if you are already recording, but it&rsquo;s otherwise harmless.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

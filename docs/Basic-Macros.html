@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Basic Macros (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Basic Macros (ne&rsquo;s manual)">
+<meta name="keywords" content="Basic Macros (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="More-Advanced-Features.html" rel="next" title="More Advanced Features">
+<link href="Basic-Preferences.html" rel="prev" title="Basic Preferences">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Basic-Macros">
+<div class="nav-panel">
+<p>
+Next: <a href="More-Advanced-Features.html" accesskey="n" rel="next">More Advanced Features</a>, Previous: <a href="Basic-Preferences.html" accesskey="p" rel="prev">Basic Preferences</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Basic-Macros-1"><span>2.6 Basic Macros<a class="copiable-link" href="#Basic-Macros-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Macro-definition"></a>
+<a class="index-entry-id" id="index-Recording-a-macro"></a>
+<a class="index-entry-id" id="index-Saving-a-macro"></a>
+<a class="index-entry-id" id="index-Interrupting-a-macro"></a>
+<a class="index-entry-id" id="index-Interrupt-character"></a>
+<a class="index-entry-id" id="index-Caching-a-macro"></a>
+<a class="index-entry-id" id="index-Unloading-macros"></a>
+<a class="index-entry-id" id="index-Executing-a-macro"></a>
+<a class="index-entry-id" id="index-Comments-in-a-macro"></a>
+
+<p>Very often, the programmer or the text writer has to repeat some complex
+editing action over a series of similar blocks of text. This is where
+<em class="dfn">macros</em> come in.
+</p>
+<p>A <em class="dfn">macro</em> is a stored sequence of commands. Any sequence of commands
+you find yourself repeating is an excellent candidate for being made
+into a macro. You could create a macro by editing a document that only
+contains valid <code class="code">ne</code> commands and saving it, but by far the easiest way to create
+a macro is to have <code class="code">ne</code> record your actions. <code class="code">ne</code> allows you
+to record macros and then play them (execute the commands they contain)
+many times. You can save recorded macros as files for future use, edit them, or bind
+them to any key. You could even reconfigure each key of your keyboard to
+play a complex macro if you wanted to.
+</p>
+<p><code class="code">ne</code> can have any number of named macros loaded at the same time.
+In addition, each document has one unnamed macro in its <em class="dfn">current macro</em> buffer.
+Named macros are loaded from&mdash;and get the name of&mdash;files, while each document&rsquo;s
+unnamed current macro buffer is where your recorded macro is held before you
+save it, play it, or record over it.
+</p>
+<p>Recording a macro is very simple. The keystroke <kbd class="kbd"><kbd class="key">Control</kbd>-T</kbd> starts
+and stops recording a macro.  When you start recording a macro, <code class="code">ne</code>
+starts recording all your actions (with a few exceptions). You can see that you
+are recording a macro if an &lsquo;<samp class="samp">R</samp>&rsquo; appears on the status bar. When you stop
+recording (again using <kbd class="kbd"><kbd class="key">Control</kbd>-T</kbd>), <code class="code">ne</code> throws away the
+current document&rsquo;s current macro and replaces it with the one you just finished
+recording. You can then play the macro with the &lsquo;<samp class="samp">Play Once</samp>&rsquo; item of the
+&lsquo;<samp class="samp">Macros</samp>&rsquo; menu or with the <kbd class="key">f9</kbd> key. If you want to repeat the action
+many times, the <code class="code">Play</code> command allows you to specify a number of times to
+repeat the macro. You can always interrupt the macro&rsquo;s execution with
+<kbd class="kbd"><kbd class="key">Control</kbd>-\</kbd>.
+</p>
+<p>These commands are omitted from recorded macros:
+</p><div class="example">
+<pre class="example-preformatted">   Escape       Help         Play
+   Exec         KeyCode      Quit
+   Flags        Macro        Record
+</pre></div>
+
+<p>A recorded macro has no name. It&rsquo;s just an anonymous sequence of
+commands associated with your current document. It will go away when you
+record another macro, close the document, or exit <code class="code">ne</code>. If you want to save your
+recorded macro for future use, you can give it a name by saving it with
+the &lsquo;<samp class="samp">Save Macro...</samp>&rsquo; menu item or the <code class="code">SaveMacro</code> command.
+The macro is saved as a regular text file in your current directory by default or
+whatever directory you specify when prompted for the macro&rsquo;s name. If
+you save it in your <samp class="file">~/.ne</samp> directory then it will be easy to
+access it later from any other directory. The &lsquo;<samp class="samp">Open Macro...</samp>&rsquo; menu item
+and the <code class="code">OpenMacro</code> command load a macro from a file into the
+current document&rsquo;s macro buffer just as if you had just <code class="code">Record</code>ed it.
+</p>
+<p>The current setting of your <code class="code">VerboseMacros</code> flag determines whether
+long or abbreviated command names are used when saving a macro. For your
+convenience, <code class="code">SaveMacro</code> will also convert consecutive
+<code class="code">InsertChar</code> commands into single&mdash;usually much more readable&mdash;
+<code class="code">InsertString</code> commands, but only if all the inserted characters are
+simple printable characters, and only if the macro contains no <code class="code">Undo</code>
+commands or macro invocations later in the macro.
+</p>
+<p>Any macro can be loaded from a file and played with the &lsquo;<samp class="samp">Play Macro...</samp>&rsquo;
+menu item or the <code class="code">Macro</code> command. (This won&rsquo;t modify the recorded
+anonymous macro that may be in the <em class="dfn">current macro</em> buffer;
+<code class="code">OpenMacro</code> does that.) Useful macros can be permanently bound to a
+keystroke as explained in <a class="ref" href="Key-Bindings.html">Key Bindings</a>. Moreover, whenever a
+command line&rsquo;s first non-blank character is an ASCII letter but does
+not specify one of <code class="code">ne</code>&rsquo;s built in commands, it is
+assumed to specify the name of a macro to execute. Thus, you can execute
+macros just by typing their file names at the command line. If the file
+containing your macro is somewhere besides your current directory or
+your <samp class="file">~/.ne</samp> directory, and you have not already loaded it, then
+use the <code class="code">Macro</code> command on the command line followed by the path
+to the macro. That&rsquo;s only necessary the first time you use such a macro.
+From then on, you can use the macro&rsquo;s base name on the command line without
+the preceding <code class="code">Macro</code> command.
+</p>
+<p>If the first attempt to open a macro fails, <code class="code">ne</code> checks for a macro
+with the given name in your <samp class="file">~/.ne</samp> directory. This allows you
+to program simple extensions to <code class="code">ne</code>&rsquo;s command set. For instance, all
+automatic preferences macros&mdash;which are just specially named macros
+that contain only commands to set preferences flags&mdash;can be executed
+just by typing their names. For example, if you have an automatic
+preference for the &lsquo;<samp class="samp">txt</samp>&rsquo; extension, you can set
+<code class="code">ne</code>&rsquo;s flags exactly as if you had loaded a file ending with
+&lsquo;<samp class="samp">.txt</samp>&rsquo; by typing the command <code class="code">txt#ap</code>.
+</p>
+<p>In general, it is a good idea to save frequently used macros in
+<samp class="file">~/.ne</samp> so that you can invoke them by name without specifying
+a path regardless of your current directory. On the other hand, if you
+have a macro that is customized for one document or a set of documents
+that you store in one directory, then you might want to save the
+macro in that directory instead. If you do, then you would want to
+<code class="code">cd</code> to that directory before you start <code class="code">ne</code> so that you can
+access that macro without specifying a path.
+</p>
+<p>If your macro has the same name as one of <code class="code">ne</code>&rsquo;s built-in commands,
+you can only access it with the <code class="code">Macro <var class="var">name</var></code> command.
+Built-in command names are always searched before the <code class="code">ne</code> command
+interpreter looks for macros.
+</p>
+<p>The system administrator may make some macros available from
+the <samp class="file">macros</samp> subdirectory of <code class="code">ne</code>&rsquo;s global directory. See <a class="xref" href="Arguments.html">Arguments</a>.
+</p>
+<p>Since loading a macro each time it is invoked would be a rather slow and
+expensive process, once a named macro has been executed it is cached internally.
+Subsequent invocations of the named macro will use the cached version.
+</p>
+<p><strong class="strong">Warning:</strong> while path and file names are case sensitive
+when initially loading macros, loaded macro names are <em class="emph">not</em> case
+sensitive or path sensitive. <code class="code">ne</code> only caches the file name of an
+already loaded macro, not the path, and it uses a case insensitive
+comparison when resolving command and macro names. As such, if you invoke <samp class="file">~/foobar/MyMacro</samp>, <code class="code">ne</code>
+remembers it with the case-insensitive name <samp class="file">mymacro</samp>; a subsequent
+call for <samp class="file">/usr/MYMACRO</samp> will instead find and use the cached version
+of <samp class="file">~/foobar/MyMacro</samp>. You can clear all macros from the cache by using the
+<code class="code">UnloadMacros</code> command. See <a class="xref" href="UnloadMacros.html">UnloadMacros</a>.
+</p>
+<p>The behaviour of macros may vary with different preferences. If the user
+changes the <code class="code">AutoIndent</code> and <code class="code">WordWrap</code> flags, for example, new lines and new
+text may not appear the way they would have when a macro was
+recorded. A good general purpose macro avoids such problems by using the
+<code class="code">PushPrefs</code> command first to preserve the current preferences.
+The macro then sets any preferences that could affect its behaviour. Once
+that is taken care of it can get on with the actual work for which it
+were intended. Finally, it will use the <code class="code">PopPrefs</code> command to restore
+the original preferences. Note that if a macro stops before it
+restores the preferences (either by the user pressing
+<kbd class="kbd"><kbd class="key">Control</kbd>-\</kbd> or by a command failing) then dealing with the
+changed preferences falls to the user.
+</p>
+<p>Any changes made to a document by a macro are recorded just as if you had
+entered the text and commands yourself. Therefore you can use the <code class="code">Undo</code> command
+to roll back those changes one at a time. This can be useful especially when
+developing macros, but you may want to be able to undo all the changes made
+by a macro with a single <code class="code">Undo</code> command. The <code class="code">AtomicUndo</code> command
+makes this possible. If you add <code class="code">AtomicUndo +</code> at the start of your
+macro and <code class="code">AtomicUndo -</code> at the end, then the <code class="code">Undo</code> and
+<code class="code">Redo</code> commands will handle all changes made by your macro atomically,
+i.e., as if they had been made by a single command, even if your macro
+calls other macros which could themselves contain matching <code class="code">AtomicUndo +</code>
+and <code class="code">AtomicUndo -</code> commands. See <a class="xref" href="AtomicUndo.html">AtomicUndo</a>.
+</p>
+<p>Leading spaces in macros are ignored, so you can indent your macros to make
+them more readable. Any line in a macro that starts with a non-blank, non-alphabetical character
+is considered a comment, so you can add comments to a macro by starting
+a line with &lsquo;<samp class="samp">#</samp>&rsquo;. Recorded macros sometimes have comments added to them
+indicating calls to other macros.
+</p>
+<p>Macros can operate across multiple documents, by using the <code class="code">NextDoc</code> and
+<code class="code">PrevDoc</code> commands for example. When you stop recording, the unnamed
+macro is associated with the current document, replacing that document&rsquo;s
+prior unnamed macro.
+</p>
+<p>You can cancel in-progress macro recording&mdash;and thus avoid wiping out a
+document&rsquo;s existing unnamed macro&mdash;with the <code class="code">Record 0</code>
+command, or by selecting <code class="code">Record Cancel</code> from the <code class="code">Macro</code> menu.
+</p>
+<p>You can append additional recorded commands to your document&rsquo;s current
+macro with the <code class="code">Record 1</code> command, or by selecting <code class="code">Record Append</code>
+from the <code class="code">Macro</code> menu.
+</p>
+<p>Finally, you can insert the current document&rsquo;s unnamed macro into your
+in-progress macro recording as many times as you like either by pressing the
+<kbd class="key">f9</kbd> key or entering the <code class="code">Play 1</code> command. Although the unnamed macro
+is distroyed and replaced when you stop recording your new macro, until then
+it&rsquo;s available for use like any other.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="More-Advanced-Features.html">More Advanced Features</a>, Previous: <a href="Basic-Preferences.html">Basic Preferences</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

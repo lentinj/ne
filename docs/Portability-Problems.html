@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Portability Problems (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Portability Problems (ne&rsquo;s manual)">
+<meta name="keywords" content="Portability Problems (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Acknowledgments.html" rel="next" title="Acknowledgments">
+<link href="History.html" rel="prev" title="History">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Portability-Problems">
+<div class="nav-panel">
+<p>
+Next: <a href="Acknowledgments.html" accesskey="n" rel="next">Acknowledgments</a>, Previous: <a href="History.html" accesskey="p" rel="prev">History</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Portability-Problems-1"><span>10 Portability Problems<a class="copiable-link" href="#Portability-Problems-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-Portability"></a>
+<a class="index-entry-id" id="index-POSIX-2"></a>
+<a class="index-entry-id" id="index-terminfo-2"></a>
+<a class="index-entry-id" id="index-termcap-2"></a>
+<a class="index-entry-id" id="index-Printable-characters"></a>
+
+<p>This chapter is devoted to the description of the (hopefully very few) problems
+that could arise when porting <code class="code">ne</code> to other flavors of <small class="sc">UN*X</small>.
+</p>
+<p>The fact that only <small class="sc">POSIX</small> calls have been used (see <a class="pxref" href="Motivations-and-Design.html">Motivations and Design</a>) should guarantee that on <small class="sc">POSIX</small>-compliant systems a
+recompilation should suffice. Unfortunately, <code class="code">terminfo</code> has not
+been standardized by <small class="sc">IEEE</small>, so that different calls could be
+available. The necessary calls are <code class="code">setupterm()</code>, <code class="code">tparm()</code>
+and <code class="code">tputs()</code>. The other <code class="code">terminfo</code> functions are never used.
+</p>
+<p>If <code class="code">terminfo</code> is not available, the source files <samp class="file">info2cap.c</samp>
+and <samp class="file">info2cap.h</samp> map <code class="code">terminfo</code> calls on <code class="code">termcap</code>
+calls. The complete GNU <code class="code">termcap</code> sources are distributed with
+<code class="code">ne</code>, so no library at all is needed to use them. You just have to
+compile using one of the options explained in the <samp class="file">makefile</samp> and in
+the <samp class="file">README</samp>. Should you need comprehensive information on GNU
+<code class="code">termcap</code>, you can find the distribution files on any <code class="code">ftp</code>
+site that distributes the GNU archives. I should note that the GNU
+<code class="code">termcap</code> manual is definitely the best manual ever written about
+terminal databases.
+</p>
+<p>There are, however, some details that are not specified by <small class="sc">POSIX</small>, or are
+specified with insufficient precision. The places of the source where such
+details come to the light are evidenced by the &lsquo;<samp class="samp">PORTABILITY PROBLEM</samp>&rsquo;
+string, which is followed by a complete explanation of the problem.
+</p>
+<p>For instance, there is no standard way of printing extended <small class="sc">ASCII</small>
+characters (i.e., characters whose code is smaller than 32 or greater than
+126). On many system, these characters have to be filtered and replaced with
+something printable: the default behaviour is to add 64 to all characters under
+32 (so that control characters will translate to the respective letter) and to print
+them in reverse video; moreover, all characters between 127 and 160 are visualized
+as a reversed question mark (this works particularly well with ISO Latin
+1, but Windows users might not like it). This behavior can be easily changed
+by modifying the <code class="code">out()</code> function in <samp class="file">term.c</samp>.
+</p>
+<p>Note that it is certainly possible that some system features not standardized
+by <small class="sc">POSIX</small> interfere with <code class="code">ne</code>&rsquo;s use of the I/O stream. Such problems
+should be dealt with locally by using the system facilities rather than by
+horribly <code class="code">#ifdef</code>&rsquo;ing the source code. An example is given in <a class="ref" href="Hints-and-Tricks.html">Hints and Tricks</a>.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Acknowledgments.html">Acknowledgments</a>, Previous: <a href="History.html">History</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

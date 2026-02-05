@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Automatic Preferences (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Automatic Preferences (ne&rsquo;s manual)">
+<meta name="keywords" content="Automatic Preferences (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="Emergency-Save.html" rel="next" title="Emergency Save">
+<link href="Regular-Expressions.html" rel="prev" title="Regular Expressions">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Automatic-Preferences">
+<div class="nav-panel">
+<p>
+Next: <a href="Emergency-Save.html" accesskey="n" rel="next">Emergency Save</a>, Previous: <a href="Regular-Expressions.html" accesskey="p" rel="prev">Regular Expressions</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Automatic-Preferences-1"><span>3.9 Automatic Preferences<a class="copiable-link" href="#Automatic-Preferences-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Automatic-preferences-1"></a>
+
+<p>Automatic preferences let you set up a custom configuration that is
+automatically used whenever you open a file with a given extension. For
+instance, you may prefer a <small class="sc">TAB</small> size of three when editing C sources, but
+eight could be more palatable when writing electronic mail.
+</p>
+<p>The use of autoprefs is definitely straightforward. You simply use the
+&lsquo;<samp class="samp">Save AutoPrefs</samp>&rsquo; menu item (or the <code class="code">SaveAutoPrefs</code> command;
+see <a class="pxref" href="SaveAutoPrefs.html">SaveAutoPrefs</a>) when the current document has the given extension and
+the current configuration suits your tastes. The internal state of a series of
+options will be recorded as a macro containing commands that reproduce the
+current configuration. The macro is then saved in the <samp class="file">~/.ne</samp>
+directory (which is created if necessary) with the name given by the
+extension, postfixed with &lsquo;<samp class="samp">#ap</samp>&rsquo;. Thus, the C sources automatic
+preferences file will be named &lsquo;<samp class="samp">c#ap</samp>&rsquo;, the one for TeX files &lsquo;<samp class="samp">tex#ap</samp>&rsquo;,
+and so on.
+</p>
+<p>Macros are generated with short or long command names depending on the
+status of the verbose macros flag. See <a class="xref" href="VerboseMacros.html">VerboseMacros</a>.
+</p>
+<p>Automatic preferences files are loaded and executed whenever a file with a known
+extension is opened. Note that you can manually edit such files, and even
+insert commands, but any command that does something other than setting a flag
+will be rejected, and an error message will be issued.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

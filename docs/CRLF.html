@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>CRLF (ne&rsquo;s manual)</title>
+
+<meta name="description" content="CRLF (ne&rsquo;s manual)">
+<meta name="keywords" content="CRLF (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="BracketedPaste.html" rel="next" title="BracketedPaste">
+<link href="PreserveCR.html" rel="prev" title="PreserveCR">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="CRLF">
+<div class="nav-panel">
+<p>
+Next: <a href="BracketedPaste.html" accesskey="n" rel="next">BracketedPaste</a>, Previous: <a href="PreserveCR.html" accesskey="p" rel="prev">PreserveCR</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="CRLF-1"><span>4.9.20 CRLF<a class="copiable-link" href="#CRLF-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-CRLF"></a>
+
+<p>Syntax: <code class="code">CRLF [0|1]</code><br>
+Abbreviation: <code class="code">CRLF</code>
+</p>
+<p>sets the CR/LF flag. When a file is
+saved from a document for which this flag is true, both a CR (carriage
+return) and a NL (new line) character are output as line terminators.
+This flag has no effect except when saving a file.
+</p>
+<p>This flag is automatically set if you load a file that has at least one
+CR/LF sequence in it.
+</p>
+<p>If you invoke <code class="code">CRLF</code> with no arguments, it will toggle the flag.
+If you specify 0 or 1, the flag will be set to false or true,
+respectively. An upper case &lsquo;<samp class="samp">C</samp>&rsquo; will appear on the status bar if the
+flag is true.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

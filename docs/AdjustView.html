@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AdjustView (ne&rsquo;s manual)</title>
+
+<meta name="description" content="AdjustView (ne&rsquo;s manual)">
+<meta name="keywords" content="AdjustView (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Navigation-Commands.html" rel="up" title="Navigation Commands">
+<link href="ToggleSEOF.html" rel="next" title="ToggleSEOF">
+<link href="MoveIncDown.html" rel="prev" title="MoveIncDown">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="AdjustView">
+<div class="nav-panel">
+<p>
+Next: <a href="ToggleSEOF.html" accesskey="n" rel="next">ToggleSEOF</a>, Previous: <a href="MoveIncDown.html" accesskey="p" rel="prev">MoveIncDown</a>, Up: <a href="Navigation-Commands.html" accesskey="u" rel="up">Navigation Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="AdjustView-1"><span>4.10.23 AdjustView<a class="copiable-link" href="#AdjustView-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-AdjustView"></a>
+
+<p>Syntax: <code class="code">AdjustView [T|M|B|L|C|R] [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">AV</code>
+</p>
+<p>shifts the view (text visible in the terminal window)
+horizontally or vertically without changing the cursor&rsquo;s position in
+the document. View adjustments are constrained by the current <small class="sc">TAB</small>
+size and the length and width of the current document. If called with
+no arguments &lsquo;<samp class="samp">T</samp>&rsquo; is assumed.
+</p>
+<p>&lsquo;<samp class="samp">T</samp>&rsquo;, &lsquo;<samp class="samp">M</samp>&rsquo;, and &lsquo;<samp class="samp">B</samp>&rsquo; cause vertical shifts so that the
+current line becomes the top, middle, or bottom-most visible line
+respectively.
+</p>
+<p>&lsquo;<samp class="samp">L</samp>&rsquo;, &lsquo;<samp class="samp">C</samp>&rsquo;, and &lsquo;<samp class="samp">R</samp>&rsquo; cause horizontal shifts, making the
+current column the left-most, center, or right-most visible positions.
+</p>
+<p>A optional number <var class="var">n</var> immediately after &lsquo;<samp class="samp">T</samp>&rsquo;, &lsquo;<samp class="samp">B</samp>&rsquo;,
+&lsquo;<samp class="samp">L</samp>&rsquo;, or &lsquo;<samp class="samp">R</samp>&rsquo; indicate the number or rows or columns to shift
+the view toward the top, bottom, left, or right of the window.
+</p>
+<p>Horizontal and vertical adjustment specifications may be combined,
+so that for example &lsquo;<samp class="samp">AdjustView TL</samp>&rsquo; shifts the view so
+that the current position becomes the top left-most character on
+screen (within the limits of the current <small class="sc">TAB</small> size). Likewise,
+&lsquo;<samp class="samp">AdjustView B3R5</samp>&rsquo; shifts the view three lines toward the bottom and
+five columns (excepting <small class="sc">TAB</small> size) toward the right.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

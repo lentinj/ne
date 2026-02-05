@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>DoUndo (ne&rsquo;s manual)</title>
+
+<meta name="description" content="DoUndo (ne&rsquo;s manual)">
+<meta name="keywords" content="DoUndo (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Undo-Commands.html" rel="up" title="Undo Commands">
+<link href="AtomicUndo.html" rel="next" title="AtomicUndo">
+<link href="UndelLine.html" rel="prev" title="UndelLine">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="DoUndo">
+<div class="nav-panel">
+<p>
+Next: <a href="AtomicUndo.html" accesskey="n" rel="next">AtomicUndo</a>, Previous: <a href="UndelLine.html" accesskey="p" rel="prev">UndelLine</a>, Up: <a href="Undo-Commands.html" accesskey="u" rel="up">Undo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="DoUndo-1"><span>4.7.4 DoUndo<a class="copiable-link" href="#DoUndo-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-DoUndo"></a>
+
+<p>Syntax: <code class="code">DoUndo [0|1]</code><br>
+Abbreviation: <code class="code">DU</code>
+</p>
+<p>sets the flag that enables or disables the undo system. When you turn
+the undo system off, all the recorded actions are discarded, and the undo
+buffers are reset.
+</p>
+<p>If you invoke <code class="code">DoUndo</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively. A lower
+case &lsquo;<samp class="samp">u</samp>&rsquo; will appear on the status bar if the flag is true. (The
+&lsquo;<samp class="samp">U</samp>&rsquo; will be upper case if the flag is true and the <code class="code">AtomicUndo</code>
+level is non-zero.)
+</p>
+<p>The usefulness of this option relies in the fact that the undo system is a major
+memory eater. If you plan to do massive editing (say, cutting and pasting
+megabytes of text) it is a good idea to disable the undo system, both for
+improving (doubling) performance and for using less (half) memory. Except for
+this, on a virtual memory system we see no reason to not keep the undo flag
+always true, and this is indeed the default.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Terminology (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Terminology (ne&rsquo;s manual)">
+<meta name="keywords" content="Terminology (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Starting.html" rel="next" title="Starting">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Terminology">
+<div class="nav-panel">
+<p>
+Next: <a href="Starting.html" accesskey="n" rel="next">Starting</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Terminology-1"><span>2.1 Terminology<a class="copiable-link" href="#Terminology-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-File"></a>
+<a class="index-entry-id" id="index-Document"></a>
+<a class="index-entry-id" id="index-Buffer"></a>
+
+<p>In this section we explain and contrast some of the terms
+<code class="code">ne</code> uses. Understanding these distinctions will go a long way
+towards making the rest of this manual make sense.
+</p>
+<p>A <em class="dfn">file</em> is a group of bytes stored on disk. This may seem rather
+obvious, but the important distinction here is that <code class="code">ne</code> does not
+edit files; it edits <em class="dfn">documents</em>.
+</p>
+<p>A <em class="dfn">document</em> is what <code class="code">ne</code> calls one of the &ldquo;text thingies&rdquo;
+that you can edit. It is a sequence of lines of text in the computer&rsquo;s
+memory&mdash;not on disk.<a class="footnote" id="DOCF2" href="#FOOT2"><sup>2</sup></a>
+Documents can be created, edited, saved in
+files, loaded from files, discarded, <i class="i">et cetera</i>. When a
+document is loaded from or saved to a file, it remains
+associated with that file by name until the document is
+either closed or saved to a different file. Interactions between
+documents and files are handled by the commands under the
+&lsquo;<samp class="samp">File</samp>&rsquo; menu. The &lsquo;<samp class="samp">Documents</samp>&rsquo; menu commands only deal with
+documents. See <a class="xref" href="Menus.html">Menus</a>.
+</p>
+<p>Internally, <code class="code">ne</code> holds its documents&rsquo; text in <em class="dfn">buffers</em>.  A
+<em class="dfn">buffer</em> is a chunk of memory in which <code class="code">ne</code> holds text.
+In addition to each document&rsquo;s text, buffers hold any loaded
+or recorded macros, undo records, a copy of your last deleted line,
+a copy of all your previous responses to long input, and several
+other things.
+</p>
+
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT2" href="#DOCF2">(2)</a></h5>
+<p>Actually, it can be in a region of the disk
+used to simulate a larger memory. <code class="code">ne</code> will switch to such a simulation whenever
+the computer&rsquo;s memory is not sufficient for editing a file. This means, in particular,
+that out-of-memory errors can be caused by insufficient disk space, too.</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>FastGUI (ne&rsquo;s manual)</title>
+
+<meta name="description" content="FastGUI (ne&rsquo;s manual)">
+<meta name="keywords" content="FastGUI (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="FreeForm.html" rel="next" title="FreeForm">
+<link href="Insert.html" rel="prev" title="Insert">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="FastGUI">
+<div class="nav-panel">
+<p>
+Next: <a href="FreeForm.html" accesskey="n" rel="next">FreeForm</a>, Previous: <a href="Insert.html" accesskey="p" rel="prev">Insert</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="FastGUI-1"><span>4.9.5 FastGUI<a class="copiable-link" href="#FastGUI-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-FastGUI"></a>
+
+<p>Syntax: <code class="code">FastGUI [0|1]</code><br>
+Abbreviation: <code class="code">FG</code>
+</p>
+<p>sets the fast graphical user interface flag. When this flag is
+true, <code class="code">ne</code> tries to print as little as possible while displaying
+menus and the status bar. In particular, menu items are highlighted by
+the cursor only, the status bar is not highlighted (which allows
+printing it with fewer characters), the current position of the mark is not
+highlighted, and the hexadecimal code for the character under the cursor is not
+displayed. This option is only (but very) useful if you are using <code class="code">ne</code>
+through a slow connection.
+</p>
+<p>If you invoke <code class="code">FastGUI</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively.
+</p>
+<p>The <code class="code">FastGUI</code> setting is saved in your <samp class="file">~/.ne/.default#ap</samp> file
+when you use the <code class="code">SaveDefPrefs</code> command or the &lsquo;<samp class="samp">Save Def Prefs</samp>&rsquo; menu.
+It is not saved by the <code class="code">SaveAutoPrefs</code> command.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

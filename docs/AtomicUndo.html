@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>AtomicUndo (ne&rsquo;s manual)</title>
+
+<meta name="description" content="AtomicUndo (ne&rsquo;s manual)">
+<meta name="keywords" content="AtomicUndo (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Undo-Commands.html" rel="up" title="Undo Commands">
+<link href="DoUndo.html" rel="prev" title="DoUndo">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="AtomicUndo">
+<div class="nav-panel">
+<p>
+Previous: <a href="DoUndo.html" accesskey="p" rel="prev">DoUndo</a>, Up: <a href="Undo-Commands.html" accesskey="u" rel="up">Undo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="AtomicUndo-1"><span>4.7.5 AtomicUndo<a class="copiable-link" href="#AtomicUndo-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-AtomicUndo"></a>
+
+<p>Syntax: <code class="code">AtomicUndo [0|+|-]</code><br>
+Abbreviation: <code class="code">AU</code>
+</p>
+<p>increases, decreases, sets or clears the <code class="code">AtomicUndo</code> level.
+The normal level is zero. All current document changes made while the
+<code class="code">AtomicUndo</code> level is above zero are treated as a single change by the
+<code class="code">Undo</code> and <code class="code">Redo</code> commands. If no parameter is given, a level of 0
+is set to 1; otherwise the current non-zero level is decremented. If 0 is
+given, the level is reset to zero. Parameters of &lsquo;<samp class="samp">+</samp>&rsquo; and &lsquo;<samp class="samp">-</samp>&rsquo; respectively
+increment and decrement the level, which in no case can be negative. If the
+level is above zero, the <code class="code">DoUndo</code> flag in the status bar, which is
+normally a lower-case &lsquo;<samp class="samp">u</samp>&rsquo;, becomes upper case &lsquo;<samp class="samp">U</samp>&rsquo;.
+</p>
+<p>Two other actions will reset the <code class="code">AtomicUndo</code> level to zero: invoking the
+<code class="code">Undo</code> command, and disabling the undo system with the <code class="code">DoUndo</code>
+command. You cannot set a non-zero <code class="code">AtomicUndo</code> level unless the undo
+system is enabled.
+</p>
+<p>Note: macros that you wish to undo and redo atomically&mdash;i.e., as if they
+were single commands&mdash;should begin with <code class="code">AtomicUndo +</code> and end with
+<code class="code">AtomicUndo -</code> so that they can call and/or be called by other macros.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

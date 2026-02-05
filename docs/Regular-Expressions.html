@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Regular Expressions (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Regular Expressions (ne&rsquo;s manual)">
+<meta name="keywords" content="Regular Expressions (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="Automatic-Preferences.html" rel="next" title="Automatic Preferences">
+<link href="Menus.html" rel="prev" title="Menus">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Regular-Expressions">
+<div class="nav-panel">
+<p>
+Next: <a href="Automatic-Preferences.html" accesskey="n" rel="next">Automatic Preferences</a>, Previous: <a href="Menus.html" accesskey="p" rel="prev">Menus</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Regular-Expressions-1"><span>3.8 Regular Expressions<a class="copiable-link" href="#Regular-Expressions-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Regular-Expressions"></a>
+
+<p>Regular expressions are a powerful way of specifying complex search and
+replace operations. <code class="code">ne</code> supports the full regular expression
+syntax on US-ASCII and 8-bit documents, but has to impose a restriction on
+character sets when searching in UTF-8 text. See <a class="xref" href="UTF_002d8-Support.html">UTF-8 Support</a>.
+</p>
+<ul class="mini-toc">
+<li><a href="#Syntax-1" accesskey="1">Syntax</a></li>
+<li><a href="#Replacing-regular-expressions" accesskey="2">Replacing regular expressions</a></li>
+</ul>
+<div class="subsection-level-extent" id="Syntax-1">
+<h4 class="subsection"><span>3.8.1 Syntax<a class="copiable-link" href="#Syntax-1"> &para;</a></span></h4>
+
+<p>The following section is taken (with minor modifications) from the GNU regular
+expression library documentation and is Copyright &copy; Free Software
+Foundation.
+</p>
+<p>A regular expression describes a set of strings.  The simplest case is one
+that describes a particular string; for example, the string &lsquo;<samp class="samp">foo</samp>&rsquo; when
+regarded as a regular expression matches &lsquo;<samp class="samp">foo</samp>&rsquo; and nothing else.
+Nontrivial regular expressions use certain special constructs so that they
+can match more than one string.  For example, the regular expression
+&lsquo;<samp class="samp">foo|bar</samp>&rsquo; matches either the string &lsquo;<samp class="samp">foo</samp>&rsquo; or the string
+&lsquo;<samp class="samp">bar</samp>&rsquo;; the regular expression &lsquo;<samp class="samp">c[ad]*r</samp>&rsquo; matches any of the strings
+&lsquo;<samp class="samp">cr</samp>&rsquo;, &lsquo;<samp class="samp">car</samp>&rsquo;, &lsquo;<samp class="samp">cdr</samp>&rsquo;, &lsquo;<samp class="samp">caar</samp>&rsquo;, &lsquo;<samp class="samp">cadddar</samp>&rsquo; and all other
+such strings with any number of &lsquo;<samp class="samp">a</samp>&rsquo;&rsquo;s and &lsquo;<samp class="samp">d</samp>&rsquo;&rsquo;s.
+</p>
+<p>Regular expressions have a syntax in which a few characters are special
+constructs and the rest are <em class="dfn">ordinary</em>.  An ordinary character is a
+simple regular expression which matches that character and nothing else. The
+special characters are &lsquo;<samp class="samp">$</samp>&rsquo;, &lsquo;<samp class="samp">^</samp>&rsquo;, &lsquo;<samp class="samp">.</samp>&rsquo;, &lsquo;<samp class="samp">*</samp>&rsquo;, &lsquo;<samp class="samp">+</samp>&rsquo;,
+&lsquo;<samp class="samp">?</samp>&rsquo;, &lsquo;<samp class="samp">[</samp>&rsquo;, &lsquo;<samp class="samp">]</samp>&rsquo; , &lsquo;<samp class="samp">(</samp>&rsquo;, &lsquo;<samp class="samp">)</samp>&rsquo; and &lsquo;<samp class="samp">\</samp>&rsquo;.  Any other
+character appearing in a regular expression is ordinary, unless a &lsquo;<samp class="samp">\</samp>&rsquo;
+precedes it.
+</p>
+<p>For example, &lsquo;<samp class="samp">f</samp>&rsquo; is not a special character, so it is ordinary,
+and therefore &lsquo;<samp class="samp">f</samp>&rsquo; is a regular expression that matches the string &lsquo;<samp class="samp">f</samp>&rsquo;
+and no other string.  (It does <em class="emph">not</em> match the string &lsquo;<samp class="samp">ff</samp>&rsquo;.)  Likewise,
+&lsquo;<samp class="samp">o</samp>&rsquo; is a regular expression that matches only &lsquo;<samp class="samp">o</samp>&rsquo;.
+</p>
+<p>Any two regular expressions <var class="var">a</var> and <var class="var">b</var> can be concatenated.
+The result is a regular expression that matches a string if <var class="var">a</var>
+matches some amount of the beginning of that string and <var class="var">b</var>
+matches the rest of the string.
+</p>
+<p>As a simple example, we can concatenate the regular expressions
+&lsquo;<samp class="samp">f</samp>&rsquo; and &lsquo;<samp class="samp">o</samp>&rsquo; to get the regular expression &lsquo;<samp class="samp">fo</samp>&rsquo;,
+which matches only the string &lsquo;<samp class="samp">fo</samp>&rsquo;.  Still trivial.
+</p>
+<p>Note: special characters are treated as ordinary ones if they are in
+contexts where their special meanings make no sense.  For example,
+&lsquo;<samp class="samp">*foo</samp>&rsquo; treats &lsquo;<samp class="samp">*</samp>&rsquo; as ordinary since there is no preceding
+expression on which the &lsquo;<samp class="samp">*</samp>&rsquo; can act. It is poor practice to depend on
+this behaviour; better to quote the special character anyway, regardless of
+where is appears.
+</p>
+<p>The following are the characters and character sequences that have special
+meaning within regular expressions. Any character not mentioned here is not
+special; it stands for exactly itself for the purposes of searching and
+matching.
+</p>
+<dl class="table">
+<dt>&lsquo;<samp class="samp">.</samp>&rsquo;</dt>
+<dd><p>is a special character that matches anything except a newline. Using
+concatenation, we can make regular expressions like &lsquo;<samp class="samp">a.b</samp>&rsquo;, which matches
+any three-character string which begins with &lsquo;<samp class="samp">a</samp>&rsquo; and ends with
+&lsquo;<samp class="samp">b</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">*</samp>&rsquo;</dt>
+<dd><p>is not a construct by itself; it is a suffix, which means the preceding
+regular expression is to be repeated as many times as possible.  In
+&lsquo;<samp class="samp">fo*</samp>&rsquo;, the &lsquo;<samp class="samp">*</samp>&rsquo; applies to the &lsquo;<samp class="samp">o</samp>&rsquo;, so &lsquo;<samp class="samp">fo*</samp>&rsquo; matches
+&lsquo;<samp class="samp">f</samp>&rsquo; followed by any number of &lsquo;<samp class="samp">o</samp>&rsquo;&rsquo;s.
+</p>
+<p>The case of zero &lsquo;<samp class="samp">o</samp>&rsquo;&rsquo;s is allowed: &lsquo;<samp class="samp">fo*</samp>&rsquo; does match
+&lsquo;<samp class="samp">f</samp>&rsquo;.
+</p>
+<p>&lsquo;<samp class="samp">*</samp>&rsquo; always applies to the <em class="emph">smallest</em> possible preceding
+expression. Thus, &lsquo;<samp class="samp">fo*</samp>&rsquo; has a repeating &lsquo;<samp class="samp">o</samp>&rsquo;, not a repeating
+&lsquo;<samp class="samp">fo</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">+</samp>&rsquo;</dt>
+<dd><p>&lsquo;<samp class="samp">+</samp>&rsquo; is like &lsquo;<samp class="samp">*</samp>&rsquo; except that at least one match for the preceding
+pattern is required for &lsquo;<samp class="samp">+</samp>&rsquo;.  Thus, &lsquo;<samp class="samp">c[ad]+r</samp>&rsquo; does not match
+&lsquo;<samp class="samp">cr</samp>&rsquo; but does match anything else that &lsquo;<samp class="samp">c[ad]*r</samp>&rsquo; would match.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">?</samp>&rsquo;</dt>
+<dd><p>&lsquo;<samp class="samp">?</samp>&rsquo; is like &lsquo;<samp class="samp">*</samp>&rsquo; except that it allows either zero or one match for
+the preceding pattern.  Thus, &lsquo;<samp class="samp">c[ad]?r</samp>&rsquo; matches &lsquo;<samp class="samp">cr</samp>&rsquo; or &lsquo;<samp class="samp">car</samp>&rsquo;
+or &lsquo;<samp class="samp">cdr</samp>&rsquo;, and nothing else.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">[ &hellip; ]</samp>&rsquo;</dt>
+<dd><p>&lsquo;<samp class="samp">[</samp>&rsquo; begins a <em class="dfn">character set</em>, which is terminated by a &lsquo;<samp class="samp">]</samp>&rsquo;.
+In the simplest case, the characters between the two form the set.
+Thus, &lsquo;<samp class="samp">[ad]</samp>&rsquo; matches either &lsquo;<samp class="samp">a</samp>&rsquo; or &lsquo;<samp class="samp">d</samp>&rsquo;,
+and &lsquo;<samp class="samp">[ad]*</samp>&rsquo; matches any string of &lsquo;<samp class="samp">a</samp>&rsquo;&rsquo;s and &lsquo;<samp class="samp">d</samp>&rsquo;&rsquo;s
+(including the empty string), from which it follows that
+&lsquo;<samp class="samp">c[ad]*r</samp>&rsquo; matches &lsquo;<samp class="samp">car</samp>&rsquo;, <i class="i">et cetera</i>.
+</p>
+<p>Character ranges can also be included in a character set, by writing two
+characters with a &lsquo;<samp class="samp">-</samp>&rsquo; between them.  Thus, &lsquo;<samp class="samp">[a-z]</samp>&rsquo; matches any
+lower-case letter.  Ranges may be intermixed freely with individual
+characters, as in &lsquo;<samp class="samp">[a-z$%.]</samp>&rsquo;, which matches any lower case letter or
+&lsquo;<samp class="samp">$</samp>&rsquo;, &lsquo;<samp class="samp">%</samp>&rsquo; or period.
+</p>
+<p>Note that the usual special characters are not special any more inside a
+character set.  A completely different set of special characters exists
+inside character sets: &lsquo;<samp class="samp">]</samp>&rsquo;, &lsquo;<samp class="samp">-</samp>&rsquo; and &lsquo;<samp class="samp">^</samp>&rsquo;. As &lsquo;<samp class="samp">\</samp>&rsquo; is
+not special inside character sets, you cannot use the shortcuts
+&lsquo;<samp class="samp">\s</samp>&rsquo; or &lsquo;<samp class="samp">\w</samp>&rsquo; there.
+</p>
+<p>To include a &lsquo;<samp class="samp">]</samp>&rsquo; in a character set, you must make it
+the first character.  For example, &lsquo;<samp class="samp">[]a]</samp>&rsquo; matches &lsquo;<samp class="samp">]</samp>&rsquo; or &lsquo;<samp class="samp">a</samp>&rsquo;.
+To include a &lsquo;<samp class="samp">-</samp>&rsquo;, you must use it in a context where it cannot possibly
+indicate a range: that is, as the first character, or immediately
+after a range.
+</p>
+<p>Note that when searching in UTF-8 text, a character set may contain
+US-ASCII characters only.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">[^ &hellip; ]</samp>&rsquo;</dt>
+<dd><p>&lsquo;<samp class="samp">[^</samp>&rsquo; begins a <em class="dfn">complement character set</em>, which matches any
+character except the ones specified.  Thus, &lsquo;<samp class="samp">[^a-z0-9A-Z]</samp>&rsquo; matches
+all characters <em class="emph">except</em> letters and digits. Also in this case, when
+searching in UTF-8 text a complemented character set may contain US-ASCII
+characters only.
+</p>
+<p>&lsquo;<samp class="samp">^</samp>&rsquo; is not special in a character set unless it is the first character.
+The character following the &lsquo;<samp class="samp">^</samp>&rsquo; is treated as if it were first (it may
+be a &lsquo;<samp class="samp">-</samp>&rsquo; or a &lsquo;<samp class="samp">]</samp>&rsquo;).
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">^</samp>&rsquo;</dt>
+<dd><p>is a special character that matches the empty string &ndash; but only if at the
+beginning of a line in the text being matched.  Otherwise it fails to match
+anything.  Thus, &lsquo;<samp class="samp">^foo</samp>&rsquo; matches a &lsquo;<samp class="samp">foo</samp>&rsquo; that occurs at the
+beginning of a line.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">$</samp>&rsquo;</dt>
+<dd><p>is similar to &lsquo;<samp class="samp">^</samp>&rsquo; but matches only at the end of a line. Thus,
+&lsquo;<samp class="samp">xx*$</samp>&rsquo; matches a string of one or more &lsquo;<samp class="samp">x</samp>&rsquo;&rsquo;s at the end of a
+line.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\</samp>&rsquo;</dt>
+<dd><p>has two functions: it quotes the above special characters (including
+&lsquo;<samp class="samp">\</samp>&rsquo;), and it introduces additional special constructs.
+</p>
+<p>Because &lsquo;<samp class="samp">\</samp>&rsquo; quotes special characters, &lsquo;<samp class="samp">\$</samp>&rsquo; is a regular
+expression that matches only &lsquo;<samp class="samp">$</samp>&rsquo;, and &lsquo;<samp class="samp">\[</samp>&rsquo; is a regular
+expression that matches only &lsquo;<samp class="samp">[</samp>&rsquo;, and so on.
+</p>
+<p>For the most part, &lsquo;<samp class="samp">\</samp>&rsquo; followed by any character matches only that
+character.  However, there are several exceptions: characters which, when
+preceded by &lsquo;<samp class="samp">\</samp>&rsquo;, are special constructs.  Such characters are always
+ordinary when encountered on their own.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">|</samp>&rsquo;</dt>
+<dd><p>specifies an alternative. Two regular expressions <var class="var">a</var> and <var class="var">b</var> with
+&lsquo;<samp class="samp">|</samp>&rsquo; in between form an expression that matches anything that either
+<var class="var">a</var> or <var class="var">b</var> will match.
+</p>
+<p>Thus, &lsquo;<samp class="samp">foo|bar</samp>&rsquo; matches either &lsquo;<samp class="samp">foo</samp>&rsquo; or &lsquo;<samp class="samp">bar</samp>&rsquo; but no other
+string.
+</p>
+<p>&lsquo;<samp class="samp">|</samp>&rsquo; applies to the largest possible surrounding expressions.  Only a
+surrounding &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; grouping can limit the grouping power of
+&lsquo;<samp class="samp">|</samp>&rsquo;.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">( &hellip; )</samp>&rsquo;</dt>
+<dd><p>is a grouping construct that serves three purposes:
+</p>
+<ol class="enumerate">
+<li> To enclose a set of &lsquo;<samp class="samp">|</samp>&rsquo; alternatives for other operations.
+Thus, &lsquo;<samp class="samp">(foo|bar)x</samp>&rsquo; matches either &lsquo;<samp class="samp">foox</samp>&rsquo; or &lsquo;<samp class="samp">barx</samp>&rsquo;.
+
+</li><li> To enclose a complicated expression for the postfix &lsquo;<samp class="samp">*</samp>&rsquo; to operate on.
+Thus, &lsquo;<samp class="samp">ba(na)*</samp>&rsquo; matches &lsquo;<samp class="samp">bananana</samp>&rsquo; <i class="i">et cetera</i>, with any (zero or
+more) number of &lsquo;<samp class="samp">na</samp>&rsquo;&rsquo;s.
+
+</li><li> To mark a matched substring for future reference.
+
+</li></ol>
+
+<p>This last application is not a consequence of the idea of a parenthetical
+grouping; it is a separate feature that happens to be assigned as a second
+meaning to the same &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; construct because there is no
+conflict in practice between the two meanings.  Here is an explanation of
+this feature:
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\<var class="var">digit</var></samp>&rsquo;</dt>
+<dd><p>After the end of a &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; construct, the matcher remembers the
+beginning and end of the text matched by that construct.  Then, later on in
+the regular expression, you can use &lsquo;<samp class="samp">\</samp>&rsquo; followed by <var class="var">digit</var> to mean
+&ldquo;match the same text matched the <var class="var">digit</var>&rsquo;th time by the &lsquo;<samp class="samp">(
+&hellip; )</samp>&rsquo; construct.&rdquo;  The &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; constructs are numbered
+in order of commencement in the regexp.
+</p>
+<p>The strings matching the first nine &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; constructs appearing
+in a regular expression are assigned numbers 1 through 9 in order of their
+beginnings.
+&lsquo;<samp class="samp">\1</samp>&rsquo; through &lsquo;<samp class="samp">\9</samp>&rsquo; may be used to refer to the text matched by
+the corresponding &lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; construct.
+</p>
+<p>For example, &lsquo;<samp class="samp">(.+)\1</samp>&rsquo; matches any non empty string that is composed of
+two identical halves.  The &lsquo;<samp class="samp">(.+)</samp>&rsquo; matches the first half, which may be
+anything non empty, but the &lsquo;<samp class="samp">\1</samp>&rsquo; that follows must match the same exact
+text.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\b</samp>&rsquo;</dt>
+<dd><p>matches the empty string, but only if it is at the beginning or
+end of a word.  Thus, &lsquo;<samp class="samp">\bfoo\b</samp>&rsquo; matches any occurrence of
+&lsquo;<samp class="samp">foo</samp>&rsquo; as a separate word.  &lsquo;<samp class="samp">\bball(s|)\b</samp>&rsquo; matches
+&lsquo;<samp class="samp">ball</samp>&rsquo; or &lsquo;<samp class="samp">balls</samp>&rsquo; as a separate word.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\B</samp>&rsquo;</dt>
+<dd><p>matches the empty string, provided it is <em class="emph">not</em> at the beginning or end
+of a word.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\&lt;</samp>&rsquo;</dt>
+<dd><p>matches the empty string, but only if it is at the beginning
+of a word.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\&gt;</samp>&rsquo;</dt>
+<dd><p>matches the empty string, but only if it is at the end of a word.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\s</samp>&rsquo;</dt>
+<dd><p>matches any white-space character in US-ASCII. These are <kbd class="key">tab</kbd>,
+<kbd class="kbd"><kbd class="key">Control</kbd>-J</kbd> (line feed),
+<kbd class="kbd"><kbd class="key">Control</kbd>-k</kbd> (vertical tab),
+<kbd class="kbd"><kbd class="key">Control</kbd>-L</kbd> (form feed),
+<kbd class="kbd"><kbd class="key">Control</kbd>-M</kbd> (carriage return), and space.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\w</samp>&rsquo;</dt>
+<dd><p>matches any word-constituent character. These are US-ASCII letters,
+numbers and the underscore, independently of the document encoding.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">\W</samp>&rsquo;</dt>
+<dd><p>matches any character that is not a word-constituent.
+</p></dd>
+</dl>
+
+</div>
+<div class="subsection-level-extent" id="Replacing-regular-expressions">
+<h4 class="subsection"><span>3.8.2 Replacing regular expressions<a class="copiable-link" href="#Replacing-regular-expressions"> &para;</a></span></h4>
+
+<p>Also the replacement string has some special feature when doing a regular
+expression search and replace. Exactly as during the search, &lsquo;<samp class="samp">\</samp>&rsquo; followed
+by <var class="var">digit</var> stands for &ldquo;the text matched the <var class="var">digit</var>&rsquo;th time by the
+&lsquo;<samp class="samp">( &hellip; )</samp>&rsquo; construct in the search expression&rdquo;. Moreover, &lsquo;<samp class="samp">\0</samp>&rsquo;
+represent the whole string matched by the regular expression. Thus, for
+instance, the replace string &lsquo;<samp class="samp">\0\0</samp>&rsquo; has the effect of doubling any string
+matched.
+</p>
+<p>Another example: if you search for &lsquo;<samp class="samp">(a+)(b+)</samp>&rsquo;, replacing with
+&lsquo;<samp class="samp">\2x\1</samp>&rsquo;, you will match any string composed by a series of &lsquo;<samp class="samp">a</samp>&rsquo;&rsquo;s
+followed by a series of &lsquo;<samp class="samp">b</samp>&rsquo;&rsquo;s, and you will replace it with the
+string obtained by moving the &lsquo;<samp class="samp">a</samp>&rsquo; in front of the &lsquo;<samp class="samp">b</samp>&rsquo;&rsquo;s, adding
+moreover &lsquo;<samp class="samp">x</samp>&rsquo; in between. For instance, &lsquo;<samp class="samp">aaaab</samp>&rsquo; will be matched and
+replaced by &lsquo;<samp class="samp">bxaaaa</samp>&rsquo;.
+</p>
+<p>Note that the backslash character can escape itself. Thus, to put a
+backslash in the replacement string, you have to use &lsquo;<samp class="samp">\\</samp>&rsquo;.
+</p>
+
+
+</div>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Automatic-Preferences.html">Automatic Preferences</a>, Previous: <a href="Menus.html">Menus</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

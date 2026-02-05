@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Encoding Mess (ne&rsquo;s manual)</title>
+
+<meta name="description" content="The Encoding Mess (ne&rsquo;s manual)">
+<meta name="keywords" content="The Encoding Mess (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="History.html" rel="next" title="History">
+<link href="Motivations-and-Design.html" rel="prev" title="Motivations and Design">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="The-Encoding-Mess">
+<div class="nav-panel">
+<p>
+Next: <a href="History.html" accesskey="n" rel="next">History</a>, Previous: <a href="Motivations-and-Design.html" accesskey="p" rel="prev">Motivations and Design</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="The-Encoding-Mess-1"><span>8 The Encoding Mess<a class="copiable-link" href="#The-Encoding-Mess-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-UTF_002d8"></a>
+<a class="index-entry-id" id="index-ISO_002d8859-family"></a>
+<a class="index-entry-id" id="index-ISO_002d8859_002d1"></a>
+
+<p><code class="code">ne</code> supports UTF-8. It can use UTF-8 for its
+input/output, and it can also interpret one or more documents as containing
+UTF-8 encoded text, acting accordingly. Note that the document content is
+actual UTF-8 text&mdash;<code class="code">ne</code> does not use wide characters. As a
+positive side-effect, <code class="code">ne</code> can support fully the ISO-10646
+standard, but nonetheless non-UTF-8 texts occupy exactly one byte per
+character.
+</p>
+<p>More precisely, <em class="emph">any</em> piece of text in <code class="code">ne</code> is classified as
+US-ASCII, 8-bit or UTF-8. A US-ASCII text contains only US-ASCII
+characters. An 8-bit text sports a one-to-one correspondence between
+characters and bytes, whereas an UTF-8 text is interpreted in UTF-8.  Of
+course, this raises a difficult question: <em class="emph">when</em> should a document be
+classified as UTF-8?
+</p>
+<p>Character encodings are a mess. There is nothing we can do to change
+this fact, as character encodings are <em class="emph">metadata that modify data
+semantics</em>. The same file may represent different texts of different
+lengths when interpreted with different encodings. Thus, there is no safe
+way of guessing the encoding of a file.
+</p>
+<p><code class="code">ne</code> stays on the safe side: it will never try to convert a file
+from an encoding to another one. It can, however, interpret data
+contained in a document depending on an encoding: in other words,
+encodings are truly treated as metadata. You can switch off UTF-8
+at any time, and see the same document as a standard 8-bit file.
+</p>
+<p>Moreover, <code class="code">ne</code> uses a <em class="emph">lazy</em> approach to the problem: first of
+all, unless the UTF-8 automatic detection flag is set
+(see <a class="pxref" href="UTF8Auto.html">UTF8Auto</a>), no attempt is ever made to consider a file as UTF-8
+encoded.  Every file, clip, command line, etc., is firstly scanned for
+non-US-ASCII characters: if it is entirely made of US-ASCII characters,
+it is classified as US-ASCII. An US-ASCII piece of text is compatible
+with anything else&mdash;it may be pasted in any document, or, if it is a
+document, it may accept any form of text. Documents classified as US-ASCII
+are distinguished by an &lsquo;<samp class="samp">A</samp>&rsquo; on the status bar.
+</p>
+<p>As soon as a user action forces a choice of encoding (e.g., an accented
+character is typed, or an UTF-8-encoded clip is pasted), <code class="code">ne</code> fixes
+the mode to 8-bit or UTF-8 (when there is a choice, this depends on
+the value of the <a class="ref" href="UTF8Auto.html">UTF8Auto</a> flag). Of course, in some cases this may
+be impossible, and in that case an error will be reported.
+</p>
+<p>All this happens behind the scenes, and it is designed so that in 99% of
+the cases there is no need to think of encodings. In any case, should
+<code class="code">ne</code>&rsquo;s behaviour not match your needs, you can always change at run
+time the level of UTF-8 support.
+</p>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="History.html">History</a>, Previous: <a href="Motivations-and-Design.html">Motivations and Design</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

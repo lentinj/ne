@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>InsertChar (ne&rsquo;s manual)</title>
+
+<meta name="description" content="InsertChar (ne&rsquo;s manual)">
+<meta name="keywords" content="InsertChar (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Editing-Commands.html" rel="up" title="Editing Commands">
+<link href="InsertString.html" rel="next" title="InsertString">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="InsertChar">
+<div class="nav-panel">
+<p>
+Next: <a href="InsertString.html" accesskey="n" rel="next">InsertString</a>, Up: <a href="Editing-Commands.html" accesskey="u" rel="up">Editing Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="InsertChar-1"><span>4.11.1 InsertChar<a class="copiable-link" href="#InsertChar-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-InsertChar"></a>
+
+<p>Syntax: <code class="code">InsertChar [<var class="var">code</var>]</code><br>
+Abbreviation: <code class="code">IC</code>
+</p>
+<p>inserts a character whose <small class="sc">ASCII</small> code is <var class="var">code</var> at the
+current cursor position. <var class="var">code</var> can be either decimal, hexadecimal if
+preceded by &lsquo;<samp class="samp">0x</samp>&rsquo;, or octal if preceded by &lsquo;<samp class="samp">0</samp>&rsquo;. In any case,
+<var class="var">code</var> must be different from 0. All the currently active preferences
+options (insert, word wrapping, auto indent, <i class="i">et cetera</i>) are applied.
+</p>
+<p>If the optional argument <var class="var">code</var> is not specified, you can enter it on
+the input line, the default being the last inserted character.
+</p>
+<p>Note that inserting a line feed (10) is completely different from inserting
+a line with <code class="code">InsertLine</code>. <code class="code">InsertChar 10</code> puts the control char
+<kbd class="kbd"><kbd class="key">Control</kbd>-J</kbd> in the text at the current cursor position.
+See <a class="ref" href="InsertLine.html">InsertLine</a>.
+</p>
+<p>Note also that <code class="code">SaveMacro</code> converts <code class="code">InsertChar</code> commands into
+a possibly smaller number of <code class="code">InsertString</code> commands.
+This makes macros easier to read and edit. See <a class="ref" href="SaveMacro.html">SaveMacro</a>.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

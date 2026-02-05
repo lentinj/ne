@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Input Line (ne&rsquo;s manual)</title>
+
+<meta name="description" content="The Input Line (ne&rsquo;s manual)">
+<meta name="keywords" content="The Input Line (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="The-Command-Line.html" rel="next" title="The Command Line">
+<link href="The-Status-Bar.html" rel="prev" title="The Status Bar">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="The-Input-Line">
+<div class="nav-panel">
+<p>
+Next: <a href="The-Command-Line.html" accesskey="n" rel="next">The Command Line</a>, Previous: <a href="The-Status-Bar.html" accesskey="p" rel="prev">The Status Bar</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="The-Input-Line-1"><span>3.3 The Input Line<a class="copiable-link" href="#The-Input-Line-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Input-line"></a>
+<a class="index-entry-id" id="index-Escaping-an-input"></a>
+<a class="index-entry-id" id="index-Immediate-input"></a>
+<a class="index-entry-id" id="index-Long-input"></a>
+<a class="index-entry-id" id="index-File-name-completion"></a>
+
+<p>The bottom line of the screen is usually occupied by the status bar
+(see <a class="pxref" href="The-Status-Bar.html">The Status Bar</a>). However, whenever <code class="code">ne</code> prompts you for a
+command or file name or asks you to confirm some action, the bottom line
+becomes the <em class="dfn">input line</em>. You can see this because a <em class="dfn">prompt</em> is
+displayed at the start of the line, suggesting what kind of input is
+required. (Prompts always ends with a colon, so it is easy to
+distinguish them from <em class="dfn">error messages</em>, which overwrite the status
+bar from time to time.)
+</p>
+<p><code class="code">ne</code> uses the input line in two essentially different ways:
+<em class="dfn">immediate</em> input and <em class="dfn">long</em> input. You can easily distinguish
+between these two modes because in immediate input mode the cursor is
+not on the input line, while for long input mode it is.
+</p>
+<p>Immediate input is used whenever <code class="code">ne</code> needs you to specify a simple
+choice that can be expressed by one character (for example, &lsquo;<samp class="samp">y</samp>&rsquo; or
+&lsquo;<samp class="samp">n</samp>&rsquo;). When you type the character, <code class="code">ne</code> will immediately
+accept and use your input. Most immediate inputs display a character
+just after the prompt. This character is the default response, which is
+used if you just press the <kbd class="key">Return</kbd> key. Note that immediate input
+is not case sensitive. Moreover, if a yes/no choice is requested,
+<em class="emph">anything</em> other than &lsquo;<samp class="samp">y</samp>&rsquo; will be considered a negative
+response.
+</p>
+<p>Long input is used when a whole string is required. You can enter and
+edit your response to long inputs like a line of text in a
+document. Most key bindings related to line editing work on the command
+line exactly as they do in a document. This is true even of custom key
+bindings. Just edit as you are used to. Moreover, the you can paste the
+first line of the current clip using the keystroke that is bound to the
+<code class="code">Paste</code> command, usually <kbd class="kbd"><kbd class="key">Control</kbd>-V</kbd>. If your long input
+is longer than the screen width, the input line scrolls to accommodate
+your text so you can input very long lines even on small
+monitors. (There is a limit of 2048 characters.)
+</p>
+<p>The default response to a long input is the response you gave to the
+previous long input. Your <em class="emph">first action</em> when presented with a long
+input will either erase the default response or allow you to edit it. If
+the first thing you type is a printing character, the default response
+will be erased. Anything else (cursor movement for example) will allow
+you to edit it further.
+</p>
+<p>Long input also lets you access your previous long input responses with
+the up and down cursor commands (or with wider movement commands, such
+as start/end of file, page up/down, etc.). Once you find a previous
+input you like, you can edit it further. Long input history is not
+document specific, so you can recall any of your inputs regardless of
+which document was active when you entered it. Furthermore, <code class="code">ne</code>
+saves the most recent long inputs in <samp class="file">~/.ne/.history</samp> when you end
+your <code class="code">ne</code> session and loads them again when you begin another
+<code class="code">ne</code> session.
+</p>
+<p>Invoking the <code class="code">Find</code> command, usually bound to
+<kbd class="kbd"><kbd class="key">Control</kbd>-F</kbd>, brings up a requester showing your prior inputs.
+You can close the requester with the <kbd class="key">Escape</kbd> key, replace your
+input line with a highlighted prior entry with the <kbd class="key">Enter</kbd> key, or
+insert that prior entry into your input line with the <kbd class="key">Tab</kbd> key.
+</p>
+<p>When asked to input a number, you can choose between decimal, octal and
+hexadecimal notation in the standard way: a number starting with
+&lsquo;<samp class="samp">0</samp>&rsquo; is considered in octal, a number starting with &lsquo;<samp class="samp">0x</samp>&rsquo; is
+considered in hexadecimal, and in all other cases decimal base is
+assumed.
+</p>
+<p>Whenever a file name is requested, you can type a partial file name and
+<em class="dfn">complete</em> it with the <kbd class="key">Tab</kbd> key. <code class="code">ne</code> will scan the
+current directory (or the directory that you partially specified) and
+search for the files matching your partial suggestion. The longest
+prefix common to all such files will be copied to the input line
+(<code class="code">ne</code> will beep if no completion exists). It&rsquo;s easier done than
+said&mdash;just try. If you press <kbd class="key">Tab</kbd> again, you will be brought into
+the file requester: only the files and directories matching your partial
+specification will appear, and as usual you will be able to navigate and
+select a file or escape. See <a class="xref" href="The-Requester.html">The Requester</a>.  Note that <code class="code">ne</code>
+considers the <em class="emph">last word</em> on the input line the partial file name
+to complete, no matter where the cursor is currently (you must use quotes
+if the name contains spaces, even if it is the only item on the input line).
+</p>
+<p>Complete long input with the <kbd class="key">Return</kbd> key. You can cancel a long
+input using <kbd class="key">f1</kbd>, <kbd class="key">Escape</kbd>, <kbd class="key">Escape</kbd>-<kbd class="key">Escape</kbd> or any key
+that is bound to the <code class="code">Escape</code> command. The effect will vary depending
+on what your were requested to input, but the execution of the command
+requiring the input will stop.
+</p>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="The-Command-Line.html">The Command Line</a>, Previous: <a href="The-Status-Bar.html">The Status Bar</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

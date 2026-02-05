@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Motivations and Design (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Motivations and Design (ne&rsquo;s manual)">
+<meta name="keywords" content="Motivations and Design (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="The-Encoding-Mess.html" rel="next" title="The Encoding Mess">
+<link href="Hints-and-Tricks.html" rel="prev" title="Hints and Tricks">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Motivations-and-Design">
+<div class="nav-panel">
+<p>
+Next: <a href="The-Encoding-Mess.html" accesskey="n" rel="next">The Encoding Mess</a>, Previous: <a href="Hints-and-Tricks.html" accesskey="p" rel="prev">Hints and Tricks</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Motivations-and-Design-1"><span>7 Motivations and Design<a class="copiable-link" href="#Motivations-and-Design-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-Mode"></a>
+<a class="index-entry-id" id="index-curses"></a>
+<a class="index-entry-id" id="index-POSIX-1"></a>
+<a class="index-entry-id" id="index-terminfo-1"></a>
+<a class="index-entry-id" id="index-termcap-1"></a>
+<a class="index-entry-id" id="index-Magic-cookie-terminals"></a>
+<a class="index-entry-id" id="index-Resource-usage"></a>
+<a class="index-entry-id" id="index-Interrupt-character-1"></a>
+
+<p>In this chapter I will try to outline the rationale behind <code class="code">ne</code>&rsquo;s
+design choices. Moreover, some present, voluntary limitations of the current
+implementation will be described. The intended audience of such a
+description is the programmer wanting to hack up <code class="code">ne</code>&rsquo;s sources, or the
+informed user wanting to deepen his knowledge of the limitations.
+</p>
+<p>The design goal of <code class="code">ne</code> was to write an editor that is easy to use
+at first sight, powerful, and completely configurable. Making <code class="code">ne</code>
+run on any terminal that <code class="code">vi</code> could handle was also a basic issue,
+because there is no use getting accustomed to a new tool if you cannot
+use it when you really need it. Finally, using resources sparingly was
+considered essential.
+</p>
+<p><code class="code">ne</code> has no concept of <em class="emph">mode</em>. All shortcuts are defined by a
+single key, possibly with a modifier (such as <kbd class="key">Control</kbd> or <kbd class="key">Meta</kbd>).
+Modality is in my opinion a Bad Thing unless it has a very clear visual
+feedback. As an example, menus are a form of modality. After entering the
+menus, the alphabetic keys and the navigation keys have a different meaning.
+But the modality is clearly reflected by a change in the  user
+interface. The same can be said about the input line, because it is always
+preceded by a (possibly highlighted) prompt ending with a colon.
+</p>
+<p><code class="code">ne</code> has no sophisticated visual updating system similar to, for
+instance, the one of <code class="code">curses</code>. All updating is done while
+manipulating the text, and only if the turbo flag is set can some iterated
+operations delay the update. (In this case, <code class="code">ne</code> keeps track in a
+very rough way of the part of the screen that changed.) Moreover, the
+output is not preempted by additional input coming in, so that along a
+slow connection the output could not keep up with the input. However,
+along reasonably fast connections, the responsiveness of the editor is
+greatly enhanced by the direct update. And since we update the screen in
+parallel with the internal representation, we can exploit our knowledge to
+output a very small number of characters per modification. As it is
+typical in <code class="code">ne</code>, when such design tradeoffs arise, preference is
+given to the solution that is effective on a good part of the existing
+hardware and will be very effective on most future hardware.
+</p>
+<p><code class="code">ne</code> uses a particular scheme for handling text. There is a doubly
+linked list of line descriptors that contain pointers to each line of text.
+The lines themselves are kept in a list of pools, which is expanded and
+reduced dynamically. The interesting thing is that for each pool <code class="code">ne</code>
+keeps track just of the first and of the last character used. A character is
+free iff it contains a null, so there is no need for a list of free chunks.
+The point is that the free characters lying between that first and the last
+used characters (the <em class="dfn">lost</em> characters) can only be allocated
+<em class="emph">locally</em>: whenever a line has to grow in length, <code class="code">ne</code> first
+checks if there are enough free characters around it. Otherwise, it remaps
+the line elsewhere. Since editing is essentially a local activity, the
+number of such lost characters remains very low. And the manipulation of a
+line is extremely fast and independent of the size of the file, which can be
+very huge. A mathematical analysis of the space/time tradeoff is rather
+difficult, but empirical evidence suggests that the idea works.
+</p>
+<p><code class="code">ne</code> takes the <small class="sc">POSIX</small> standard as the basis for <small class="sc">UN*X</small>
+compatibility. The fact that this standard has been designed by a worldwide
+recognized and impartial organization such as <small class="sc">IEEE</small> makes it in my
+opinion the most interesting effort in its league. No attempt is made to
+support ten thousand different versions and releases by using conditional
+compilation. Very few assumptions are made about the behaviour of the system
+calls. This has obvious advantages in terms of code testing, maintenance, and
+reliability. For the same reasons, the availability of an <small class="sc">ANSI</small> C
+(C99) compiler is assumed.
+</p>
+<p>If the system has a <code class="code">terminfo</code> database and the related functions
+(which are usually contained in the <code class="code">curses</code> library), <code class="code">ne</code> will
+use them. The need for a terminal capability database is clear, and the
+choice of <code class="code">terminfo</code> (with respect to <code class="code">termcap</code>) is compulsory
+if you want to support a series of features (such as more than ten
+function keys) that <code class="code">termcap</code> lacks. If <code class="code">terminfo</code> is not
+available, <code class="code">ne</code> can use a <code class="code">termcap</code> database, or, as a last
+resort, a built-in set of ANSI control sequences. Some details about
+this can be found in <a class="ref" href="Portability-Problems.html">Portability Problems</a>.
+</p>
+<p><code class="code">ne</code> does not allow redefinition of the <kbd class="key">Escape</kbd>, <kbd class="key">Tab</kbd> or
+<kbd class="key">Return</kbd> keys, nor of the interrupt character
+<kbd class="kbd"><kbd class="key">Control</kbd>-\</kbd>. This decision has been made mainly for two
+reasons. First of all, it is necessary to keep a user from transforming
+<code class="code">ne</code>&rsquo;s bindings to such a point that another unaware user cannot
+work with it. These two keys and the alphabetic keys allow activating
+any command without any further knowledge of the key bindings, so it
+seems to me this is a good choice. As a second point, the <kbd class="key">Escape</kbd>
+key usage should generally be avoided. The reason is that most escape
+sequences that are produced by special keys start with the escape
+character. When <kbd class="key">Escape</kbd> is pressed, <code class="code">ne</code> has to wait for one
+second (this timing can be changed with the <code class="code">EscapeTime</code> command),
+just to be sure that it did not receive the first character of an escape
+sequence. This makes the response of the key very slow, unless it is
+immediately followed by another key such as &lsquo;<samp class="samp">:</samp>&rsquo;, or by <kbd class="key">Escape</kbd>,
+again.  See <a class="xref" href="Hints-and-Tricks.html">Hints and Tricks</a>.
+</p>
+<p>Note that, as has been stated several times, the custom key bindings also work
+when doing a long input, navigating through the menus or browsing the
+requester. However, this is only partially true. To keep the code size
+and complexity down, in these cases <code class="code">ne</code> recognizes only direct bindings to
+commands, and discards the arguments. Thus, for instance, if a key is bound to
+the command line <code class="code">LineUp 2</code>, it will act like <code class="code">LineUp</code>, while a
+binding to <code class="code">Macro MoveItUp</code> would produce no result. Of course full
+binding capability is available while writing text. (This limitation will
+probably be lifted in a future version: presently it does not seem to limit
+seriously the configurability of <code class="code">ne</code>.)
+</p>
+<p><code class="code">ne</code> has some restrictions in its terminal handling. It does not support
+highlighting on terminals that use a magic cookie. Supporting such terminals
+correctly is a royal pain, and I did not have any means of testing the code anyway.
+Moreover, they are rather obsolete. Another lack of support is for the
+capability strings that specify a file to print or a program to launch in
+order to initialize the terminal.
+</p>
+<p>The macro capabilities of <code class="code">ne</code> are rather limited. For instance, you
+cannot give an argument to a macro: macros are simply sequences of commands that can be played
+back automatically. This makes them very useful for everyday use in a
+learn/play context, but rather inflexible for extending the capabilities of the
+editor.
+</p>
+<p><code class="code">ne</code> has been written with sparing resource use as a basic goal.
+Every possible effort has been made to reduce the use of <small class="sc">CPU</small> time and
+memory, the number of system calls, and the number of characters output to
+the terminal. For instance, command parsing is done through hash
+techniques, and the escape sequence analysis uses the order structure of
+strings for minimizing the number of comparisons. The optimal cursor
+motion functions were directly copied from <code class="code">emacs</code>. The update of
+files using syntax highlighting is as lazy as possible: modifications
+cause just the update of the current line, and the rest of the screen is
+updated only when you move away. The search algorithm is a simplified
+version of the Boyer-Moore algorithm that provides high performance with a
+minimal setup time. An effort has been taken to move to the text segment
+all data that do not change during the program execution. When the status
+bar is switched off, additional optimizations reduce the cursor movement
+to a minimum.
+</p>
+<p>A word should be said about lists. Clearly, handling the text as a
+single block with an insertion gap (a la <code class="code">emacs</code>) allows you to
+gain some memory. However, the management of the text as a linked list
+requires much less <small class="sc">CPU</small> time, and the tradeoff seems to be
+particularly favorable on virtual memory systems, where moving the
+insertion gap can require a lot of accesses to different pages.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="The-Encoding-Mess.html">The Encoding Mess</a>, Previous: <a href="Hints-and-Tricks.html">Hints and Tricks</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Redo (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Redo (ne&rsquo;s manual)">
+<meta name="keywords" content="Redo (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Undo-Commands.html" rel="up" title="Undo Commands">
+<link href="UndelLine.html" rel="next" title="UndelLine">
+<link href="Undo.html" rel="prev" title="Undo">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Redo">
+<div class="nav-panel">
+<p>
+Next: <a href="UndelLine.html" accesskey="n" rel="next">UndelLine</a>, Previous: <a href="Undo.html" accesskey="p" rel="prev">Undo</a>, Up: <a href="Undo-Commands.html" accesskey="u" rel="up">Undo Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Redo-1"><span>4.7.2 Redo<a class="copiable-link" href="#Redo-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Redo"></a>
+
+<p>Syntax: <code class="code">Redo [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">RE</code>
+</p>
+<p>redoes the last <var class="var">n</var> actions undone by <code class="code">Undo</code> (as long
+as you don&rsquo;t take any actions that change the text between the
+<code class="code">Undo</code> and <code class="code">Redo</code> commands). If <var class="var">n</var> is not specified, it
+is assumed to be one. You can only <code class="code">Redo</code> actions that have been
+<code class="code">Undo</code>ne. See <a class="ref" href="Undo.html">Undo</a>.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

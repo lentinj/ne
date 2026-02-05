@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Basic Preferences (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Basic Preferences (ne&rsquo;s manual)">
+<meta name="keywords" content="Basic Preferences (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Basic-Macros.html" rel="next" title="Basic Macros">
+<link href="Editing.html" rel="prev" title="Editing">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Basic-Preferences">
+<div class="nav-panel">
+<p>
+Next: <a href="Basic-Macros.html" accesskey="n" rel="next">Basic Macros</a>, Previous: <a href="Editing.html" accesskey="p" rel="prev">Editing</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Basic-Preferences-1"><span>2.5 Basic Preferences<a class="copiable-link" href="#Basic-Preferences-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Preferences"></a>
+<a class="index-entry-id" id="index-Flags-1"></a>
+<a class="index-entry-id" id="index-Insert-mode"></a>
+<a class="index-entry-id" id="index-Automatic-preferences"></a>
+<a class="index-entry-id" id="index-Virtual-Extensions"></a>
+
+<p><code class="code">ne</code> has a number of <em class="dfn">flags</em> that specify alternative
+behaviors, the most prototypical example being the <em class="dfn">insert</em> flag,
+which specifies whether the text you type is inserted into the existing text
+or replaces it. You can toggle this flag with the &lsquo;<samp class="samp">Insert</samp>&rsquo; menu
+item of the &lsquo;<samp class="samp">Prefs</samp>&rsquo; menu, or with the <kbd class="key">Insert</kbd> key of your
+keyboard. (<em class="dfn">Toggle</em> means to change the value of a flag from true to
+false, or from false to true; see <a class="pxref" href="Insert.html">Insert</a>.)
+</p>
+<p>Another important flag is the <em class="dfn">free form</em> flag, which specifies
+whether the cursor can be moved beyond the right end of each line of
+text or only to existing text (a la <code class="code">vi</code>). Programmers usually
+prefer non free form editing; text writers seem to prefer free form. See
+<a class="ref" href="FreeForm.html">FreeForm</a> for some elaboration. The free form flag can be set with
+the &lsquo;<samp class="samp">Free Form</samp>&rsquo; menu item of the &lsquo;<samp class="samp">Prefs</samp>&rsquo; menu.
+</p>
+<p>At this point, we suggest you explore by trial and error the other
+flags of the &lsquo;<samp class="samp">Prefs</samp>&rsquo; menu, or try the <code class="code">Flags</code> command (see <a class="pxref" href="Flags.html">Flags</a>),
+which explains all the flags and the commands that operate on
+them. We prefer spending a few words discussing <em class="dfn">automatic
+preferences</em> or <em class="dfn">autoprefs</em>, and <em class="dfn">default preferences</em> or <em class="dfn">defprefs</em>.
+</p>
+<p>Having many flags ensures a high degree of flexibility, but it can turn
+editing into a nightmare if you have to turn on and off dozens of flags
+for each different kind of file you edit. <code class="code">ne</code>&rsquo;s solution is to
+load your default preferences whenever <code class="code">ne</code> is run before loading
+any file, then additionally set your stated preferences automatically
+for each <em class="dfn">file type</em> as files are loaded. A file&rsquo;s type is determined
+by the <em class="dfn">extension</em> of its file name, that is, the last group of letters
+after the last dot. For instance, the extension of <samp class="file">ne.texinfo</samp> is
+&lsquo;<samp class="samp">texinfo</samp>&rsquo;, the extension of <samp class="file">source.c</samp> is &lsquo;<samp class="samp">c</samp>&rsquo;, and the
+extension of <samp class="file">my.txt</samp> is &lsquo;<samp class="samp">txt</samp>&rsquo;.
+</p>
+<p>Thus, when you select the &lsquo;<samp class="samp">Save Def Prefs</samp>&rsquo; menu item or use the
+<code class="code">SaveDefPrefs</code> command, a special preferences file named
+<samp class="file">.default#ap</samp> is saved. In addition to other preferences, this file also
+includes a small set of preferences which are global to <code class="code">ne</code> rather than
+specific to particular document types. These preferences are: <code class="code">FastGUI</code>,
+<code class="code">RequestOrder</code>, <code class="code">StatusBar</code> and <code class="code">VerboseMacros</code>;
+see <a class="pxref" href="FastGUI.html">FastGUI</a>, See <a class="xref" href="RequestOrder.html">RequestOrder</a>, See <a class="xref" href="StatusBar.html">StatusBar</a>, and
+See <a class="xref" href="VerboseMacros.html">VerboseMacros</a>. These extra preferences are not saved by the
+<code class="code">SaveAutoPrefs</code> command.
+</p>
+<p>By contrast, whenever you select the &lsquo;<samp class="samp">Save AutoPrefs</samp>&rsquo; menu item, <code class="code">ne</code> saves
+the flags of your current document to be used when
+you load other files with the same extension.
+These <em class="dfn">autoprefs</em> are saved in a file in your <samp class="file">~/.ne</samp>
+directory. This file has the same name as the extension of the current
+document with &lsquo;<samp class="samp">#ap</samp>&rsquo; appended to it. It contains all the commands
+necessary to recreate your current document&rsquo;s flag settings. Whenever
+you open a file with this file name extension, <code class="code">ne</code> will
+automagically recreate your preferred flag settings for that file type.
+(There is a flag that inhibits the process; see <a class="pxref" href="AutoPrefs.html">AutoPrefs</a>.)
+</p>
+<p>Similar to preference flags, the current syntax definition is specific to the current
+document type, so it also is saved in autoprefs files by the
+<code class="code">SaveAutoPrefs</code> command or &lsquo;<samp class="samp">Save AutoPrefs</samp>&rsquo; menu; it is not
+saved in the <samp class="file">.default#ap</samp> file.
+</p>
+<p>Note that a preferences file&mdash;whether <samp class="file">.default#ap</samp> or an AutoPrefs file&mdash;
+is just a macro (as described in the following section). Thus, it can be edited manually if necessary.
+</p>
+<p>Some files have no extension, but the file type can be discerned by simple
+examination. Consider for example a file named <samp class="file">example</samp> which contains XML.
+You may reasonably expect it to be treated as an <samp class="file">.xml</samp> file rather than
+a generic file. For the purposes of applying automatic preferences and
+syntax definitions, <code class="code">ne</code> provides a mechanism for overriding a wrong or
+missing extension with a <em class="dfn">virtual extension</em> based on a document&rsquo;s
+contents. You do this by creating a <samp class="file">~/.ne/.extensions</samp> file which is
+fully described in the <a class="ref" href="Virtual-Extensions.html">Virtual Extensions</a> section.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Basic-Macros.html">Basic Macros</a>, Previous: <a href="Editing.html">Editing</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

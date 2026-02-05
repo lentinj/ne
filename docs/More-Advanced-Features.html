@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>More Advanced Features (ne&rsquo;s manual)</title>
+
+<meta name="description" content="More Advanced Features (ne&rsquo;s manual)">
+<meta name="keywords" content="More Advanced Features (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Basic-Macros.html" rel="prev" title="Basic Macros">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="More-Advanced-Features">
+<div class="nav-panel">
+<p>
+Previous: <a href="Basic-Macros.html" accesskey="p" rel="prev">Basic Macros</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="More-Advanced-Features-1"><span>2.7 More Advanced Features<a class="copiable-link" href="#More-Advanced-Features-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-UTF_002d8-support"></a>
+<a class="index-entry-id" id="index-Bookmarks"></a>
+<a class="index-entry-id" id="index-Automatic-Completion"></a>
+<a class="index-entry-id" id="index-Automatic-Bracket-Matching"></a>
+<a class="index-entry-id" id="index-MS_002dDOS-files"></a>
+<a class="index-entry-id" id="index-File-requester-1"></a>
+<a class="index-entry-id" id="index-Binary-files"></a>
+<a class="index-entry-id" id="index-Executing-uni_002ax-commands"></a>
+
+<ul class="mini-toc">
+<li><a href="#UTF_002d8-support" accesskey="1">UTF-8 support</a></li>
+<li><a href="#Bookmarks" accesskey="2">Bookmarks</a></li>
+<li><a href="#Automatic-Completion" accesskey="3">Automatic Completion</a></li>
+<li><a href="#Automatic-Bracket-Matching" accesskey="4">Automatic Bracket Matching</a></li>
+<li><a href="#MS_002dDOS-files" accesskey="5">MS-DOS files</a></li>
+<li><a href="#Binary-files" accesskey="6">Binary files</a></li>
+<li><a href="#File-requester" accesskey="7">File requester</a></li>
+<li><a href="#Executing-un_002ax-commands" accesskey="8">Executing <small class="sc">UN*X</small> commands</a></li>
+<li><a href="#Advanced-key-bindings" accesskey="9">Advanced key bindings</a></li>
+</ul>
+<div class="subsection-level-extent" id="UTF_002d8-support">
+<h4 class="subsection"><span>2.7.1 UTF-8 support<a class="copiable-link" href="#UTF_002d8-support"> &para;</a></span></h4>
+<p><code class="code">ne</code> can load and
+manipulate UTF-8 files transparently, in particular on systems that
+provide UTF-8 I/O. See <a class="xref" href="UTF_002d8-Support.html">UTF-8 Support</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="Bookmarks">
+<h4 class="subsection"><span>2.7.2 Bookmarks<a class="copiable-link" href="#Bookmarks"> &para;</a></span></h4>
+<p>It often happens that you have to browse through a file, switching
+frequently between a small number of positions. In this case, you can use
+<em class="dfn">bookmarks</em>. There are up to ten bookmarks per document, each
+designated by a single digit, with the default being &lsquo;<samp class="samp">0</samp>&rsquo;. You can set
+them with the <code class="code">SetBookmark</code> command, and you can return to any set
+bookmark with the <code class="code">GotoBookmark</code> command. Another pair of bookmarks
+designated by &lsquo;<samp class="samp">&lt;</samp>&rsquo; and &lsquo;<samp class="samp">&gt;</samp>&rsquo; mark the start and end points of the
+last block of text you pasted into your current document. So for example
+<code class="code">GotoBookmark &gt;</code> will take you to the end of the most recently pasted
+text. Also, <code class="code">ne</code> sets an
+automatic bookmark (designated by &lsquo;<samp class="samp">-</samp>&rsquo;) at your current position in a
+document whenever you use the <code class="code">GotoBookmark</code> command. You can use
+a <code class="code">GotoBookmark -</code> command to return to the location of the previous
+<code class="code">GotoBookmark</code> command. Doing so will reset the automatic bookmark,
+so that subsequent <code class="code">GotoBookmark -</code> commands will switch between
+those two locations. The special parameters &lsquo;<samp class="samp">+1</samp>&rsquo; and &lsquo;<samp class="samp">-1</samp>&rsquo;
+indicate the next or previous set bookmark in conjunction with
+<code class="code">GotoBookmark</code> and <code class="code">UnsetBookmark</code>, but reference the next or
+previous unset bookmark when used with <code class="code">SetBookmark</code>. A sequence of
+<code class="code">GotoBookmark +1</code> commands lets you easily cycle through all your set
+bookmarks. Finally, the special parameter &lsquo;<samp class="samp">?</samp>&rsquo; causes <code class="code">SetBookmark</code>
+and <code class="code">GotoBookmark</code> to prompt you for a bookmark designation. This prompt
+includes an indication of which bookmarks are already set for the current
+document. See <a class="xref" href="SetBookmark.html">SetBookmark</a>, <a class="ref" href="GotoBookmark.html">GotoBookmark</a>, and
+<a class="ref" href="UnsetBookmark.html">UnsetBookmark</a>. Note that in the default configuration no key binding
+is assigned to these commands. If you use them frequently, you may want to
+change the key bindings. See <a class="xref" href="Key-Bindings.html">Key Bindings</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="Automatic-Completion">
+<h4 class="subsection"><span>2.7.3 Automatic Completion<a class="copiable-link" href="#Automatic-Completion"> &para;</a></span></h4>
+<p>The <code class="code">AutoComplete</code> command helps you extend a given prefix with matching
+words from your open documents.  You can specify the <code class="code">AutoComplete</code> command
+and prefix on the command line, or you can enter the prefix directly into your
+document and activate the <code class="code">AutoComplete</code> command. With the cursor at the
+right end of your prefix, activate the <code class="code">AutoComplete</code> command by entering
+either the <kbd class="key">Escape</kbd>-<kbd class="key">Tab</kbd> or the <kbd class="key">Escape</kbd>-<kbd class="key">I</kbd> key sequence, or
+the <kbd class="kbd"><kbd class="key">Control</kbd>-<kbd class="key">META</kbd>-<kbd class="key">I</kbd></kbd> key combination, or by selecting
+<code class="code">AutoComplete</code> from the <code class="code">Extras</code> menu.
+</p>
+<p>If the prefix can be extended
+unambiguously, the extension will be immediately inserted into your
+document (this is the case, for instance, if only one word matches the
+prefix), and a message will tell you whether the extension is an actual word
+or just the longest possible extension (for instance, if you expand
+&lsquo;<samp class="samp">fo</samp>&rsquo; and your document contains &lsquo;<samp class="samp">foobar</samp>&rsquo; and &lsquo;<samp class="samp">foofoo</samp>&rsquo; then the
+partial match will be &lsquo;<samp class="samp">foo</samp>&rsquo;). Otherwise, <code class="code">ne</code> presents you with
+a list of all matching words: choose the one you want and press
+<kbd class="key">Return</kbd>, to select it; otherwise, press <kbd class="key">f1</kbd>, <kbd class="key">Escape</kbd> or
+<kbd class="key">Escape</kbd>-<kbd class="key">Escape</kbd> to cancel the completion operation.
+</p>
+<p>The current
+state of the <code class="code">CaseSearch</code> flag determines whether the prefix match is
+case sensitive. Any matching words which only exist in other open
+documents but not the current one are displayed in bold with an asterisk;
+think of that as a warning that if you select one of these bold words you
+will introduce a new word into your current document. Plain words already
+exist somewhere in your current document. See <a class="xref" href="AutoComplete.html">AutoComplete</a>, and
+<a class="ref" href="CaseSearch.html">CaseSearch</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="Automatic-Bracket-Matching">
+<h4 class="subsection"><span>2.7.4 Automatic Bracket Matching<a class="copiable-link" href="#Automatic-Bracket-Matching"> &para;</a></span></h4>
+<p>Unless you tell it not to (with the <code class="code">AutoMatchBracket</code> command),
+<code class="code">ne</code> will highlight any recognized bracket that matches the
+bracket your cursor is on if that matching bracket is currently visible on
+your screen. Recognized bracket pairs are &lsquo;<samp class="samp">{}</samp>&rsquo;, &lsquo;<samp class="samp">()</samp>&rsquo;, &lsquo;<samp class="samp">[]</samp>&rsquo;,
+&lsquo;<samp class="samp">&lt;&gt;</samp>&rsquo;, and &lsquo;<samp class="samp">`'</samp>&rsquo;. See <a class="xref" href="AutoMatchBracket.html">AutoMatchBracket</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="MS_002dDOS-files">
+<h4 class="subsection"><span>2.7.5 MS-DOS files<a class="copiable-link" href="#MS_002dDOS-files"> &para;</a></span></h4>
+<p><code class="code">ne</code> will detect automagically the presence of MS-DOS line terminators
+(CR/LFs) and set the CR/LF flag. When the file will be saved, the
+terminators will be restored correctly. You can change this behaviour
+using the <code class="code">PreserveCR</code> and <code class="code">CRLF</code> commands. See <a class="xref" href="PreserveCR.html">PreserveCR</a>,
+and <a class="ref" href="CRLF.html">CRLF</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="Binary-files">
+<h4 class="subsection"><span>2.7.6 Binary files<a class="copiable-link" href="#Binary-files"> &para;</a></span></h4>
+<p><code class="code">ne</code> allows a simplified form of <em class="dfn">binary editing</em>. If the
+binary flag is set, only NULLs are considered newlines when loading or
+saving. Thus, binary files can be safely loaded, modified and saved.
+Inserting a new line or joining two lines has the effect of inserting or
+deleting a NULL. Be careful not to mismatch the state of the binary flag
+when loading and saving the same file.
+</p>
+</div>
+<div class="subsection-level-extent" id="File-requester">
+<h4 class="subsection"><span>2.7.7 File requester<a class="copiable-link" href="#File-requester"> &para;</a></span></h4>
+<p>The <code class="code">NoFileReq</code> command deactivates the file requester. It is
+intended for &ldquo;tough guys&rdquo; who always remember the names of their files and can
+type them at the speed of light (maybe with the help of the completer,
+which is activated by the <kbd class="key">Tab</kbd> key; see <a class="pxref" href="The-Input-Line.html">The Input Line</a>).
+</p>
+</div>
+<div class="subsection-level-extent" id="Executing-un_002ax-commands">
+<h4 class="subsection"><span>2.7.8 Executing <small class="sc">UN*X</small> commands<a class="copiable-link" href="#Executing-un_002ax-commands"> &para;</a></span></h4>
+<p>There are three ways to execute <small class="sc">UN*X</small> commands from within <code class="code">ne</code>.
+The <code class="code">System</code> command can run any <small class="sc">UN*X</small> command; you
+will get back into <code class="code">ne</code> as soon as the command execution terminates.
+See <a class="xref" href="System.html">System</a>. The <code class="code">Through</code> (<kbd class="kbd"><kbd class="key">Meta</kbd>-T</kbd>) command (which can be found in the
+&lsquo;<samp class="samp">Edit</samp>&rsquo; menu), however, is much more powerful; it cuts the current
+block, passes it as standard input to any <small class="sc">UN*X</small> command, and pastes the
+command&rsquo;s output at the current cursor position. This provides a neat
+way to pass a part of your document through one of <small class="sc">UN*X</small>&rsquo;s many
+<em class="dfn">filter commands</em> (commands that read from standard input and write
+to standard output, e.g., <code class="code">sort</code>). See <a class="xref" href="Through.html">Through</a>. Finally, you can use the
+<code class="code">Suspend</code> (<kbd class="kbd"><kbd class="key">Control</kbd>-Z</kbd>) command to temporarily stop <code class="code">ne</code> and
+return to your command shell. See <a class="xref" href="Suspend.html">Suspend</a>.
+</p>
+</div>
+<div class="subsection-level-extent" id="Advanced-key-bindings">
+<h4 class="subsection"><span>2.7.9 Advanced key bindings<a class="copiable-link" href="#Advanced-key-bindings"> &para;</a></span></h4>
+<p><code class="code">ne</code> allows you to associate any keystroke with any command, both
+built-in commands (with or without parameters) and macros. These associations
+are referred to as <em class="dfn">key bindings</em>, which you define in your
+<code class="code">~/.ne/.keys</code> file. The <code class="code">KeyCode</code> command allows you to see the key
+code <code class="code">ne</code> sees in response to any key or key combination on your
+keyboard. It also shows the command string currently bound to that key
+code. This is described in <a class="ref" href="Key-Bindings.html">Key Bindings</a>.
+</p>
+
+<p>The following chapters provide an exhaustive list of the remaining features of <code class="code">ne</code>.
+See <a class="xref" href="Reference.html">Reference</a>.
+</p>
+
+
+</div>
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Basic-Macros.html">Basic Macros</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

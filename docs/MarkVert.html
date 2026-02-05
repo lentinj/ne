@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>MarkVert (ne&rsquo;s manual)</title>
+
+<meta name="description" content="MarkVert (ne&rsquo;s manual)">
+<meta name="keywords" content="MarkVert (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Clip-Commands.html" rel="up" title="Clip Commands">
+<link href="Copy.html" rel="next" title="Copy">
+<link href="Mark.html" rel="prev" title="Mark">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="MarkVert">
+<div class="nav-panel">
+<p>
+Next: <a href="Copy.html" accesskey="n" rel="next">Copy</a>, Previous: <a href="Mark.html" accesskey="p" rel="prev">Mark</a>, Up: <a href="Clip-Commands.html" accesskey="u" rel="up">Clip Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="MarkVert-1"><span>4.4.2 MarkVert<a class="copiable-link" href="#MarkVert-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-MarkVert"></a>
+
+<p>Syntax: <code class="code">MarkVert [0|1]</code><br>
+Abbreviation: <code class="code">MV</code>
+</p>
+<p>is the same as <code class="code">Mark</code>, but the region manipulated by the
+cut/paste commands is the rectangle having as vertices the cursor and the mark.
+If you invoke <code class="code">MarkVert</code> with no arguments, it will set the mark. If you
+specify 0 or 1, the mark will be cancelled or set to the current position,
+respectively. Moreover, a capital &lsquo;<samp class="samp">V</samp>&rsquo;, rather than a capital &lsquo;<samp class="samp">M</samp>&rsquo;,
+will appear on the status bar.
+</p>
+<p>For example, if you have the following text:
+</p><div class="example">
+<pre class="example-preformatted">   aaaBbbccc
+   aaabbbccc
+   aaabbbCcc
+</pre></div>
+<p>and you set a vertical mark at &lsquo;<samp class="samp">B</samp>&rsquo; then move the cursor to &lsquo;<samp class="samp">C</samp>&rsquo;,
+you can cut or copy all of the &lsquo;<samp class="samp">B</samp>&rsquo;s.
+</p>
+<p>If you have made a vertical cut or copy, it&rsquo;s very likely you will want to
+use <code class="code">PasteVert</code> rather than the usual <code class="code">Paste</code> to reinsert the text
+in a rectangle. See <a class="ref" href="PasteVert.html">PasteVert</a>.
+</p>
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>RepeatLast (ne&rsquo;s manual)</title>
+
+<meta name="description" content="RepeatLast (ne&rsquo;s manual)">
+<meta name="keywords" content="RepeatLast (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Search-Commands.html" rel="up" title="Search Commands">
+<link href="MatchBracket.html" rel="next" title="MatchBracket">
+<link href="ReplaceAll.html" rel="prev" title="ReplaceAll">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="RepeatLast">
+<div class="nav-panel">
+<p>
+Next: <a href="MatchBracket.html" accesskey="n" rel="next">MatchBracket</a>, Previous: <a href="ReplaceAll.html" accesskey="p" rel="prev">ReplaceAll</a>, Up: <a href="Search-Commands.html" accesskey="u" rel="up">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="RepeatLast-1"><span>4.5.6 RepeatLast<a class="copiable-link" href="#RepeatLast-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-RepeatLast"></a>
+
+<p>Syntax: <code class="code">RepeatLast [<var class="var">times</var>] [F|Find|R|Replace]</code><br>
+Abbreviation: <code class="code">RL</code>
+</p>
+<p>repeats for the given number of times the last find or replace operation
+(with replace we mean here a single replace, even if the last <code class="code">Replace</code>
+operation ended with a global substitution). If you don&rsquo;t specify either
+<var class="var">Find</var> or <var class="var">Replace</var>, it will repeat whichever one was last performed.
+</p>
+<p>If any find or replace operation runs into the end of the document (in the direction
+indicated by the <code class="code">SearchBack</code> flag) and stops, then and only then will a
+<code class="code">RepeatLast</code> command &ldquo;wrap around&rdquo; to the other end of the document to
+continue the find or replace operation.
+</p>
+<p><code class="code">RepeatLast</code> is especially useful for researching a given number of times, or
+replacing something a given number of times. The standard technique for
+accomplishing this is:
+</p>
+<ol class="enumerate">
+<li> <code class="code">Find</code> (or <code class="code">FindRegExp</code>) the string you are interested in;
+
+</li><li> if you want to repeat a replace operation, <code class="code">ReplaceOnce</code> with
+the replacement string you are interested in;
+
+</li><li> now issue a <code class="code">RepeatLast <var class="var">n</var>-1</code> command, where <var class="var">n</var> is the
+number of occurrences you wanted to skip over, or replace.
+
+</li></ol>
+
+<p>The important thing about this sequence of actions is that it will
+work this way even in a macro. The <code class="code">Replace</code> command cannot be used
+in a macro unless you really want to interact with <code class="code">ne</code> during the
+macro execution. Avoiding interaction during macros is the primary
+reason the commands <code class="code">ReplaceAll</code> and <code class="code">ReplaceOnce</code> are
+provided.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="MatchBracket.html">MatchBracket</a>, Previous: <a href="ReplaceAll.html">ReplaceAll</a>, Up: <a href="Search-Commands.html">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>UnsetBookmark (ne&rsquo;s manual)</title>
+
+<meta name="description" content="UnsetBookmark (ne&rsquo;s manual)">
+<meta name="keywords" content="UnsetBookmark (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Navigation-Commands.html" rel="up" title="Navigation Commands">
+<link href="GotoBookmark.html" rel="prev" title="GotoBookmark">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="UnsetBookmark">
+<div class="nav-panel">
+<p>
+Previous: <a href="GotoBookmark.html" accesskey="p" rel="prev">GotoBookmark</a>, Up: <a href="Navigation-Commands.html" accesskey="u" rel="up">Navigation Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="UnsetBookmark-1"><span>4.10.28 UnsetBookmark<a class="copiable-link" href="#UnsetBookmark-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-UnsetBookmark"></a>
+
+<p>Syntax: <code class="code">UnsetBookmark [<var class="var">n</var>|<var class="var">+1</var>|<var class="var">-1</var>|<var class="var">&lt;</var>|<var class="var">&gt;</var>|<var class="var">-</var>|<var class="var">*</var>]</code><br>
+Abbreviation: <code class="code">UBM</code>
+</p>
+<p>unsets either the <var class="var">n</var>th bookmark (0 through 9), the next (<var class="var">+1</var>) or
+previous (<var class="var">-1</var>) set bookmarks, the bookmarks designating the
+start (<var class="var">&lt;</var>) or end (<var class="var">&gt;</var>) of the most recently pasted text
+block, the automatic (<var class="var">-</var>) bookmark, or
+all (<var class="var">*</var>) bookmarks, making it as if they had never been set; see
+<a class="ref" href="SetBookmark.html">SetBookmark</a>. If no option is specified, <var class="var">n</var> is assumed to be
+zero.
+</p>
+<p>While you can unset the automatic bookmark &lsquo;<samp class="samp">-</samp>&rsquo;, it will be
+reset automatically to the current position whenever a <code class="code">GotoBookmark</code>
+command is issued.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Open (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Open (ne&rsquo;s manual)">
+<meta name="keywords" content="Open (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="File-Commands.html" rel="up" title="File Commands">
+<link href="OpenNew.html" rel="next" title="OpenNew">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Open">
+<div class="nav-panel">
+<p>
+Next: <a href="OpenNew.html" accesskey="n" rel="next">OpenNew</a>, Up: <a href="File-Commands.html" accesskey="u" rel="up">File Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Open-1"><span>4.2.1 Open<a class="copiable-link" href="#Open-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Open"></a>
+
+<p>Syntax: <code class="code">Open [<var class="var">filename</var>]</code><br>
+Abbreviation: <code class="code">O</code>
+</p>
+<p>replaces the contents of the current document with that
+of the file specified by the <var class="var">filename</var> string. (To load <var class="var">filename</var>&rsquo;s
+content into a new document without changing the current document,
+see <a class="ref" href="OpenNew.html">OpenNew</a>.) The current document&rsquo;s macro, search, and replace
+strings are preserved.
+</p>
+<p>If the optional <var class="var">filename</var> argument is not specified, the
+file requester is opened, and you are prompted to select a file. (You
+can inhibit the file requester opening by using the <code class="code">NoFileReq</code>
+command; see <a class="ref" href="NoFileReq.html">NoFileReq</a>.)
+</p>
+<p>If you escape from the file requester, you can input the file name on the
+command line, the default being the current document name, if available.
+</p>
+<p>If the current document is marked as modified at the time the command is
+issued, you have to confirm the action.
+</p>
+
+
+
+</div>
+
+
+
+</body>
+</html>

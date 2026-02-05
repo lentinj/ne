@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Key Bindings (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Key Bindings (ne&rsquo;s manual)">
+<meta name="keywords" content="Key Bindings (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Configuration.html" rel="up" title="Configuration">
+<link href="Changing-Menus.html" rel="next" title="Changing Menus">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Key-Bindings">
+<div class="nav-panel">
+<p>
+Next: <a href="Changing-Menus.html" accesskey="n" rel="next">Changing Menus</a>, Up: <a href="Configuration.html" accesskey="u" rel="up">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Key-Bindings-1"><span>5.1 Key Bindings<a class="copiable-link" href="#Key-Bindings-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Key-bindings"></a>
+<a class="index-entry-id" id="index-Configuring-the-keyboard"></a>
+
+<p><code class="code">ne</code> allows you to associate any keystroke with any command. These
+associations are referred to as key bindings. You define your key
+bindings in a (possibly UTF-8) file named <samp class="file">.keys</samp> in your
+<samp class="file">~/.ne</samp> directory. You could additionally create a <samp class="file">.keys</samp> file in
+your current directory, any your system administrator might also place a
+<samp class="file">.keys</samp> file in your system&rsquo;s global directory. These will always be
+loaded each time you start <code class="code">ne</code>, but you can also create key binding
+files with the same base name (<samp class="file">.keys</samp>) followed by a dash and some
+string. Such a file will only be loaded when the string matches the value of
+your <code class="code">TERM</code> environment variable. For example, you might have files
+named <samp class="file">~/.ne/.keys</samp>, <samp class="file">~/.ne/.keys-xterm</samp>, and
+<samp class="file">~/.ne/.keys-vt102</samp>. The first file&rsquo;s key bindings will always be
+loaded, while at most one of the latter two files will be loaded, depending
+on your <code class="code">TERM</code> environment variable.
+</p>
+<p>You can change your key binding files&rsquo; default base name from <samp class="file">.keys</samp> by
+passing an argument to the <code class="code">--keys</code> option when you start <code class="code">ne</code>, and
+you can prevent any configuration from being loaded with the
+<code class="code">--no-config</code> option (see <a class="pxref" href="Arguments.html">Arguments</a>).
+</p>
+<p>The format of key binding files is simple: each line starting with the &lsquo;<samp class="samp">KEY</samp>&rsquo;
+sequence of capital characters is considered the description of a key binding.
+Each line starting with &lsquo;<samp class="samp">SEQ</samp>&rsquo; binds a character sequence to a key.
+All other lines are considered comments. The format of a key binding
+description is
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY <var class="var">hexcode</var> <var class="var">command</var>
+</pre></div>
+
+<p>The <var class="var">hexcode</var> value is the <small class="sc">ASCII</small> code of the keystroke. (For
+special keys such as <kbd class="key">Insert</kbd> or function keys, you should take a
+look at the file <samp class="file">default.keys</samp> that comes with <code class="code">ne</code>&rsquo;s
+distribution: it contains a complete, commented definition of
+<code class="code">ne</code>&rsquo;s standard bindings that you can modify with a trial-and-error
+approach.) The easiest way to see the code <code class="code">ne</code> uses for a given
+key is by using the <a class="ref" href="KeyCode.html">KeyCode</a> command. It prompts you to press a
+key, then reports the code for that key on the status bar. It also
+displays the command bound to that key if there is one.
+</p>
+<p>You can write just the hexadecimal digits, nothing else is
+necessary (but a prefixing &lsquo;<samp class="samp">0x</samp>&rsquo; is tolerated).  For instance,
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY 1 MoveSOL
+</pre></div>
+
+<p>binds to <kbd class="kbd"><kbd class="key">Control</kbd>-A</kbd> the action of moving to the start
+of a line, while
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY 101 LineUp
+</pre></div>
+
+<p>binds to the &ldquo;cursor-up&rdquo; key the action of moving the cursor
+one line up.
+</p>
+<p><var class="var">command</var> can be any <code class="code">ne</code> command, including <code class="code">Escape</code>
+(which allows reconfiguring the menu activator) and <code class="code">Macro</code>, which
+allows binding complex sequences of actions to a single keystroke. The binding
+of a macro is very fast because on the first call the macro is cached in memory.
+See <a class="xref" href="Macro.html">Macro</a>.
+</p>
+<p>Note that you cannot <em class="emph">ever</em> redefine <kbd class="key">Return</kbd> or <kbd class="key">Escape</kbd>. This
+is a basic issue&mdash;however brain damaged is the current configuration, you will
+always be able to exploit fully the menus and the command line.
+</p>
+<p>Besides the &ldquo;standard&rdquo; combinations (e.g.,
+<kbd class="kbd"><kbd class="key">Control</kbd>-<var class="var">letter</var></kbd>), it possible to program combinations
+based on the <kbd class="key">Meta</kbd> key (a.k.a. <kbd class="key">Alt</kbd>). The situation in this
+case is a bit more involved, because depending on the terminal emulator you are
+using, the effect of the <kbd class="key">Meta</kbd> key can be widely different. For
+instance, <code class="code">xterm</code> raises the eighth bit of a character, so, for
+instance,
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY 81 MoveSOF
+</pre></div>
+
+<p>binds <kbd class="kbd"><kbd class="key">Control</kbd>-<kbd class="key">Meta</kbd>-a</kbd> to the action of moving to the
+start of the document. However, <code class="code">gnome-terminal</code> will emit the
+character of ASCII code 1 prefixed with ESC instead (&ldquo;<code class="code">\x1b\x01</code>&rdquo;). To handle this case,
+<code class="code">ne</code> provides codes from 180 on for <em class="emph">simulated <kbd class="key">Meta</kbd>
+sequences</em>: for instance,
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY 181 MoveSOF
+</pre></div>
+
+<p>binds the abovementioned sequence to the same action as
+before. In general, the code 180+<var class="var">x</var> corresponds to the sequence
+ESC followed by the ASCII character of code <var class="var">x</var>. Note that some of
+these sequences may be disabled, if they conflict with existing sequences
+of your terminal (for instance, ESC followed by &lsquo;<samp class="samp">O</samp>&rsquo; is always
+disabled because it prefixes several built-in keyboard sequences).
+</p>
+<p>As a final note, we remark that typing <kbd class="kbd"><kbd class="key">Meta</kbd>-a</kbd> on
+<code class="code">gnome-terminal</code> will produce an ESC followed by &lsquo;<samp class="samp">a</samp>&rsquo; (&ldquo;<code class="code">\x1ba</code>&rdquo;). Since it
+is obviously easier to press just <kbd class="key">Meta</kbd> rather than <kbd class="key">Meta</kbd> and
+<kbd class="key">Control</kbd> at the same time, it is a good idea to associate the same
+sequence also to this combination, using
+</p>
+<div class="example">
+<pre class="example-preformatted">KEY 1E1 MoveSOF
+</pre></div>
+
+<p>Moreover, this setting provides the user with a second choice: one can
+press <kbd class="key">Escape</kbd> followed by a letter instead of using modifiers.
+</p>
+<p>This is the approach used by default in <code class="code">ne</code>: this way,
+<kbd class="key">Control</kbd> with <kbd class="key">Meta</kbd> plus a letter should always work, and
+<kbd class="key">Meta</kbd> should work sometimes (of course, if you&rsquo;re sure to use
+always the same kind of emulator you can bind more features). Again, the
+best place to look is the <samp class="file">default.keys</samp> file.
+</p>
+<p>As stated above, each line starting with &lsquo;<samp class="samp">SEQ</samp>&rsquo; binds a character sequence
+to a key code. The format for a &lsquo;<samp class="samp">SEQ</samp>&rsquo; binding is
+</p>
+<div class="example">
+<pre class="example-preformatted">SEQ &quot;<var class="var">sequence</var>&quot; <var class="var">hexcode</var>
+</pre></div>
+
+<p>where &quot;<var class="var">sequence</var>&quot; is a double-quoted string of characters
+(which can include escaped hexadecimals) followed by a hexadecimal key code
+as described above for &lsquo;<samp class="samp">KEY</samp>&rsquo; definitions.
+</p>
+<p>You should rarely need this, as properly configured systems already do
+this for most keys. However, some key combinations (<kbd class="key">Control</kbd> in
+conjunction with cursor keys for example) are usually not defined. If you
+know the character sequence your system generates for such a combination, you may use
+&lsquo;<samp class="samp">SEQ</samp>&rsquo; to bind that sequence to a particular key code if that sequence
+isn&rsquo;t already defined on your system. For example,
+<kbd class="key">Control</kbd>-&ldquo;cursor-left&rdquo; may generate the sequence
+<code class="code">\x1b[1;5D</code>. The following lines bind that sequence to the <kbd class="key">f10</kbd>
+key code &lsquo;<samp class="samp">14A</samp>&rsquo;, then bind that key code to the &lsquo;<samp class="samp">HELP</samp>&rsquo; command.
+</p>
+<div class="example">
+<pre class="example-preformatted">SEQ  &quot;\x1b[1;5D&quot;  14A
+KEY  14A          HELP
+</pre></div>
+
+<p>Sequences are inherently terminal- or terminal emulator-specific, so
+their utility will vary depending on how many emulators you use. At least
+they give you the possibility to use keys or key combinations that aren&rsquo;t
+covered by <code class="code">curses</code>.
+</p>
+<p>The key binding file is parsed at startup. If something does not work,
+<code class="code">ne</code> exits displaying an error message. If you want <code class="code">ne</code> to skip
+parsing the key binding file (for instance, to correct the broken
+file), just give <code class="code">ne</code> the <code class="code">--no-config</code> argument. See <a class="xref" href="Arguments.html">Arguments</a>.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Changing-Menus.html">Changing Menus</a>, Up: <a href="Configuration.html">Configuration</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

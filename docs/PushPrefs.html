@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>PushPrefs (ne&rsquo;s manual)</title>
+
+<meta name="description" content="PushPrefs (ne&rsquo;s manual)">
+<meta name="keywords" content="PushPrefs (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="PopPrefs.html" rel="next" title="PopPrefs">
+<link href="VisualBell.html" rel="prev" title="VisualBell">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="PushPrefs">
+<div class="nav-panel">
+<p>
+Next: <a href="PopPrefs.html" accesskey="n" rel="next">PopPrefs</a>, Previous: <a href="VisualBell.html" accesskey="p" rel="prev">VisualBell</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="PushPrefs-1"><span>4.9.23 PushPrefs<a class="copiable-link" href="#PushPrefs-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-PushPrefs"></a>
+
+<p>Syntax: <code class="code">PushPrefs [<var class="var">n</var>]</code><br>
+Abbreviation: <code class="code">PUSHP</code>
+</p>
+<p>pushes <var class="var">n</var> copies of the user preferences onto a stack. If
+not specified, <var class="var">n</var> defaults to one. Use the <code class="code">PopPrefs</code> command
+to pop preferences off the stack and restore the values. See <a class="ref" href="PopPrefs.html">PopPrefs</a>. Note that the
+preferences stack is global, not document-specific, so you could
+<code class="code">PushPrefs</code> one document&rsquo;s preferences, switch documents, then
+<code class="code">PopPrefs</code> those preferences, thereby altering the preferences for
+the second document. The maximum preferences stack depth is 32.
+</p>
+<p><code class="code">PushPrefs</code> and <code class="code">PopPrefs</code> are useful in macros that require
+certain preferences to work properly.  A macro can <code class="code">PushPrefs</code>,
+change any preferences necessary, do its work, then <code class="code">PopPrefs</code> to
+restore the users previous preferences settings.
+</p>
+<p><code class="code">PushPrefs</code> saves the following values on the preferences stack:
+</p>
+<div class="example">
+<pre class="example-preformatted">  AutoIndent  DelTabs   NoFileReq    StatusBar  VisualBell
+  AutoPrefs   DoUndo    PreserveCR   ShiftTabs  WordWrap
+  Binary      FreeForm  ReadOnly     Tabs
+  CaseSearch  HexCode   RightMargin  TabSize
+  ClipNumber  Insert    SearchBack   UTF8Auto
+</pre></div>
+
+
+
+</div>
+
+
+
+</body>
+</html>

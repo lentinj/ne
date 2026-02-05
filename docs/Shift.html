@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Shift (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Shift (ne&rsquo;s manual)">
+<meta name="keywords" content="Shift (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Clip-Commands.html" rel="up" title="Clip Commands">
+<link href="OpenClip.html" rel="next" title="OpenClip">
+<link href="Erase.html" rel="prev" title="Erase">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Shift">
+<div class="nav-panel">
+<p>
+Next: <a href="OpenClip.html" accesskey="n" rel="next">OpenClip</a>, Previous: <a href="Erase.html" accesskey="p" rel="prev">Erase</a>, Up: <a href="Clip-Commands.html" accesskey="u" rel="up">Clip Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Shift-1"><span>4.4.8 Shift<a class="copiable-link" href="#Shift-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Shift"></a>
+
+<p>Syntax: <code class="code">Shift [&lt;|&gt;][n][t|s]</code><br>
+Abbreviation: <code class="code">SH</code>
+</p>
+<p>shifts the text on lines between the mark and the cursor either
+right (&lsquo;<samp class="samp">&gt;</samp>&rsquo;) or left (&lsquo;<samp class="samp">&lt;</samp>&rsquo;) by adding or removing
+white space on each line. The adjustment size, specified as an unsigned
+integer &lsquo;<samp class="samp">n</samp>&rsquo;, is in units of the current tab size (&lsquo;<samp class="samp">t</samp>&rsquo;) or spaces
+(&lsquo;<samp class="samp">s</samp>&rsquo;). The defaults are &lsquo;<samp class="samp">&gt;</samp>&rsquo;, &lsquo;<samp class="samp">1</samp>&rsquo;, and &lsquo;<samp class="samp">t</samp>&rsquo;. Adjustments
+start at the left edge of a vertical mark, or column 1 otherwise. If the mark
+is not currently set, only the current line is affected.
+</p>
+<p><code class="code">Shift</code> will insert tab characters only if &lsquo;<samp class="samp">s</samp>&rsquo; is not used, and both
+of the document&rsquo;s <code class="code">Tabs</code> and <code class="code">ShiftTabs</code> flags are set&mdash;in which
+case an upper case &lsquo;<samp class="samp">T</samp>&rsquo; will appear in the status bar. If either of the
+<code class="code">Tabs</code> or <code class="code">ShiftTabs</code> flags is unset (i.e there is no upper case
+&lsquo;<samp class="samp">T</samp>&rsquo; in the status bar) <code class="code">Shift</code> will only insert spaces.
+</p>
+<p>In the case of left shifts, if any indicated line has insufficient leading
+white space for the requested adjustment to be made, then <code class="code">Shift</code>
+reports an error and makes no changes.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

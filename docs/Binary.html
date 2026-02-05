@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Binary (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Binary (ne&rsquo;s manual)">
+<meta name="keywords" content="Binary (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Preferences-Commands.html" rel="up" title="Preferences Commands">
+<link href="Insert.html" rel="next" title="Insert">
+<link href="AutoPrefs.html" rel="prev" title="AutoPrefs">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Binary">
+<div class="nav-panel">
+<p>
+Next: <a href="Insert.html" accesskey="n" rel="next">Insert</a>, Previous: <a href="AutoPrefs.html" accesskey="p" rel="prev">AutoPrefs</a>, Up: <a href="Preferences-Commands.html" accesskey="u" rel="up">Preferences Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Binary-1"><span>4.9.3 Binary<a class="copiable-link" href="#Binary-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Binary"></a>
+<a class="index-entry-id" id="index-Binary-files-1"></a>
+
+<p>Syntax: <code class="code">Binary [0|1]</code><br>
+Abbreviation: <code class="code">B</code>
+</p>
+<p>sets the binary flag. When this flag is true, loading and saving a
+document is performed in a different way. On loading, only nulls are
+considered newlines; on saving, nulls are saved instead of newlines. This
+allows you to edit a binary file, fix some text in it, and save it without
+modifying anything else. Normally, line feeds, carriage returns and nulls are
+considered newlines, so that what you load will have all nulls and carriage
+returns substituted by newlines when saved.
+</p>
+<p>Note that since usually binary files contain a great number of nulls, and every
+null will be considered a line terminator, the memory necessary for loading a
+binary file can be several times bigger than the length of the file
+itself. Thus, binary editing within <code class="code">ne</code> should be considered not a
+normal activity, but rather an exceptional one.
+</p>
+<p>If you invoke <code class="code">Binary</code> with no arguments, it will toggle the flag. If you
+specify 0 or 1, the flag will be set to false or true, respectively. An upper
+case &lsquo;<samp class="samp">B</samp>&rsquo; will appear on the status bar if the flag is true. If false,
+a &lsquo;<samp class="samp">-</samp>&rsquo; or &lsquo;<samp class="samp">!</samp>&rsquo; will indicate whether the last line of the document is
+empty, which will determine whether the resulting file will have a normal line
+termination when the document is saved.
+</p>
+
+
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Introduction (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Introduction (ne&rsquo;s manual)">
+<meta name="keywords" content="Introduction (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="index.html" rel="up" title="Top">
+<link href="Basics.html" rel="next" title="Basics">
+<link href="index.html" rel="prev" title="Top">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="chapter-level-extent" id="Introduction">
+<div class="nav-panel">
+<p>
+Next: <a href="Basics.html" accesskey="n" rel="next">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h2 class="chapter" id="Introduction-1"><span>1 Introduction<a class="copiable-link" href="#Introduction-1"> &para;</a></span></h2>
+<a class="index-entry-id" id="index-LITHP"></a>
+<a class="index-entry-id" id="index-Features"></a>
+<a class="index-entry-id" id="index-vi"></a>
+<a class="index-entry-id" id="index-POSIX"></a>
+<a class="index-entry-id" id="index-terminfo"></a>
+<a class="index-entry-id" id="index-termcap"></a>
+
+
+<p><code class="code">ne</code> is a full screen text editor for <small class="sc">UN*X</small> (or, more
+precisely, for <small class="sc">POSIX</small>: see <a class="pxref" href="Motivations-and-Design.html">Motivations and Design</a>). I came to
+the decision to write such an editor after getting completely sick of
+<code class="code">vi</code>, both from a feature and user interface point of view. I
+needed an editor that I could use through a <code class="code">telnet</code> connection or
+a phone line and that wouldn&rsquo;t fire off a full-blown
+<small class="sc">LITHP</small><a class="footnote" id="DOCF1" href="#FOOT1"><sup>1</sup></a> operating system just to do some editing.
+</p>
+<p>A concise overview of the main features follows:
+</p>
+<ul class="itemize mark-bullet">
+<li>three user interfaces: control keystrokes, command line, and menus;
+keystrokes and menus are completely configurable;
+
+</li><li>syntax highlighting;
+
+</li><li>full support for UTF-8 files, including multiple-column characters;
+
+</li><li>64-bit file/line length;
+
+</li><li>simple scripting language where scripts can be generated <i class="i">via</i> an
+idiotproof record/play method;
+
+</li><li>unlimited undo/redo capability (can be disabled with a command);
+
+</li><li>automatic preferences system based on the extension of the file name being
+edited or regex content matching;
+
+</li><li>automatic completion of prefixes using words in your documents as dictionary;
+
+</li><li>a file requester with completion features for easy file retrieval;
+
+</li><li>extended regular expression search and replace &agrave; la <code class="code">emacs</code> and
+<code class="code">vi</code>;
+
+</li><li>a very compact memory model&mdash;you can
+easily load and modify very large files, even if they do not fit your core memory;
+
+</li><li>editing of binary files.
+
+</li></ul>
+
+
+</div>
+<div class="footnotes-segment">
+<hr>
+<h4 class="footnotes-heading">Footnotes</h4>
+
+<h5 class="footnote-body-heading"><a id="FOOT1" href="#DOCF1">(1)</a></h5>
+<p>This otherwise unremarkable language is
+distinguished by the absence of an &lsquo;<samp class="samp">s</samp>&rsquo; in its character set; users
+must substitute &lsquo;<samp class="samp">th</samp>&rsquo;.  <small class="sc">LITHP</small> is said to be useful in
+protheththing lithtth.</p>
+</div>
+
+
+
+</body>
+</html>

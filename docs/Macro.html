@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Macro (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Macro (ne&rsquo;s manual)">
+<meta name="keywords" content="Macro (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Macros-Commands.html" rel="up" title="Macros Commands">
+<link href="OpenMacro.html" rel="next" title="OpenMacro">
+<link href="Play.html" rel="prev" title="Play">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Macro">
+<div class="nav-panel">
+<p>
+Next: <a href="OpenMacro.html" accesskey="n" rel="next">OpenMacro</a>, Previous: <a href="Play.html" accesskey="p" rel="prev">Play</a>, Up: <a href="Macros-Commands.html" accesskey="u" rel="up">Macros Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Macro-1"><span>4.6.3 Macro<a class="copiable-link" href="#Macro-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Macro"></a>
+
+<p>Syntax: <code class="code">Macro [<var class="var">filename</var>]</code><br>
+Abbreviation: <code class="code">MA</code>
+</p>
+<p>executes the given file name as a macro.
+</p>
+<p>If the optional <var class="var">filename</var> argument is not specified, the file
+requester is opened, and you are prompted to select a file. (You can
+inhibit the file requester opening by using the <code class="code">NoFileReq</code>
+command; see <a class="ref" href="NoFileReq.html">NoFileReq</a>.)
+</p>
+<p>If you escape from the file requester, you can input the file name on the
+command line.
+</p>
+<p>Note that macros whose names do not conflict with a command can be called
+without using <code class="code">Macro</code>. Whenever <code class="code">ne</code> is required to perform a command
+it cannot find in its internal tables, it will look for a macro by that
+name in the current directory. If this search also fails, <code class="code">ne</code> looks in
+<samp class="file">~/.ne</samp> and finally in the <samp class="file">macros</samp> subdirectory of <code class="code">ne</code>&rsquo;s
+global directory (defined when <code class="code">ne</code> was built, or in a place specified by
+your <code class="code">NE_GLOBAL_DIR</code> environment variable) for a macro file by that name.
+</p>
+<p><strong class="strong">Warning:</strong> the first time a macro is executed it is cached
+into a hash table and is kept <em class="emph">forever</em> in memory unless the
+<code class="code">UnloadMacros</code> command is issued; see <a class="ref" href="UnloadMacros.html">UnloadMacros</a>. The next time a
+macro with the same file name is invoked, the cached list is searched for it
+before accessing the file using a case insensitive string comparison. That is,
+if you call <code class="code">~/foobar/macro</code>, a subsequent call for <code class="code">/usr/MACRO</code> or
+even just <code class="code">MaCrO</code> will use the cached version of <code class="code">~/foobar/macro</code>.
+Note that the cache table is global to <code class="code">ne</code> and not specific to any single
+document. This greatly improves efficiency when macros are used repeatedly.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="OpenMacro.html">OpenMacro</a>, Previous: <a href="Play.html">Play</a>, Up: <a href="Macros-Commands.html">Macros Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

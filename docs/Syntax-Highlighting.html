@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Syntax Highlighting (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Syntax Highlighting (ne&rsquo;s manual)">
+<meta name="keywords" content="Syntax Highlighting (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="Menus.html" rel="next" title="Menus">
+<link href="The-Requester.html" rel="prev" title="The Requester">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Syntax-Highlighting">
+<div class="nav-panel">
+<p>
+Next: <a href="Menus.html" accesskey="n" rel="next">Menus</a>, Previous: <a href="The-Requester.html" accesskey="p" rel="prev">The Requester</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Syntax-Highlighting-1"><span>3.6 Syntax Highlighting<a class="copiable-link" href="#Syntax-Highlighting-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Syntax-Highlighting"></a>
+
+<p>Syntax highlighting is particularly useful for programming language
+text or other types of documents which have a strictly defined syntax.
+Colors indicate different syntactic categories of text according to
+the syntax definition in use.
+</p>
+<p>Syntax definitions are stored in separate files. <code class="code">ne</code> comes with a
+suite of syntax definitions for many popular programming languages and
+other common text file types.
+When you load a file, <code class="code">ne</code> selects the appropriate syntax
+definition as determined by the filename extension in much the same way
+autoprefs are loaded. (See <a class="ref" href="Virtual-Extensions.html">Virtual Extensions</a> for ways to override
+a file&rsquo;s extension based on file contents.)
+It also contains a built-in table of common
+filename extensions that share the same syntax definitions. For
+example, both &lsquo;<samp class="samp">cbl</samp>&rsquo;, and &lsquo;<samp class="samp">cob</samp>&rsquo; files use the &lsquo;<samp class="samp">cobol</samp>&rsquo;
+definition. See the <a class="ref" href="Syntax.html">Syntax</a> command for the complete list of
+built-in extension mappings.
+</p>
+<p>If there is no matching syntax definition for the filename extension,
+or if the document you are editing has no filename yet, or you just want
+to try a different syntax definition, you can load and use the
+syntax definition of your choice with the <code class="code">Syntax</code> command. It
+takes the syntax name as a parameter. For example, the name &ldquo;<code class="code">c</code>&rdquo;
+works for C syntax files with extensions &lsquo;<samp class="samp">.c</samp>&rsquo;, &lsquo;<samp class="samp">.h</samp>&rsquo;,
+&lsquo;<samp class="samp">c++</samp>&rsquo;, etc. <code class="code">ne</code> searches for the specified syntax definition
+file in the &lsquo;<samp class="samp">syntax</samp>&rsquo; subdirectory of your <samp class="file">~/.ne</samp> directory
+first. If not found there, <code class="code">ne</code> then looks in the &lsquo;<samp class="samp">syntax</samp>&rsquo;
+subdirectory of <code class="code">ne</code>&rsquo;s global directory for the syntax definition
+file. See <a class="xref" href="Arguments.html">Arguments</a>.
+</p>
+<p>With no parameter, the <code class="code">Syntax</code> command prompts you for a syntax
+to load, the offered default being the currently loaded syntax if there is one.
+Use the <kbd class="key">Tab</kbd> key at that prompt to get a list of available syntax
+recognizers.
+</p>
+<p>One syntax definition you may find useful for any type of text file is
+called simply &lsquo;<samp class="samp">tabs</samp>&rsquo;. It highlights the <small class="sc">TAB</small>s in your text so
+you can distinguish them from regular spaces.
+</p>
+<p>You can create your own syntax definitions and store them in your
+<samp class="file">~/.ne/syntax</samp> directory (actually, modifying the colors of an
+existing definition is much easier; see <a class="pxref" href="Hints-and-Tricks.html">Hints and Tricks</a>). A complete
+explanation of syntax specifications is beyond the scope of this document,
+but the existing definition files should prove to be useful examples. In
+particular, the <samp class="file">syntax/c.jsf</samp> file contains some particularly
+helpful comments. Syntax definition files have a &lsquo;<samp class="samp">.jsf</samp>&rsquo; extension. Do
+not include that extension when using the <code class="code">Syntax</code> command.
+</p>
+<p>Your own syntax recognizers will be preferred over the global recognizers.
+If you use the <kbd class="key">Tab</kbd> key at the syntax prompt to display the requester
+of extant recognizers, yours will be marked with an asterisk and bold if
+your terminal supports that.
+</p>
+<p>Syntax highlighting does incur a slight penalty in memory used per line of
+text, and it also consumes some CPU resources. For small to medium sized
+files you&rsquo;ll probably never notice. But for extremely large files&mdash;on
+the order of the size of your system&rsquo;s RAM&mdash;the difference could be
+significant. If you invoke <code class="code">ne</code> with the <code class="code">--no-syntax</code>
+parameter, <code class="code">ne</code> will disable the syntax highlighting mechanism
+entirely, freeing up the memory and CPU otherwise consumed. (Note that
+if you are that tight on memory, you may need to disable the undo
+buffer as well. See <a class="xref" href="DoUndo.html">DoUndo</a>.) On the other hand, <code class="code">ne</code> will silently
+disable syntax highlighting on files longer than ten million bytes, but
+you can force it using the <code class="code">Syntax</code> command.
+</p>
+<p>Note that there is a basic difference between these two cases: when you
+use the <code class="code">--no-syntax</code> parameter, the additional memory is not
+allocated at all, and syntax highlighting cannot be enabled without
+restarting <code class="code">ne</code>. On the contrary, the automatic disabling for long
+files keeps only <code class="code">ne</code> from computing the actual highlighting, and it
+can be overridden as explained above.
+</p>
+<p><code class="code">ne</code> uses code from another editor&mdash;the GPL-licensed
+<code class="code">joe</code>&mdash;for its syntax highlighting capabilities. Because of this fact, the
+syntax definition files are identical, even to the &lsquo;<samp class="samp">.jsf</samp>&rsquo;
+extension, which is an acronym for &ldquo;Joe&rsquo;s Syntax File&rdquo;. It&rsquo;s possible
+that if both <code class="code">joe</code> and <code class="code">ne</code> are installed on your system that
+they share the same syntax file directory.
+</p>
+
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Menus.html">Menus</a>, Previous: <a href="The-Requester.html">The Requester</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

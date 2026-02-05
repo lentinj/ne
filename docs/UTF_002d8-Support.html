@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>UTF-8 Support (ne&rsquo;s manual)</title>
+
+<meta name="description" content="UTF-8 Support (ne&rsquo;s manual)">
+<meta name="keywords" content="UTF-8 Support (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="Emergency-Save.html" rel="prev" title="Emergency Save">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="UTF_002d8-Support">
+<div class="nav-panel">
+<p>
+Previous: <a href="Emergency-Save.html" accesskey="p" rel="prev">Emergency Save</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="UTF_002d8-Support-1"><span>3.11 UTF-8 Support<a class="copiable-link" href="#UTF_002d8-Support-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-UTF_002d8-Support"></a>
+
+<p><code class="code">ne</code> can manipulate UTF-8 files and supports
+UTF-8 when communicating with the user. At startup, <code class="code">ne</code> fetches
+the system locale description, and checks whether it contains the string
+&lsquo;<samp class="samp">utf8</samp>&rsquo; or &lsquo;<samp class="samp">utf-8</samp>&rsquo;. In this case, it starts communicating with
+the user using UTF-8. This behaviour can be modified either using a
+suitable command line option (see see <a class="pxref" href="Arguments.html">Arguments</a>), or using
+<a class="ref" href="UTF8IO.html">UTF8IO</a>. This makes it possible to display and read from the
+keyboard a wide range of characters.
+</p>
+<p>Independently of the input/output encoding, <code class="code">ne</code> keeps track of the
+encoding of each document. <code class="code">ne</code> does not try to select a particular
+coding on a document, unless it is forced to do so, for instance because a
+certain character is inserted. Once a document has a definite encoding,
+however, it keeps it forever.
+</p>
+<p>More precisely, every document may be in one of three <em class="emph">encoding
+modes</em>: US-ASCII, when it is entirely composed of US-ASCII characters;
+8-bit, if it contains also other characters, but it is not UTF-8
+encoded; and finally, UTF-8, if it is UTF-8-encoded.
+</p>
+<p>The behaviour of <code class="code">ne</code> in US-ASCII and 8-bit mode is similar to
+previous versions: each byte in the document is considered a separate
+character.
+</p>
+<p>There are, however, two important differences: first, if I/O is not
+UTF-8 encoded, <em class="emph">any</em> encoding of the ISO-8859 family will work
+flawlessly, as <code class="code">ne</code> merely reads bytes from the keyboard and
+displays bytes on the screen. On the contrary, in the case of UTF-8
+input/output <code class="code">ne</code> must take a decision as to which encoding is used
+for non-UTF-8 documents, and presently this is hardwired to ISO-8859-1.
+Second, 8-bit documents use localized casing and
+character type functions. This means that case-insensitive searches or
+case foldings will work with, say, Cyrillic characters, provided that
+your locale is set correctly.
+</p>
+<p>In UTF-8 mode, instead, <code class="code">ne</code> interprets the bytes in the document in
+a different way&mdash;several bytes may encode a single character. The whole
+process is completely transparent to the user, but if you really want to
+look at the document content, you can switch to 8-bit mode (see
+see <a class="pxref" href="UTF8.html">UTF8</a>).
+</p>
+<p>For most operations, UTF-8 support should be transparent. However, in
+some cases, in particular when mixing documents with different encodings,
+<code class="code">ne</code> will refuse to perform certain operations because of
+incompatible encodings.
+</p>
+<p>The main limitation of UTF-8 documents is that when searching for a
+regular expression in a UTF-8 text, character sets may only contain
+US-ASCII characters (see see <a class="pxref" href="Regular-Expressions.html">Regular Expressions</a>). You can, of
+course, partially emulate a full UTF-8 character set implementation
+specifying the possible alternatives using &lsquo;<samp class="samp">|</samp>&rsquo; (but you have no
+ranges).
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Previous: <a href="Emergency-Save.html">Emergency Save</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>The Status Bar (ne&rsquo;s manual)</title>
+
+<meta name="description" content="The Status Bar (ne&rsquo;s manual)">
+<meta name="keywords" content="The Status Bar (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Reference.html" rel="up" title="Reference">
+<link href="The-Input-Line.html" rel="next" title="The Input Line">
+<link href="Arguments.html" rel="prev" title="Arguments">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+div.example {margin-left: 3.2em}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="The-Status-Bar">
+<div class="nav-panel">
+<p>
+Next: <a href="The-Input-Line.html" accesskey="n" rel="next">The Input Line</a>, Previous: <a href="Arguments.html" accesskey="p" rel="prev">Arguments</a>, Up: <a href="Reference.html" accesskey="u" rel="up">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="The-Status-Bar-1"><span>3.2 The Status Bar<a class="copiable-link" href="#The-Status-Bar-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Status-bar-1"></a>
+<a class="index-entry-id" id="index-Line-and-column-numbers"></a>
+<a class="index-entry-id" id="index-Fast-GUI"></a>
+
+<p>The last line of the screen, the <em class="dfn">status bar</em>, is reserved by
+<code class="code">ne</code> for displaying some information about its internal state.
+Note that on most terminals it is physically impossible to write a
+character on the last column of the last line, so we are not
+stealing precious editing space.
+</p>
+<p>The status bar looks more or less like this:
+</p>
+<div class="example">
+<pre class="example-preformatted">L:      31  C:      25   12% iabcwfpvurt!MRPC@8*       20 /foo/bar
+</pre></div>
+
+<p>The numbers after &lsquo;<samp class="samp">L:</samp>&rsquo; and &lsquo;<samp class="samp">C:</samp>&rsquo; are the line and column of the
+cursor position. The first line and the first column are both number
+1. Then, <code class="code">ne</code> shows the percentage of lines before the current line
+(it will be 0% on the first line, and 100% on the last line).
+</p>
+<p>Following that are a sequence of letters or
+dashes. These indicate the status of a series of flags which we shall
+look at later.
+</p>
+<p>The hexadecimal digits following the flags give the code for the
+character at the cursor, and are displayed optionally (see <a class="pxref" href="HexCode.html">HexCode</a>).
+If your cursor is at or beyond the right end of the current line, the
+code disappears.
+</p>
+<p>The file name appearing after the character code is the file name of
+the current document. The left end of very long file names may be
+truncated to keep the right end visible. Of course,
+<code class="code">ne</code> is keeping track internally of the complete file name. It
+is used by the <code class="code">Save</code> command and as the default input for the
+<code class="code">SaveAs</code> command. See <a class="xref" href="Save.html">Save</a>, and <a class="ref" href="SaveAs.html">SaveAs</a>.
+</p>
+<p>The displayed line and column numbers, the percentage indicator and the
+character code change when the cursor moves. This fact can really slow
+down cursor movement if you are using <code class="code">ne</code> through a slow
+connection. If you find this to be a problem, it is a good idea to turn
+off the status bar using either the &lsquo;<samp class="samp">Status Bar</samp>&rsquo; menu item of the
+&lsquo;<samp class="samp">Prefs</samp>&rsquo; menu or the <code class="code">StatusBar</code>
+command. See <a class="xref" href="StatusBar.html">StatusBar</a>. Alternatively you can turn on the fast GUI
+mode using either the &lsquo;<samp class="samp">Fast GUI</samp>&rsquo; menu item of the &lsquo;<samp class="samp">Prefs</samp>&rsquo; menu
+or the <code class="code">FastGUI</code> command (see <a class="pxref" href="FastGUI.html">FastGUI</a>). In fast GUI mode the
+location of the mark is not highlighted, and
+status bar is not draw in reverse, so some additional optimization can
+be done when refreshing it.
+</p>
+<p>The letters after the line and column number represent the status of the flags
+associated with the current document. Flags that are off display a
+&lsquo;<samp class="samp">-</samp>&rsquo; instead of a letter. Each flag also has an
+associated command. The <code class="code">Flags</code> command describes them all when
+you don&rsquo;t have this manual handy. Here&rsquo;s the list in detail:
+</p>
+<dl class="table">
+<dt>&lsquo;<samp class="samp">i</samp>&rsquo;</dt>
+<dd><p>appears if the insert flag is true. See <a class="xref" href="Insert.html">Insert</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">a</samp>&rsquo;</dt>
+<dd><p>appears if the auto indent flag is true. See <a class="xref" href="AutoIndent.html">AutoIndent</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">b</samp>&rsquo;</dt>
+<dd><p>appears if the back search flag is true. See <a class="xref" href="SearchBack.html">SearchBack</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">c</samp>&rsquo;</dt>
+<dd><p>appears if the case sensitive search flag is true. See <a class="xref" href="CaseSearch.html">CaseSearch</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">w</samp>&rsquo;</dt>
+<dd><p>appears if the word wrap flag is true. See <a class="xref" href="WordWrap.html">WordWrap</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">f</samp>&rsquo;</dt>
+<dd><p>appears if the free form flag is true. See <a class="xref" href="FreeForm.html">FreeForm</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">p</samp>&rsquo;</dt>
+<dd><p>appears if the automatic preferences flag is true. See <a class="xref" href="AutoPrefs.html">AutoPrefs</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">v</samp>&rsquo;</dt>
+<dd><p>appears if the verbose macros flag is true. See <a class="xref" href="VerboseMacros.html">VerboseMacros</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">u</samp>&rsquo;</dt>
+<dd><p>appears if the undo flag is true. See <a class="xref" href="DoUndo.html">DoUndo</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">r</samp>&rsquo;</dt>
+<dd><p>appears if the read only flag is true. See <a class="xref" href="ReadOnly.html">ReadOnly</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">t or T</samp>&rsquo;</dt>
+<dd><p>appears as &lsquo;<samp class="samp">t</samp>&rsquo; if the tabs flag is true, &lsquo;<samp class="samp">T</samp>&rsquo; if
+the shifttabs flag is also true. See <a class="xref" href="Tabs.html">Tabs</a>, <a class="ref" href="ShiftTabs.html">ShiftTabs</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">d</samp>&rsquo;</dt>
+<dd><p>appears if the deltabs flag is true. See <a class="xref" href="DelTabs.html">DelTabs</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">B or !</samp>&rsquo;</dt>
+<dd><p>appears if the binary flag is true. See <a class="xref" href="Binary.html">Binary</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">!</samp>&rsquo;</dt>
+<dd><p>appears in place of &lsquo;<samp class="samp">B</samp>&rsquo; when not in binary mode
+and the last line of the document is not empty (i.e. the last line of the
+saved file would not be terminated).
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">M or V</samp>&rsquo;</dt>
+<dd><p>appears if you are currently marking a block. See <a class="xref" href="Mark.html">Mark</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">V</samp>&rsquo;</dt>
+<dd><p>can appear in place of &lsquo;<samp class="samp">M</samp>&rsquo; if you are currently marking a vertical
+block. See <a class="xref" href="MarkVert.html">MarkVert</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">R</samp>&rsquo;</dt>
+<dd><p>appears if you are currently recording a macro. See <a class="xref" href="Record.html">Record</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">P</samp>&rsquo;</dt>
+<dd><p>appears if the PreserveCR flag is true. See <a class="xref" href="PreserveCR.html">PreserveCR</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">C</samp>&rsquo;</dt>
+<dd><p>appears if the CRLF flag is true. See <a class="xref" href="CRLF.html">CRLF</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">@</samp>&rsquo;</dt>
+<dd><p>appears if UTF-8 I/O is enabled. See <a class="xref" href="UTF8IO.html">UTF8IO</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">A/8/U</samp>&rsquo;</dt>
+<dd><p>denotes the current document encoding&mdash;US-ASCII, 8-bit or UTF-8. See <a class="xref" href="UTF8.html">UTF8</a>.
+</p>
+</dd>
+<dt>&lsquo;<samp class="samp">*</samp>&rsquo;</dt>
+<dd><p>appears if the document has been modified since the last save, or if
+the <code class="code">Modified</code> command was issued to set this flag. See <a class="xref" href="Modified.html">Modified</a>.
+This &lsquo;<samp class="samp">-</samp>&rsquo; or &lsquo;<samp class="samp">*</samp>&rsquo; may be underlined, which indicates the
+corresponding file&rsquo;s modification time has changed since the current
+document was loaded from or saved to that file.
+</p>
+</dd>
+</dl>
+
+<p>Note that sometimes <code class="code">ne</code> needs to communicate some message to you. The
+message is usually written over the status bar, where it stays
+until you do something. Any action such as moving the cursor or inserting a
+character will restore the normal status bar.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="The-Input-Line.html">The Input Line</a>, Previous: <a href="Arguments.html">Arguments</a>, Up: <a href="Reference.html">Reference</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Loading and Saving (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Loading and Saving (ne&rsquo;s manual)">
+<meta name="keywords" content="Loading and Saving (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Basics.html" rel="up" title="Basics">
+<link href="Editing.html" rel="next" title="Editing">
+<link href="Starting.html" rel="prev" title="Starting">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+kbd.kbd {font-style: oblique}
+kbd.key {font-style: normal}
+span:hover a.copiable-link {visibility: visible}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="section-level-extent" id="Loading-and-Saving">
+<div class="nav-panel">
+<p>
+Next: <a href="Editing.html" accesskey="n" rel="next">Editing</a>, Previous: <a href="Starting.html" accesskey="p" rel="prev">Starting</a>, Up: <a href="Basics.html" accesskey="u" rel="up">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h3 class="section" id="Loading-and-Saving-1"><span>2.3 Loading and Saving<a class="copiable-link" href="#Loading-and-Saving-1"> &para;</a></span></h3>
+<a class="index-entry-id" id="index-Loading-a-file"></a>
+<a class="index-entry-id" id="index-Quitting"></a>
+<a class="index-entry-id" id="index-Exiting"></a>
+<a class="index-entry-id" id="index-Closing-a-document"></a>
+<a class="index-entry-id" id="index-Opening-a-file"></a>
+<a class="index-entry-id" id="index-Saving-a-file"></a>
+<a class="index-entry-id" id="index-Writing-a-file"></a>
+<a class="index-entry-id" id="index-File-requester"></a>
+
+<p>The first thing to learn about an editor is how to exit. <code class="code">ne</code> has a
+<code class="code">CloseDoc</code> command that can be activated by pressing <kbd class="kbd"><kbd class="key">Control</kbd>-Q</kbd>,
+by choosing the &lsquo;<samp class="samp">Close</samp>&rsquo; item of the &lsquo;<samp class="samp">Document</samp>&rsquo; menu, or by activating
+the command line with <kbd class="kbd"><kbd class="key">Control</kbd>-K</kbd>, writing &lsquo;<samp class="samp">cd</samp>&rsquo; and pressing
+<kbd class="key">Return</kbd>. Its effect is to close the current document without saving any
+modifications.  (You will be requested to confirm your choice in case the
+current document has been modified since the last save.)
+</p>
+<p>There is also a <code class="code">Quit</code> command, which closes all the documents
+without saving any modifications, and a <code class="code">Save&amp;Exit</code> (<kbd class="kbd"><kbd class="key">Meta</kbd>-X</kbd>)
+command, which saves the modified documents before quitting.
+</p>
+<p>This choice of shortcuts could surprise you. Wouldn&rsquo;t &lsquo;<samp class="samp">Quit</samp>&rsquo; be a
+much better candidate for <kbd class="kbd"><kbd class="key">Control</kbd>-Q</kbd>? Well, experience shows that
+the most common operation is closing a document rather than quitting the
+editor. If there is just one document, the two operations coincide (this is
+typical, for instance, when you use <code class="code">ne</code> for writing electronic mail), and
+if there are many documents, it is far more common to close a single document
+than all the existing documents.
+</p>
+<p>If you want to load a file, you may use the <code class="code">Open</code> command, which can
+be activated by pressing <kbd class="kbd"><kbd class="key">Control</kbd>-O</kbd>, by choosing the &lsquo;<samp class="samp">Open...</samp>&rsquo;
+item of the &lsquo;<samp class="samp">File</samp>&rsquo; menu, or by typing it on the command line (as in the
+previous case). You will be prompted with a list of files and directories in
+the current working directory. (You can tell the directory names because they
+end with a slash; they will also appear in a bold face if your terminal
+allows it.) You can select any of the file names by using the
+cursor keys, or any other movement key. Pressing an alphabetic key will
+move the cursor to the first entry after the cursor that starts with the
+given letter. When the cursor is positioned over the file you want to
+open, press <kbd class="key">Return</kbd>, and the file will be opened. If instead
+you move to a directory name, pressing <kbd class="key">Return</kbd> will display the
+contents of that directory.
+</p>
+<p>You can also escape with <kbd class="key">f1</kbd>, <kbd class="key">Escape</kbd> or
+<kbd class="key">Escape</kbd>-<kbd class="key">Escape</kbd>  and manually type the file name on the command
+line (or escape again, and abort the <code class="code">Open</code> operation). If you escape
+with <kbd class="key">Tab</kbd> instead, the file or directory under the cursor will be
+copied to the input line, where you can modify it manually. <code class="code">ne</code> also
+has file name completion features activated by <kbd class="key">Tab</kbd> (see <a class="pxref" href="The-Input-Line.html">The Input Line</a>).
+</p>
+<p>When you want to save a file, just use the command <code class="code">Save</code>
+(<kbd class="kbd"><kbd class="key">Control</kbd>-S</kbd>). It will use the current document name or will
+ask you for one if the current document has no name. <code class="code">SaveAs</code>, on the
+other hand, will always ask for a new name before saving the file.
+<code class="code">SaveAll</code> will save all modified documents. If the file you are
+saving a document to has changed since you last loaded or saved it,
+perhaps because another user updated it while you were editing,
+<code class="code">ne</code> will warn you before overwriting the file.
+</p>
+<p>If <code class="code">ne</code> is interrupted by an external signal (for instance, if your
+terminal crashes), it will try to save your work in some emergency files.
+These files will have names similar to your current files, but they will
+have a pound sign &lsquo;<samp class="samp">#</samp>&rsquo; prefixed to their names.
+See <a class="xref" href="Emergency-Save.html">Emergency Save</a>.
+</p>
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="Editing.html">Editing</a>, Previous: <a href="Starting.html">Starting</a>, Up: <a href="Basics.html">Basics</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>

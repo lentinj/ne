@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<!-- Created by GNU Texinfo 7.1, https://www.gnu.org/software/texinfo/ -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Replace (ne&rsquo;s manual)</title>
+
+<meta name="description" content="Replace (ne&rsquo;s manual)">
+<meta name="keywords" content="Replace (ne&rsquo;s manual)">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="Generator" content="makeinfo">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<link href="index.html" rel="start" title="Top">
+<link href="Concept-Index.html" rel="index" title="Concept Index">
+<link href="index.html#SEC_Contents" rel="contents" title="Table of Contents">
+<link href="Search-Commands.html" rel="up" title="Search Commands">
+<link href="ReplaceOnce.html" rel="next" title="ReplaceOnce">
+<link href="FindRegExp.html" rel="prev" title="FindRegExp">
+<style type="text/css">
+<!--
+a.copiable-link {visibility: hidden; text-decoration: none; line-height: 0em}
+span:hover a.copiable-link {visibility: visible}
+ul.mark-bullet {list-style-type: disc}
+-->
+</style>
+
+
+</head>
+
+<body lang="en">
+<div class="subsection-level-extent" id="Replace">
+<div class="nav-panel">
+<p>
+Next: <a href="ReplaceOnce.html" accesskey="n" rel="next">ReplaceOnce</a>, Previous: <a href="FindRegExp.html" accesskey="p" rel="prev">FindRegExp</a>, Up: <a href="Search-Commands.html" accesskey="u" rel="up">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+<hr>
+<h4 class="subsection" id="Replace-1"><span>4.5.3 Replace<a class="copiable-link" href="#Replace-1"> &para;</a></span></h4>
+<a class="index-entry-id" id="index-Replace"></a>
+
+<p>Syntax: <code class="code">Replace [<var class="var">string</var>]</code><br>
+Abbreviation: <code class="code">R</code>
+</p>
+<p>moves to the first match of the most recent find string or regular
+expression and prompts you for which action to perform. You can choose among:
+</p>
+<ul class="itemize mark-bullet">
+<li>replacing the string found with the given string and moving to the next match
+(&lsquo;<samp class="samp">Yes</samp>&rsquo;);
+
+</li><li>moving to the next match (&lsquo;<samp class="samp">No</samp>&rsquo;);
+
+</li><li>replacing the string found with the given string, and stopping the search (&lsquo;<samp class="samp">Last</samp>&rsquo;);
+
+</li><li>stopping the search immediately (&lsquo;<samp class="samp">Quit</samp>&rsquo;);
+
+</li><li>replacing <em class="emph">all</em> occurrences of the find string with the given string
+(&lsquo;<samp class="samp">All</samp>&rsquo;);
+
+</li><li>reversing the search direction (&lsquo;<samp class="samp">Backward</samp>&rsquo; or &lsquo;<samp class="samp">Forward</samp>&rsquo;);
+this choice will also modify the value of the back search flag.
+See <a class="ref" href="SearchBack.html">SearchBack</a>.
+
+</li></ul>
+
+<p><code class="code">Replace</code> is mainly useful for interactive editing. <code class="code">ReplaceOnce</code>,
+<code class="code">ReplaceAll</code> and <code class="code">RepeatLast</code> are more suited to macros.
+</p>
+<p>If no find string was ever specified, you can enter it on the input line.
+If the optional argument <var class="var">string</var> is not specified, you can enter it on
+the input line, the default being the last string used. When the last search
+was a regular expression search, there are some special
+features you can use in the replace string
+(see <a class="pxref" href="Regular-Expressions.html">Regular Expressions</a>)
+. See <a class="ref" href="FindRegExp.html">FindRegExp</a>.
+</p>
+<p>Note that normally a search starts just one character after the cursor.
+However, when <code class="code">Replace</code> is invoked, the search starts at the character
+just <em class="emph">under</em> the cursor, so that you can safely <code class="code">Find</code> a pattern
+and <code class="code">Replace</code> it without having to move back.
+</p>
+<p><strong class="strong">Warning:</strong> when recording a macro with <a class="ref" href="Record.html">Record</a>, there
+is no trace in the macro of your interaction with <code class="code">ne</code> during the
+replacement process. When the macro is played, you will again have to choose
+which actions to perform. If you want to apply automatic replacement of
+strings for a certain number of times, you should look at <a class="ref" href="ReplaceOnce.html">ReplaceOnce</a>,
+<a class="ref" href="ReplaceAll.html">ReplaceAll</a>, and <a class="ref" href="RepeatLast.html">RepeatLast</a>.
+</p>
+
+
+</div>
+<hr>
+<div class="nav-panel">
+<p>
+Next: <a href="ReplaceOnce.html">ReplaceOnce</a>, Previous: <a href="FindRegExp.html">FindRegExp</a>, Up: <a href="Search-Commands.html">Search Commands</a> &nbsp; [<a href="index.html#SEC_Contents" title="Table of contents" rel="contents">Contents</a>][<a href="Concept-Index.html" title="Index" rel="index">Index</a>]</p>
+</div>
+
+
+
+</body>
+</html>
